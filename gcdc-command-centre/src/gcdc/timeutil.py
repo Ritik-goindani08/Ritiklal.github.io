@@ -13,7 +13,7 @@ UTC = timezone.utc
 _ISO_Z = "%Y-%m-%dT%H:%M:%SZ"
 
 # Australian day-first formats seen in GCDC sheets: 22/9/26, 18/08/26, 22/9/2026
-_DMY = re.compile(r"^\s*(?:[A-Za-z]+\s+)?(\d{1,2})[/.-](\d{1,2})[/.-](\d{2,4})\s*$")
+_DMY = re.compile(r"^\s*(?:[A-Za-z]+\s+)?(\d{1,2})[/.-]+(\d{1,2})[/.-]+(\d{2,4})\s*$")  # "28//8/2026" typos accepted
 _MON_DAY = re.compile(r"^\s*(?:[A-Za-z]{3,9}\s+)?(\d{1,2})\s+([A-Za-z]{3,9})\s*(\d{4})?\s*$")
 _MONTHS = {m: i for i, m in enumerate(
     ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], start=1)}

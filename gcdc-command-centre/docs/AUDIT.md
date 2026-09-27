@@ -40,9 +40,15 @@ therefore shows $0 MRR until real rosters exist. It does not show an estimate in
 
 ## Result of the import (shape only)
 
-- All sheets imported with zero failed records, and re-importing changes nothing (idempotent).
+- All eight sheets imported with zero failed records, and re-importing changes nothing (idempotent).
 - Every organisation that appeared in more than one sheet became one organisation.
 - Import problems (bad dates, statuses without dates) are listed in the import output rather than guessed.
+- Sheet fixes worth making at source:
+  - **GCDC_Coordinator_Emails:** some dated-send cells carry the wrong year (2022, 2025) or only a weekday
+    name. Those touches are reported and skipped until the dates are corrected.
+  - **GCDC Facebook Intent Radar:** still holds only its worked examples, so there is nothing to import yet.
+  - **GCDC Outreach Queue:** the "Done? (Y/N)" and "Result" columns were never filled in. Its planned contacts
+    stay open (and overdue) until they are marked done or the mailbox sync records the sends.
 
 ## Decisions
 

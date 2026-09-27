@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Generate the GCDC Command Centre Power BI Project (PBIP).
 
-    python powerbi/build_pbip.py                    # SharePoint / OneDrive source (default)
-    python powerbi/build_pbip.py --source local     # local export folder (Power BI Desktop only)
+    python powerbi/build_pbip.py                        # source from [powerbi] source in config (default: local)
+    python powerbi/build_pbip.py --source local         # export folder on the GCDC PC (Service refresh via personal gateway)
+    python powerbi/build_pbip.py --source sharepoint    # OneDrive for Business / SharePoint (no gateway needed)
 
 Output: powerbi/GCDC Command Centre.pbip + .SemanticModel (TMDL) + .Report (PBIR).
 
@@ -435,6 +436,16 @@ def _hidden(table: str, col: str) -> bool:
         "source_group_order", "month_number") or col.endswith("_sort")
 
 
+def m_string(value: str) -> str:
+    """Power Query (M) text literal: only double quotes are escaped (backslashes are literal)."""
+    return '"' + value.replace('"', '""') + '"'
+
+
+def windows_path(value: str) -> str:
+    """C:/GCDC/x -> C:\\GCDC\\x for drive-letter paths; anything else unchanged."""
+    return value.replace("/", "\\") if re.match(r"^[A-Za-z]:[\\/]", value) else value
+
+
 def tq(name: str) -> str:
     """TMDL object name, quoted only when needed (TOM matches refs to declarations textually)."""
     return name if re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", name) else "'" + name.replace("'", "''") + "'"
@@ -490,7 +501,8 @@ def build_model(out: Path, schema: dict[str, dict[str, str]], source: str, site_
         ]
     else:
         folder = "let\n    Folder = Folder.Contents(ExportLocalFolder)\nin\n    Folder"
-        param_defs = [("ExportLocalFolder", local_folder, "Local folder written by `gcdc export`.")]
+        param_defs = [("ExportLocalFolder", windows_path(local_folder),
+                       "Export folder written by `gcdc export` on the GCDC PC (refreshed via the personal gateway).")]
     loader = ("(tableName as text) as table =>\nlet\n    Content = GcdcFolder{[Name = tableName & \".csv\"]}[Content],\n"
               "    Csv = Csv.Document(Content, [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),\n"
               "    Promoted = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),\n"
@@ -498,7 +510,7 @@ def build_model(out: Path, schema: dict[str, dict[str, str]], source: str, site_
               "in\n    Nulls")
     exprs = []
     for pname, value, desc in param_defs:
-        exprs.append(f"/// {desc}\nexpression {pname} = {json.dumps(value)} meta [IsParameterQuery = true, "
+        exprs.append(f"/// {desc}\nexpression {pname} = {m_string(value)} meta [IsParameterQuery = true, "
                      f"Type = \"Text\", IsParameterQueryRequired = true]\n\tlineageTag: {gid('expr', pname)}\n\n"
                      f"\tannotation PBI_ResultType = Text\n")
     exprs.append("/// The export folder (navigation table of CSV files).\nexpression GcdcFolder =" +
@@ -974,11 +986,12 @@ def referenced_fields(pages: list[Page]) -> set[tuple[str, str, str]]:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--source", choices=["sharepoint", "local"], default="sharepoint")
+    ap.add_argument("--source", choices=["sharepoint", "local"], help="default: [powerbi] source in config")
     ap.add_argument("--out", default=str(ROOT / "powerbi"))
     ap.add_argument("--site-url", help="OneDrive/SharePoint URL (default: [powerbi] site_url in config)")
     ap.add_argument("--folder-path", help="export folder inside the site (default: [powerbi] folder_path)")
-    ap.add_argument("--local-folder", help="export folder for --source local (default: [export] dir, absolute)")
+    ap.add_argument("--local-folder", help="export folder for --source local (default: [powerbi] local_folder, "
+                                           "else the absolute [export] dir)")
     args = ap.parse_args(argv)
     from gcdc.config import load_config
     cfg = load_config()
@@ -991,10 +1004,11 @@ def main(argv: list[str] | None = None) -> int:
         if (out / folder).exists():
             shutil.rmtree(out / folder)
     out.mkdir(parents=True, exist_ok=True)
+    args.source = args.source or cfg.get("powerbi.source", "local")
     build_model(out / sm, schema, args.source,
                 site_url=args.site_url or cfg.get("powerbi.site_url", ""),
                 folder_path=args.folder_path or cfg.get("powerbi.folder_path", "Documents/GCDC Command Centre/powerbi"),
-                local_folder=args.local_folder or str(Path(cfg.export_dir).resolve()))
+                local_folder=args.local_folder or cfg.get("powerbi.local_folder") or str(Path(cfg.export_dir).resolve()))
     pages = build_report(out / rp, sm)
     (out / f"{NAME}.pbip").write_text(json.dumps(
         {"$schema": SCHEMAS["pbip"], "version": "1.0", "artifacts": [{"report": {"path": rp}}],

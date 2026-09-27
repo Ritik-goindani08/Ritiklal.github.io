@@ -7,7 +7,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["ExportSiteUrl", "ExportFolderPath", "GcdcFolder", "GcdcTable", "Action Centre", "Daily Brief", "Daily Focus", "Dim Agent", "Dim Opportunity Type", "Dim Organisation", "Dim Participant", "Dim Partnership Stage", "Dim Region", "Dim Service Type", "Dim Source", "Dim Stage", "Dim Worker", "Fact Agent Health", "Fact Agent Run", "Fact Alert", "Fact Application", "Fact Compliance Document", "Fact Contact", "Fact Daily Snapshot", "Fact Data Quality", "Fact Follow Up", "Fact Meeting", "Fact Opportunity", "Fact Outreach", "Fact Partnership", "Fact Referral", "Fact Reply", "Fact Revenue", "Fact Roster", "Fact Stage History", "Fact Trial Shift", "Fact Worker Availability", "Fact Worker Capacity", "Fact Worker Requirement", "Funnel Summary", "KPI Current", "Meta", "Targets", "Dim Date", "Dim DQ Check"]
+annotation PBI_QueryOrder = ["ExportLocalFolder", "GcdcFolder", "GcdcTable", "Action Centre", "Daily Brief", "Daily Focus", "Dim Agent", "Dim Opportunity Type", "Dim Organisation", "Dim Participant", "Dim Partnership Stage", "Dim Region", "Dim Service Type", "Dim Source", "Dim Stage", "Dim Worker", "Fact Agent Health", "Fact Agent Run", "Fact Alert", "Fact Application", "Fact Compliance Document", "Fact Contact", "Fact Daily Snapshot", "Fact Data Quality", "Fact Follow Up", "Fact Meeting", "Fact Opportunity", "Fact Outreach", "Fact Partnership", "Fact Referral", "Fact Reply", "Fact Revenue", "Fact Roster", "Fact Stage History", "Fact Trial Shift", "Fact Worker Availability", "Fact Worker Capacity", "Fact Worker Requirement", "Funnel Summary", "KPI Current", "Meta", "Targets", "Dim Date", "Dim DQ Check"]
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 

@@ -1,21 +1,13 @@
-/// OneDrive for Business (or SharePoint site) URL that holds the export folder.
-expression ExportSiteUrl = "https://YOUR-TENANT-my.sharepoint.com/personal/YOUR_ACCOUNT/" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
-	lineageTag: 13c59095-b262-58ec-bdd8-d98ea11294f0
-
-	annotation PBI_ResultType = Text
-
-/// Library/folder path of the gcdc export inside that site.
-expression ExportFolderPath = "Documents/GCDC Command Centre/powerbi" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
-	lineageTag: 74d21398-fd89-5643-b5fc-5ab6cfc60136
+/// Export folder written by `gcdc export` on the GCDC PC (refreshed via the personal gateway).
+expression ExportLocalFolder = "C:\GCDC\gcdc-command-centre\exports\powerbi" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: 8706f1c0-cb21-5920-87d9-58bdef9bd350
 
 	annotation PBI_ResultType = Text
 
 /// The export folder (navigation table of CSV files).
 expression GcdcFolder =
 		let
-		    Root = SharePoint.Contents(ExportSiteUrl, [ApiVersion = 15]),
-		    Parts = List.Select(Text.Split(ExportFolderPath, "/"), each _ <> ""),
-		    Folder = List.Accumulate(Parts, Root, (state, part) => state{[Name = part]}[Content])
+		    Folder = Folder.Contents(ExportLocalFolder)
 		in
 		    Folder
 	lineageTag: 648cc3ad-a2a0-5e0c-842f-cddbac6ae272

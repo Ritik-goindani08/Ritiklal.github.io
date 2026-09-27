@@ -1,74 +1,86 @@
 # Power BI setup (manual steps)
 
-Everything that can be automated is done. These steps need your Microsoft sign-in, so only you can do them.
-Allow about 30 minutes the first time.
+Everything that can be automated is done. These steps happen on the GCDC PC and need the GCDC Microsoft
+sign-in (`info@goldcoastdevotedcare.com.au`), so only you can do them. Allow about 40 minutes the first time.
 
 ## How the refresh works
 
+GCDC's Microsoft 365 plan is email-only, with no SharePoint or OneDrive for Business. Microsoft reports
+"Tenant does not have a SPO license". So Power BI reads the export folder **on the GCDC PC** through Microsoft's
+free **on-premises data gateway (personal mode)**. The data goes only from the PC to Power BI.
+
 ```
-PC (Task Scheduler)                     OneDrive for Business                 Power BI Service
-gcdc refresh ─> exports\powerbi\*.csv ─> syncs to SharePoint Online  ─>  scheduled refresh (no gateway)
+GCDC PC (Task Scheduler)                                      Power BI Service (info@goldcoastdevotedcare.com.au)
+gcdc refresh ─> C:\GCDC\gcdc-command-centre\exports\powerbi ─> personal gateway ─> scheduled refresh
 ```
 
-Power BI Service reads the CSVs from OneDrive in the cloud, so **no on-premises data gateway is needed**.
+## 1. Install the command centre on the PC (10 min)
 
-## 1. Put the export folder in OneDrive (5 min)
-
-1. In File Explorer, open your OneDrive for Business folder (e.g. `OneDrive - Gold Coast Devoted Care`)
-   and create `GCDC Command Centre\powerbi`.
-2. In `config/gcdc.toml`, set the export folder to that local path:
-   ```toml
-   [export]
-   dir = "C:/Users/<you>/OneDrive - Gold Coast Devoted Care/GCDC Command Centre/powerbi"
+1. Install **Python 3.11 or newer** from python.org (tick *Add python.exe to PATH*) and **Git** from git-scm.com.
+2. In PowerShell:
+   ```powershell
+   git clone https://github.com/Ritik-goindani08/Ritiklal.github.io C:\GCDC
+   cd C:\GCDC\gcdc-command-centre
+   python -m venv .venv
+   .venv\Scripts\pip install -e ".[import]"
+   .venv\Scripts\gcdc init
    ```
-   Keep `[database] path` **outside** OneDrive. Only the export (and optionally backups) should sync.
-3. Run `gcdc refresh`. About 40 `pbi_*.csv` files and `manifest.json` appear, and OneDrive uploads them.
-
-## 2. Tell the report where the folder is (2 min)
-
-1. Open OneDrive in a browser. The address looks like
-   `https://<tenant>-my.sharepoint.com/personal/<your_account>/_layouts/15/onedrive.aspx`.
-2. Copy everything up to and including `/personal/<your_account>/` into `config/gcdc.toml`:
-   ```toml
-   [powerbi]
-   site_url = "https://<tenant>-my.sharepoint.com/personal/<your_account>/"
-   folder_path = "Documents/GCDC Command Centre/powerbi"
+   Until the pull request is merged, add `-b claude/gcdc-data-powerbi-foundation-lbjzhb` to the clone command.
+3. Download each GCDC Google Sheet as Excel (*File → Download → Microsoft Excel*) into one folder, keeping
+   the file names. Then run:
+   ```powershell
+   .venv\Scripts\gcdc import all C:\path\to\that\folder
+   .venv\Scripts\gcdc refresh
    ```
-3. Regenerate the project so these become the defaults: `python powerbi/build_pbip.py`.
-   You can also skip this and set them later in Power BI Desktop under Transform data → Edit parameters.
+   `C:\GCDC\gcdc-command-centre\exports\powerbi` should now hold about 40 `pbi_*.csv` files.
 
-## 3. Open the report in Power BI Desktop (10 min)
+Installing somewhere other than `C:\GCDC`? Set `[powerbi] local_folder` in `config/gcdc.toml` to the full path
+of the export folder and run `.venv\Scripts\python powerbi\build_pbip.py`.
 
-1. Install or update **Power BI Desktop** (Microsoft Store, Windows).
+## 2. Open the report in Power BI Desktop (5 min)
+
+1. Install **Power BI Desktop** from the Microsoft Store.
 2. If your version asks, enable File → Options → Preview features → **Power BI Project (.pbip) save option**
    and **Store semantic model using TMDL format**, then restart Desktop.
-3. Open `gcdc-command-centre\powerbi\GCDC Command Centre.pbip`.
-4. When prompted for SharePoint credentials, choose **Microsoft account / Organizational account** →
-   **Sign in** with the GCDC Microsoft 365 account → **Connect**. Apply at the site level.
-5. Click **Refresh**. Check the ten pages: Executive, Today — Action Centre, Revenue, Outreach
-   Performance, Opportunity Discovery, Partnership Pipeline, Money on the Table, Worker Capacity,
-   Regional Performance, Agent Health.
+3. Open `C:\GCDC\gcdc-command-centre\powerbi\GCDC Command Centre.pbip` and sign in (top right) as
+   `info@goldcoastdevotedcare.com.au`.
+4. Click **Refresh**. Check the ten pages: Executive, Today — Action Centre, Revenue, Outreach Performance,
+   Opportunity Discovery, Partnership Pipeline, Money on the Table, Worker Capacity, Regional Performance,
+   Agent Health.
 
-Desktop-only alternative (no OneDrive): `python powerbi/build_pbip.py --source local` builds the same report
-reading the local export folder. That version cannot refresh in the Service without a gateway.
+## 3. Publish (2 min)
 
-## 4. Publish and schedule the refresh (10 min)
+**Home → Publish → My workspace.**
 
-1. In Desktop: **Home → Publish** → choose a workspace (My workspace, or a GCDC workspace).
-2. In app.powerbi.com: open the workspace → the **GCDC Command Centre** semantic model → **Settings**.
-3. **Data source credentials → Edit credentials**: Authentication method **OAuth2**, privacy level
-   **Organizational** → **Sign in**.
-4. **Refresh → Configure a refresh schedule**: On; time zone **(UTC+10:00) Brisbane**; add times after the
-   PC's exports, e.g. 07:30, 08:30, 10:30, 12:30, 14:30, 16:30, 18:30. Tick **Send refresh failure notifications**.
-   The 07:30 refresh picks up the morning brief. The Daily BI Agent re-exports after it runs at 07:00, so its
-   focus items appear in the "Today's focus" table on the Today page.
-5. Optional: pin the Executive page to a dashboard, or install the Power BI mobile app.
+## 4. Install the personal gateway (5 min)
 
-Sharing the report with anyone else requires Power BI Pro (or Premium Per User) licences for them and you.
+1. Go to https://app.powerbi.com signed in as `info@goldcoastdevotedcare.com.au`. Click the **Download** (↓) icon
+   at the top right → **Data gateway**.
+2. Run the installer and choose **On-premises data gateway (personal mode)**. The standard mode is for
+   shared servers.
+3. Sign in with `info@goldcoastdevotedcare.com.au` when the installer asks. It should report the gateway as online.
 
-## 5. Schedule the PC side (2 min)
+## 5. Connect the report to the gateway and schedule the refresh (5 min)
 
-In PowerShell from the project folder:
+In app.powerbi.com → **My workspace** → the **GCDC Command Centre** semantic model → **⋯ → Settings**:
+
+1. **Gateway and cloud connections**: the personal gateway shows as *Online*. Select it and **Apply**.
+2. **Data source credentials → Edit credentials** for the folder `C:\GCDC\...\exports\powerbi`:
+   - Authentication method **Windows**.
+   - Enter the Windows sign-in of this PC. For a Microsoft account, use its email and password. For a local
+     account, use `PCNAME\username`.
+   - Privacy level **Organizational** → **Sign in**.
+3. **Refresh → Configure a refresh schedule**:
+   - On, time zone **(UTC+10:00) Brisbane**.
+   - Times 07:30, 08:30, 10:30, 12:30, 14:30, 16:30, 18:30. These run after the PC's exports; the 07:30
+     refresh picks up the morning brief.
+   - Tick **Send refresh failure notifications**.
+4. Click **Refresh now** once and check that the "Data as at" card on the Executive page updates.
+
+Sharing the report with other people requires Power BI Pro (or Premium Per User) licences. Power BI tells
+you if your plan needs one for anything else.
+
+## 6. Schedule the PC side (2 min)
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts\windows\register_tasks.ps1
@@ -76,7 +88,19 @@ powershell -ExecutionPolicy Bypass -File scripts\windows\register_tasks.ps1
 ```
 
 This registers the daily backup (06:15), the refresh (06:30, then hourly 08:00–18:00) and the Daily Brief
-(weekdays 07:00). Tasks run while you are signed in, and missed runs catch up when the PC wakes.
+(weekdays 07:00). **The PC must be on and awake at the Power BI refresh times.** Set Settings → System → Power
+→ *When plugged in, put my device to sleep after: Never*. A refresh that runs while the PC sleeps fails, and
+the next one catches up.
+
+## Later: refresh without the PC (optional)
+
+If GCDC adds SharePoint/OneDrive to its Microsoft 365 plan (for example Microsoft 365 Business Basic), Power BI
+can refresh from the cloud without the gateway or an awake PC:
+
+1. Set `[export] dir` to a OneDrive-synced folder.
+2. Set `[powerbi] source = "sharepoint"` with `site_url` and `folder_path`.
+3. Run `python powerbi/build_pbip.py`.
+4. Open the project in Desktop, republish, and set the credentials to OAuth2.
 
 ## Mailbox sync (optional, about 10 min)
 
@@ -92,6 +116,9 @@ Records sent emails, replies and bounces from Outlook automatically. It is read-
    instruction (open https://microsoft.com/devicelogin, enter the code, sign in as the GCDC mailbox).
    The token is cached in `data/`, so scheduled runs need no sign-in.
 
+If Microsoft 365 was bought through a reseller (e.g. GoDaddy), app registration may need the reseller's admin
+portal or support to grant access.
+
 ## Daily brief with Claude (optional)
 
 `pip install -e ".[ai]"`, set `ANTHROPIC_API_KEY` for the Windows user, and register the tasks with
@@ -103,7 +130,8 @@ back to the rules and says so.
 
 | Symptom | Fix |
 |---|---|
-| Desktop: "We couldn't find the folder" | Check `ExportSiteUrl` ends with `/personal/<account>/` and `ExportFolderPath` starts with `Documents/`. The folder must contain `pbi_meta.csv`. |
-| Service: credentials error | Semantic model → Settings → Data source credentials → Edit → OAuth2 → Sign in again. |
-| Numbers look old | Check the "Data as at" card. If old, look at `logs\gcdc-YYYY-MM.log` and the OneDrive sync icon. |
-| Refresh fails after a code update | Run `python powerbi/build_pbip.py` and republish (the columns changed). |
+| Desktop: "We couldn't find the folder" | Check the `ExportLocalFolder` parameter (Transform data → Edit parameters) points at the folder that holds `pbi_meta.csv`, and that `gcdc refresh` has run. |
+| Service: "gateway offline" / refresh failed | The PC was off or asleep, or the gateway app was closed. Open *On-premises data gateway (personal mode)* on the PC and sign in again if asked. |
+| Service: credentials error | Semantic model → Settings → Data source credentials → Edit → Windows → re-enter the PC sign-in. |
+| Numbers look old | Check the "Data as at" card. If old, look at `logs\gcdc-YYYY-MM.log` and the refresh history in Power BI. |
+| Refresh fails after a code update | Run `python powerbi/build_pbip.py`, open the project in Desktop and republish (the columns changed). |

@@ -4,7 +4,7 @@ One central business-development database for Gold Coast Devoted Care, and a Pow
 
 ```
  Opportunity Discovery ─┐                                   ┌─> exports/powerbi/*.csv ─> Power BI (10 pages)
- Outreach Agent ────────┤   gcdc ingest / Python API        │     (OneDrive folder, refreshed hourly)
+ Outreach Agent ────────┤   gcdc ingest / Python API        │     (via the personal gateway on the GCDC PC)
  Inbox / Reply Agent ───┼──> central SQLite database  ──────┤
  Worker Capacity ───────┤   (source of truth, de-duped,     └─> Daily BI Agent brief (weekdays 07:00)
  Outlook (Graph sync) ──┤    idempotent, audited)
@@ -14,7 +14,8 @@ One central business-development database for Gold Coast Devoted Care, and a Pow
 - **The database is the source of truth.** Agents write to it through one ingest layer that matches
   organisations across agents (ABN → website domain → email → name), so the same business found by
   two agents is one organisation. Re-sending a record never duplicates it.
-- **Power BI is reporting only.** It reads CSV exports of `pbi_*` views; all business logic
+- **Power BI is reporting only.** It reads CSV exports of `pbi_*` views (on the GCDC PC, through Microsoft's
+  free personal data gateway); all business logic
   (MRR, stages, conversion flags, action ranking, agent health) lives in SQL so the dashboard, the
   daily snapshot and the brief always agree.
 - **Money is never invented.** MRR = active rosters × weekly hours × *approved* rate × 4.333333.
@@ -28,6 +29,7 @@ One central business-development database for Gold Coast Devoted Care, and a Pow
 Python 3.11+.
 
 ```bash
+# Windows: clone the repository to C:\GCDC so the report finds C:\GCDC\gcdc-command-centre\exports\powerbi
 cd gcdc-command-centre
 python -m venv .venv
 .venv/bin/pip install -e .                  # Windows: .venv\Scripts\pip install -e .

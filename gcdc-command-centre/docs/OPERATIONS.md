@@ -9,7 +9,7 @@
 | 06:30 | Refresh: config sync, reconcile, data-quality, yesterday's snapshot, export | `gcdc refresh` |
 | 07:00 weekdays | Daily BI Agent (then re-exports so Power BI shows today's focus) | `gcdc brief` |
 | 08:00–18:00 hourly | Refresh | `gcdc refresh` |
-| Power BI Service, from 07:30 | Scheduled refresh from OneDrive | (configured in the Service) |
+| Power BI Service, from 07:30 | Scheduled refresh through the personal gateway (PC must be awake) | (configured in the Service) |
 
 Windows: `scripts\windows\register_tasks.ps1` (`-Unregister` removes the tasks). Linux/macOS: `scripts/unix/gcdc.crontab`.
 Output goes to `logs\gcdc-YYYY-MM.log`. Every run also appears on the **Agent Health** page.
@@ -37,7 +37,7 @@ gcdc brief --force --no-save   # preview today's brief
 ## Backup and restore
 
 `gcdc backup` makes a consistent copy with SQLite's online backup API into `[database] backup_dir` and keeps
-`backup_keep` (30) daily copies. Point `backup_dir` at a OneDrive folder for an off-machine copy. To restore,
+`backup_keep` (30) daily copies. Point `backup_dir` at a Google Drive or OneDrive folder for an off-machine copy. To restore,
 stop the scheduled tasks, copy a backup over `data/gcdc.db` (delete any `gcdc.db-wal`/`-shm` files), then run
 `gcdc refresh`.
 

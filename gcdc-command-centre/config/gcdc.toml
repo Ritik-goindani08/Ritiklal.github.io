@@ -25,16 +25,13 @@ records_start_date = "2026-01-01"
 # Relative paths resolve from the project folder. GCDC_DB overrides this.
 # Keep the live database OUT of OneDrive/Dropbox-synced folders (sync tools can corrupt it).
 path = "data/gcdc.db"
-# `gcdc backup` writes a consistent daily copy here. This folder CAN be inside OneDrive,
-# e.g. "C:/Users/Ritik/OneDrive - Gold Coast Devoted Care/GCDC Command Centre/backups".
+# `gcdc backup` writes a consistent daily copy here. Unlike the live database, this folder CAN be
+# inside a cloud-synced folder (Google Drive for desktop, OneDrive) for an off-machine copy.
 backup_dir = "data/backups"
 backup_keep = 30
 
 [export]
-# Point this at a folder synced by OneDrive for Business so Power BI Service can
-# refresh without a gateway, e.g.
-#   "C:/Users/Ritik/OneDrive - Gold Coast Devoted Care/GCDC Command Centre/powerbi"
-# GCDC_EXPORT_DIR overrides this.
+# Folder `gcdc export` / `gcdc refresh` writes the Power BI CSVs to. GCDC_EXPORT_DIR overrides this.
 dir = "exports/powerbi"
 briefs_dir = "exports/briefs"
 # Calendar table range for Power BI.
@@ -42,11 +39,18 @@ calendar_start = "2026-06-01"
 calendar_days_ahead = 120
 
 [powerbi]
-# Where Power BI Service reads the export (the OneDrive folder above, seen from the web).
-# Used by `python powerbi/build_pbip.py` as the default parameter values; they can also be
-# changed later in Power BI (Transform data > Edit parameters) without regenerating.
-# site_url: your OneDrive for Business root, e.g. https://contoso-my.sharepoint.com/personal/info_contoso_com_au/
-# folder_path: path of the export folder inside it, starting at "Documents".
+# How Power BI reaches the export (used by `python powerbi/build_pbip.py`; parameters can also be
+# changed later in Power BI Desktop under Transform data > Edit parameters).
+#   "local"      - Power BI reads the export folder on the GCDC PC. Scheduled refresh in the Power BI
+#                  Service goes through the free on-premises data gateway (personal mode) on that PC.
+#                  Use this while GCDC's Microsoft 365 plan has no SharePoint/OneDrive (the case today).
+#   "sharepoint" - Power BI reads a OneDrive for Business / SharePoint copy of the export; no gateway.
+#                  Needs a Microsoft 365 plan that includes SharePoint (e.g. Business Basic).
+source = "local"
+# Absolute path of the export folder on the GCDC PC (the [export] dir above, fully spelled out).
+# Install the project at C:/GCDC/gcdc-command-centre and this needs no change.
+local_folder = "C:/GCDC/gcdc-command-centre/exports/powerbi"
+# For source = "sharepoint" only: OneDrive root URL and the export folder inside it.
 site_url = ""
 folder_path = "Documents/GCDC Command Centre/powerbi"
 

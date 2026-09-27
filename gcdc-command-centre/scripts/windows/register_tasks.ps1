@@ -8,9 +8,9 @@
   GCDC Daily Brief  Monday-Friday 07:00                    gcdc brief   (skips QLD public holidays itself)
   GCDC Mailbox Sync every 30 min 06:00-20:00 (optional)    gcdc sync outlook
 
-  Tasks run only while you are signed in (the OneDrive client must be running to upload the
-  export for Power BI Service). "Run as soon as possible after a scheduled start is missed" is
-  on, so a laptop that was asleep catches up when it wakes. Output goes to logs\gcdc-YYYY-MM.log.
+  Tasks run only while you are signed in. Keep the PC awake at the Power BI refresh times: the
+  personal data gateway reads the export from this PC. "Run as soon as possible after a scheduled
+  start is missed" is on, so a laptop that was asleep catches up when it wakes. Output goes to logs\gcdc-YYYY-MM.log.
 
 .EXAMPLE
   powershell -ExecutionPolicy Bypass -File scripts\windows\register_tasks.ps1

@@ -128,3 +128,28 @@ def test_pbip_json_matches_microsoft_schemas(pbip):
         v = validators.validator_for(schema, default=Draft7Validator)(schema, registry=registry)
         errors += [f"{f.name}: {e.message[:200]}" for e in v.iter_errors(doc)]
     assert not errors, errors[:10]
+
+
+@pytest.mark.parametrize("source, expected", [
+    ("local", 'expression ExportLocalFolder = "C:\\GCDC\\gcdc-command-centre\\exports\\powerbi" meta'),
+    ("sharepoint", "SharePoint.Contents(ExportSiteUrl"),
+])
+def test_pbip_source_variants(pbip, tmp_path, source, expected):
+    b, _ = pbip
+    out = tmp_path / source
+    assert b.main(["--out", str(out), "--source", source,
+                   "--local-folder", "C:/GCDC/gcdc-command-centre/exports/powerbi"]) == 0
+    expressions = (out / "GCDC Command Centre.SemanticModel/definition/expressions.tmdl").read_text(encoding="utf-8")
+    assert expected in expressions
+
+
+def test_m_string_literals():
+    import sys
+
+    sys.path.insert(0, str(ROOT / "powerbi"))
+    from build_pbip import m_string, windows_path
+
+    assert m_string('say "hi"') == '"say ""hi"""'
+    assert m_string("C:\\GCDC") == '"C:\\GCDC"'  # backslashes are literal in M
+    assert windows_path("C:/GCDC/x") == "C:\\GCDC\\x"
+    assert windows_path("/home/x") == "/home/x"

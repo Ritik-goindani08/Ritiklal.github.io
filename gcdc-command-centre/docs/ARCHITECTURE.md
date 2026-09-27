@@ -30,7 +30,7 @@
                                                  idempotent upsert    │
                                                  stage evidence       │
                                                                       ▼
- gcdc refresh (scheduled) ── sync config ─ reconcile ─ data quality ─ snapshot ─ export CSV ─> OneDrive ─> Power BI Service
+ gcdc refresh (scheduled) ── sync config ─ reconcile ─ data quality ─ snapshot ─ export CSV ─> personal gateway ─> Power BI Service
  gcdc brief   (weekdays)  ── pbi_kpi_current + pbi_action_centre ─> focus rules (+ optional Claude choice) ─> Markdown + DB
 ```
 
@@ -48,17 +48,18 @@
 | `importers/` | Existing Google Sheets, canonical CSVs, Microsoft Graph mailbox, legacy SQLite adoption |
 | `powerbi/build_pbip.py` | Generates the Power BI project from the export schema |
 
-## Why SQLite, CSV and OneDrive
+## Why SQLite, CSV and a personal gateway
 
 - The agents run on one Windows PC. SQLite needs no server, supports concurrent readers with WAL,
   and gives transactional writes and constraints. The schema is plain SQL and ports to PostgreSQL or
   Azure SQL if GCDC outgrows one machine.
-- Power BI Service cannot reach a file on a PC without an on-premises gateway. Exporting CSVs into a
-  OneDrive for Business folder lets the Service refresh straight from SharePoint Online, with **no
-  gateway to install or maintain**. The export is atomic (temp file + rename), so a refresh never reads
-  a half-written file.
-- Keep the live database outside the synced folder. Sync tools can corrupt an open SQLite file.
-  `gcdc backup` copies it safely, and backup copies can live in OneDrive.
+- Power BI Service reaches the CSV export on the PC through Microsoft's free on-premises data gateway
+  (personal mode). GCDC's Microsoft 365 plan has no SharePoint/OneDrive for Business, so a cloud copy of the
+  export is not available. The generator also supports that route (`[powerbi] source = "sharepoint"`,
+  no gateway) if a SharePoint plan is added later. The export is atomic (temp file + rename), so a refresh
+  never reads a half-written file.
+- Keep the live database outside any cloud-synced folder. Sync tools can corrupt an open SQLite file.
+  `gcdc backup` copies it safely, and backup copies can live in Google Drive or OneDrive.
 
 ## Time
 

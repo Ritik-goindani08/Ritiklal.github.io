@@ -18,6 +18,7 @@ this public repository.
 | crm-master.csv (Power-BI-Projects repository) | Scored leads from an earlier commercial opportunity audit | `gcdc import crm-master`: imported as a source, **not** kept as a second Power BI dataset |
 | GCDC Facebook Intent Radar | Discovery sheet of posts showing intent | `gcdc import facebook-radar` (worked examples skipped) |
 | Outlook mailbox | The only reliable record of what was actually sent and received | `gcdc sync outlook` (Microsoft Graph, read-only, deterministic) |
+| GCDC Microsoft 365 | Email only: no SharePoint / OneDrive for Business ("Tenant does not have a SPO license") | Power BI refreshes from the PC's export folder through the personal data gateway |
 
 No source held rosters, participants, invoices, worker checks or availability. Those start empty and are
 entered with the templates in `templates/` (see DATA_ENTRY) or by the Worker Capacity agent. The dashboard

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "d9b488cffa5d594ba4a8",
+  "position": {
+    "x": 518,
+    "y": 152,
+    "z": 10000,
+    "height": 84,
+    "width": 243,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Participant Referrals (30d)"
+                }
+              },
+              "queryRef": "_Measures.Participant Referrals (30d)",
+              "nativeQueryRef": "Participant Referrals (30d)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Participant Referrals (30d)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

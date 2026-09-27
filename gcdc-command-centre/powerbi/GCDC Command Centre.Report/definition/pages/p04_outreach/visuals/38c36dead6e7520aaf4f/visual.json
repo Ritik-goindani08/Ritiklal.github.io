@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "38c36dead6e7520aaf4f",
+  "position": {
+    "x": 16,
+    "y": 228,
+    "z": 19000,
+    "height": 476,
+    "width": 740,
+    "tabOrder": 19000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "First-Touch Sent"
+                }
+              },
+              "queryRef": "_Measures.First-Touch Sent",
+              "nativeQueryRef": "First-Touch Sent"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Follow-Ups Sent"
+                }
+              },
+              "queryRef": "_Measures.Follow-Ups Sent",
+              "nativeQueryRef": "Follow-Ups Sent"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Bounced Emails"
+                }
+              },
+              "queryRef": "_Measures.Bounced Emails",
+              "nativeQueryRef": "Bounced Emails"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Date"
+                    }
+                  },
+                  "Property": "week_start"
+                }
+              },
+              "queryRef": "Dim Date.week_start",
+              "nativeQueryRef": "Week",
+              "displayName": "Week"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outreach volume by week'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

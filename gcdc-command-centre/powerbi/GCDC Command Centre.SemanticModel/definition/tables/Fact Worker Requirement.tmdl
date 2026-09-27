@@ -1,0 +1,172 @@
+table 'Fact Worker Requirement'
+	lineageTag: 77efc8ba-2cb6-5ff1-b76f-b1b52a9d2ec9
+
+	column requirement_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8f46ca80-d92b-54d8-a98e-45637b63bc76
+		summarizeBy: none
+		sourceColumn: requirement_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c49867ed-92ef-5f52-bf50-ed654387d2a5
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column referral_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8a536b49-30b8-5e2b-abb2-65efc3bf44b4
+		summarizeBy: none
+		sourceColumn: referral_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column roster_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5b64644b-b115-5043-a9b4-8defd983915d
+		summarizeBy: none
+		sourceColumn: roster_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: 873a0dca-9a25-5cdb-9b54-2ecd32b4e992
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column service_type_code
+		dataType: string
+		lineageTag: 9e918392-4702-58a9-9ca1-a8198c6ae4de
+		summarizeBy: none
+		sourceColumn: service_type_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column required_capability
+		dataType: string
+		lineageTag: 55f7f80b-4034-58a3-b67f-d347614a4441
+		summarizeBy: none
+		sourceColumn: required_capability
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender_requirement
+		dataType: string
+		lineageTag: d266974b-0b3d-54d0-b101-efc500be625a
+		summarizeBy: none
+		sourceColumn: gender_requirement
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekly_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: c4ff8c63-0ce5-589e-92dc-7a87b051995a
+		summarizeBy: none
+		sourceColumn: weekly_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column needs_weekday
+		dataType: int64
+		formatString: #,0
+		lineageTag: 7db41e23-09b5-52b7-80bc-8638b93d431a
+		summarizeBy: none
+		sourceColumn: needs_weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column needs_weekend
+		dataType: int64
+		formatString: #,0
+		lineageTag: f8464234-af52-511e-99e5-a37cb28407b6
+		summarizeBy: none
+		sourceColumn: needs_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column needs_evening
+		dataType: int64
+		formatString: #,0
+		lineageTag: fbbab003-1276-502f-a5bc-d5c94ca7dd15
+		summarizeBy: none
+		sourceColumn: needs_evening
+
+		annotation SummarizationSetBy = Automatic
+
+	column needs_overnight
+		dataType: int64
+		formatString: #,0
+		lineageTag: bc7d8698-28bf-5850-b807-82827d6060b6
+		summarizeBy: none
+		sourceColumn: needs_overnight
+
+		annotation SummarizationSetBy = Automatic
+
+	column needed_by
+		dataType: string
+		lineageTag: 2ea46414-c799-516a-ac9a-f783e322f7cf
+		summarizeBy: none
+		sourceColumn: needed_by
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 8da8c794-a97a-5bdd-96d4-6ab3cf5b9584
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_open
+		dataType: int64
+		formatString: #,0
+		lineageTag: b09ee575-ce88-59e3-b676-01ff9e57e6ab
+		summarizeBy: none
+		sourceColumn: is_open
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Worker Requirement' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_worker_requirement"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"requirement_id", Int64.Type},
+				        {"organisation_id", Int64.Type},
+				        {"referral_id", Int64.Type},
+				        {"roster_id", Int64.Type},
+				        {"region_code", type text},
+				        {"service_type_code", type text},
+				        {"required_capability", type text},
+				        {"gender_requirement", type text},
+				        {"weekly_hours", type number},
+				        {"needs_weekday", Int64.Type},
+				        {"needs_weekend", Int64.Type},
+				        {"needs_evening", Int64.Type},
+				        {"needs_overnight", Int64.Type},
+				        {"needed_by", type text},
+				        {"status", type text},
+				        {"is_open", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

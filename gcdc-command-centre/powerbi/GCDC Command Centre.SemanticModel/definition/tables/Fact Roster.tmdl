@@ -1,0 +1,383 @@
+table 'Fact Roster'
+	lineageTag: 60605553-06ca-55fa-a6d8-d37e79e3e443
+
+	column roster_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b021b559-a3cb-55e2-a159-27c5e9c054a4
+		summarizeBy: none
+		sourceColumn: roster_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column roster_ref
+		dataType: string
+		lineageTag: 52e01ee9-c297-53ae-84b8-359cdbfe2a3a
+		summarizeBy: none
+		sourceColumn: roster_ref
+
+		annotation SummarizationSetBy = Automatic
+
+	column participant_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c47beb21-db9c-5ae4-9f7c-674323db6888
+		summarizeBy: none
+		sourceColumn: participant_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column participant_ref
+		dataType: string
+		lineageTag: 8e573f9c-229a-5372-9627-5a974128cb81
+		summarizeBy: none
+		sourceColumn: participant_ref
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3511ee0c-de1b-58ae-b469-2960fcc3ee68
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0428d6bd-b103-5664-adbe-ead5e9fd989b
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_code
+		dataType: string
+		lineageTag: f03d5b19-0249-5151-968b-4fe0a0ac80ed
+		summarizeBy: none
+		sourceColumn: source_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_type_code
+		dataType: string
+		lineageTag: a88d8dd3-4e9f-5934-a144-22b8217cde51
+		summarizeBy: none
+		sourceColumn: opportunity_type_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: e34c1c4c-5038-5aed-9b5e-01c079006aba
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column service_type_code
+		dataType: string
+		lineageTag: 3a82f774-4a21-55a1-ae13-c674fc17fc76
+		summarizeBy: none
+		sourceColumn: service_type_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column worker_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 46973b9a-2668-5662-b36a-8a8d6a3fd9e4
+		summarizeBy: none
+		sourceColumn: worker_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: a1d3fb3a-06d1-511f-8de6-dac9c1da41ba
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_model
+		dataType: string
+		lineageTag: 18bff18a-3bca-5e7f-a5b3-c5504f4da06f
+		summarizeBy: none
+		sourceColumn: revenue_model
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekly_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 5bbfc37f-8130-5d1a-9268-2a289378425b
+		summarizeBy: none
+		sourceColumn: weekly_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column hourly_rate
+		dataType: double
+		formatString: $#,0
+		lineageTag: a18a42b0-6aad-5601-9d3a-802fb6dfd394
+		summarizeBy: none
+		sourceColumn: hourly_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate_basis
+		dataType: string
+		lineageTag: ed20d5f4-db00-5fd5-98e1-96b4af427858
+		summarizeBy: none
+		sourceColumn: rate_basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekly_value
+		dataType: double
+		formatString: $#,0
+		lineageTag: fab04ea1-a27d-57d9-8697-f23d87585f52
+		summarizeBy: none
+		sourceColumn: weekly_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column monthly_value
+		dataType: double
+		formatString: $#,0
+		lineageTag: b73f840d-2b94-5173-bd3d-6467c4228712
+		summarizeBy: none
+		sourceColumn: monthly_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_status
+		dataType: string
+		lineageTag: 97b2b815-f83c-5530-8591-013185ef59c6
+		summarizeBy: none
+		sourceColumn: value_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column counts_to_mrr
+		dataType: int64
+		formatString: #,0
+		lineageTag: 365a7ab1-9a49-596c-b4bc-73176b4fedac
+		summarizeBy: none
+		sourceColumn: counts_to_mrr
+
+		annotation SummarizationSetBy = Automatic
+
+	column mrr_contribution
+		dataType: double
+		formatString: $#,0
+		lineageTag: 08f0c699-204c-54ad-8b1a-1dbb5bbe4648
+		summarizeBy: none
+		sourceColumn: mrr_contribution
+
+		annotation SummarizationSetBy = Automatic
+
+	column projected_mrr_contribution
+		dataType: double
+		formatString: $#,0
+		lineageTag: a8289400-8ceb-567f-8b82-e7092cb6c66e
+		summarizeBy: none
+		sourceColumn: projected_mrr_contribution
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_rate_not_approved
+		dataType: int64
+		formatString: #,0
+		lineageTag: 04ce8964-cadb-5cbd-961d-3515fc537944
+		summarizeBy: none
+		sourceColumn: active_rate_not_approved
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_weekly_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 4a0359f5-f1a3-53d1-a961-2d392a884f1f
+		summarizeBy: none
+		sourceColumn: active_weekly_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_hours_with_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 49b4da06-218b-5fa7-9dbb-148d814e6101
+		summarizeBy: none
+		sourceColumn: active_hours_with_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_weekly_value_with_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 2186d0e7-8a3c-5ccf-b6dc-eccb94a463aa
+		summarizeBy: none
+		sourceColumn: active_weekly_value_with_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_active
+		dataType: int64
+		formatString: #,0
+		lineageTag: 8421b844-0416-5e78-91e5-51c04a8108fc
+		summarizeBy: none
+		sourceColumn: is_active
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_scheduled
+		dataType: int64
+		formatString: #,0
+		lineageTag: 7332d043-c2f8-5b10-96e7-f7d9782a0e64
+		summarizeBy: none
+		sourceColumn: is_scheduled
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_unfilled
+		dataType: int64
+		formatString: #,0
+		lineageTag: d13637ee-1b5e-55bf-a910-7d49391c9ac8
+		summarizeBy: none
+		sourceColumn: is_unfilled
+
+		annotation SummarizationSetBy = Automatic
+
+	column includes_weekday
+		dataType: int64
+		formatString: #,0
+		lineageTag: f75058ff-8f5d-55e0-8b68-0c92f7fd8a0f
+		summarizeBy: none
+		sourceColumn: includes_weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column includes_weekend
+		dataType: int64
+		formatString: #,0
+		lineageTag: c5c50e8d-9310-516c-8a12-7bbdde9f664a
+		summarizeBy: none
+		sourceColumn: includes_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column includes_evening
+		dataType: int64
+		formatString: #,0
+		lineageTag: 19f0edc5-c20e-5865-ae6d-6f5d7e724a46
+		summarizeBy: none
+		sourceColumn: includes_evening
+
+		annotation SummarizationSetBy = Automatic
+
+	column includes_overnight
+		dataType: int64
+		formatString: #,0
+		lineageTag: c23828f3-7228-5ec1-9b73-da63813bf94e
+		summarizeBy: none
+		sourceColumn: includes_overnight
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 72e8e091-3b3b-5d75-962e-90238fee7325
+		summarizeBy: none
+		sourceColumn: start_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column end_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: bf84c53e-f49e-58d4-9c3d-49ca1e8671c1
+		summarizeBy: none
+		sourceColumn: end_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column attributed_org_contacted
+		dataType: int64
+		formatString: #,0
+		lineageTag: 9e63ec36-d4cf-5dbe-b95b-e06c16f14617
+		summarizeBy: none
+		sourceColumn: attributed_org_contacted
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_hours_from_contacted_orgs
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 96f47491-cd0b-5d47-a345-649687d829f1
+		summarizeBy: none
+		sourceColumn: active_hours_from_contacted_orgs
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Roster' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_roster"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"roster_id", Int64.Type},
+				        {"roster_ref", type text},
+				        {"participant_id", Int64.Type},
+				        {"participant_ref", type text},
+				        {"organisation_id", Int64.Type},
+				        {"opportunity_id", Int64.Type},
+				        {"source_code", type text},
+				        {"opportunity_type_code", type text},
+				        {"region_code", type text},
+				        {"service_type_code", type text},
+				        {"worker_id", Int64.Type},
+				        {"status", type text},
+				        {"revenue_model", type text},
+				        {"weekly_hours", type number},
+				        {"hourly_rate", type number},
+				        {"rate_basis", type text},
+				        {"weekly_value", type number},
+				        {"monthly_value", type number},
+				        {"value_status", type text},
+				        {"counts_to_mrr", Int64.Type},
+				        {"mrr_contribution", type number},
+				        {"projected_mrr_contribution", type number},
+				        {"active_rate_not_approved", Int64.Type},
+				        {"active_weekly_hours", type number},
+				        {"active_hours_with_rate", type number},
+				        {"active_weekly_value_with_rate", type number},
+				        {"is_active", Int64.Type},
+				        {"is_scheduled", Int64.Type},
+				        {"is_unfilled", Int64.Type},
+				        {"includes_weekday", Int64.Type},
+				        {"includes_weekend", Int64.Type},
+				        {"includes_evening", Int64.Type},
+				        {"includes_overnight", Int64.Type},
+				        {"start_date", type date},
+				        {"end_date", type date},
+				        {"attributed_org_contacted", Int64.Type},
+				        {"active_hours_from_contacted_orgs", type number}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

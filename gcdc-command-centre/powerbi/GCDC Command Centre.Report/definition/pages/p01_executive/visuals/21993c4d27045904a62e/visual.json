@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "21993c4d27045904a62e",
+  "position": {
+    "x": 769,
+    "y": 152,
+    "z": 11000,
+    "height": 84,
+    "width": 243,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Trial Shifts (30d)"
+                }
+              },
+              "queryRef": "_Measures.Trial Shifts (30d)",
+              "nativeQueryRef": "Trial Shifts (30d)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Trial Shifts (30d)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

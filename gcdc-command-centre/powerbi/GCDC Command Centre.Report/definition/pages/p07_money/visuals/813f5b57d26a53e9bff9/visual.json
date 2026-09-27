@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "813f5b57d26a53e9bff9",
+  "position": {
+    "x": 769,
+    "y": 60,
+    "z": 5000,
+    "height": 84,
+    "width": 243,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Potential Weekly Hours"
+                }
+              },
+              "queryRef": "_Measures.Potential Weekly Hours",
+              "nativeQueryRef": "Potential Weekly Hours"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Potential Weekly Hours'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

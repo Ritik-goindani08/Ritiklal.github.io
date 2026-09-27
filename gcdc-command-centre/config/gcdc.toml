@@ -1,0 +1,197 @@
+# =============================================================================
+# GCDC Command Centre — business configuration
+#
+# Edit this file, then run:   gcdc config sync     (or any `gcdc refresh`)
+# No code changes are ever needed to change a target, threshold or schedule.
+# Changes to [targets] are versioned in the database from the day they change,
+# so historical target-vs-actual comparisons stay correct.
+# =============================================================================
+
+[business]
+name = "Gold Coast Devoted Care"
+owner = "Ritik"
+currency = "AUD"
+# Brisbane does not observe daylight saving, so a fixed offset is exact.
+timezone = "Australia/Brisbane"
+utc_offset_hours = 10
+# GCDC is not a registered NDIS provider: NDIA-managed participants cannot be
+# billed directly. Referrals with that funding type are flagged, not counted.
+registered_ndis_provider = false
+# Any business date earlier than this is treated as a data-entry error
+# (e.g. "22/9/2022" typed instead of 2026).
+records_start_date = "2026-01-01"
+
+[database]
+# Relative paths resolve from the project folder. GCDC_DB overrides this.
+# Keep the live database OUT of OneDrive/Dropbox-synced folders (sync tools can corrupt it).
+path = "data/gcdc.db"
+# `gcdc backup` writes a consistent daily copy here. This folder CAN be inside OneDrive,
+# e.g. "C:/Users/Ritik/OneDrive - Gold Coast Devoted Care/GCDC Command Centre/backups".
+backup_dir = "data/backups"
+backup_keep = 30
+
+[export]
+# Point this at a folder synced by OneDrive for Business so Power BI Service can
+# refresh without a gateway, e.g.
+#   "C:/Users/Ritik/OneDrive - Gold Coast Devoted Care/GCDC Command Centre/powerbi"
+# GCDC_EXPORT_DIR overrides this.
+dir = "exports/powerbi"
+briefs_dir = "exports/briefs"
+# Calendar table range for Power BI.
+calendar_start = "2026-06-01"
+calendar_days_ahead = 120
+
+[powerbi]
+# Where Power BI Service reads the export (the OneDrive folder above, seen from the web).
+# Used by `python powerbi/build_pbip.py` as the default parameter values; they can also be
+# changed later in Power BI (Transform data > Edit parameters) without regenerating.
+# site_url: your OneDrive for Business root, e.g. https://contoso-my.sharepoint.com/personal/info_contoso_com_au/
+# folder_path: path of the export folder inside it, starting at "Documents".
+site_url = ""
+folder_path = "Documents/GCDC Command Centre/powerbi"
+
+[targets]
+# Monthly recurring revenue target (AUD, ex GST).
+mrr = 5000
+# Recurring weekly billable hours target range.
+weekly_hours_min = 20
+weekly_hours_max = 25
+
+[revenue]
+# Monthly recurring revenue methodology (see docs/METRICS.md):
+#   MRR = sum over ACTIVE rosters of weekly_hours x approved hourly_rate x weeks_per_month
+# Rosters with an unknown rate add hours but no dollars, and are counted separately.
+weeks_per_month = 4.333333
+# Only these rate bases count towards actual MRR. Quoted/expected rates stay in pipeline.
+mrr_rate_bases = ["APPROVED"]
+
+[pipeline]
+# Opportunities at or beyond this stage are "Qualified near-term pipeline";
+# open opportunities before it are "Longer-term pipeline".
+near_term_min_stage = "MEETING"
+# Stage-based win probabilities. These are GCDC business rules, not predictions,
+# and are the ONLY source of probability in the model. Recalibrate them from the
+# real conversion rates on the Outreach Performance page once data accumulates.
+# Set use_stage_probabilities = false to hide weighted values entirely.
+use_stage_probabilities = true
+
+[pipeline.stage_probability]
+FOUND = 0.02
+VERIFIED = 0.03
+CONTACTED = 0.05
+REPLIED = 0.10
+POSITIVE = 0.20
+MEETING = 0.35
+REFERRAL = 0.50
+TRIAL = 0.75
+ROSTER = 1.00
+
+[action_centre]
+# Referrals must be answered within this many hours of arriving.
+referral_response_hours = 24
+# Replies needing an answer become overdue after this many hours.
+reply_response_hours = 24
+# Meetings within this many days show as "upcoming".
+upcoming_meeting_days = 7
+# Bounces from the last N days appear in the action centre.
+recent_bounce_days = 7
+
+[outreach]
+# Follow-up spacing used by the importers when creating follow-up tasks.
+follow_up_days = [7, 17]
+# Bounce rate (last 7 days) above this raises a risk in the daily brief.
+bounce_rate_warning = 0.05
+# Free-mail domains are never used to identify an organisation.
+free_mail_domains = [
+  "gmail.com", "yahoo.com", "yahoo.com.au", "hotmail.com", "outlook.com", "live.com",
+  "live.com.au", "bigpond.com", "bigpond.net.au", "icloud.com", "me.com", "optusnet.com.au",
+  "aol.com", "protonmail.com", "hotmail.com.au", "msn.com", "tpg.com.au", "iinet.net.au",
+]
+
+[workers]
+# A worker only counts as capacity when these checks are verified and current.
+require_ndis_screening = true
+require_first_aid = true
+require_cpr = true
+require_blue_card = false
+require_police_check = false
+
+[agent_health]
+# An agent is AMBER once its last success is older than interval x amber_multiplier,
+# RED beyond interval x red_multiplier, or immediately RED if its last run failed.
+amber_multiplier = 1.5
+red_multiplier = 3.0
+
+# One block per automation. interval_hours drives GREEN/AMBER/RED.
+[agents.OPPORTUNITY_DISCOVERY]
+schedule = "Weekdays 07:00"
+interval_hours = 24
+business_days_only = true
+
+[agents.OUTREACH]
+schedule = "Weekdays 08:00"
+interval_hours = 24
+business_days_only = true
+
+[agents.INBOX]
+schedule = "Every 2 hours, 07:00-19:00"
+interval_hours = 24
+business_days_only = false
+
+[agents.EMAIL_VERIFICATION]
+schedule = "Mondays 06:00"
+interval_hours = 168
+business_days_only = false
+
+[agents.WEEKLY_PLANNER]
+schedule = "Sundays 18:00"
+interval_hours = 168
+business_days_only = false
+
+[agents.PRE_SEND_CHECKER]
+schedule = "Weekdays 07:45"
+interval_hours = 24
+business_days_only = true
+
+[agents.MAILBOX_SYNC]
+schedule = "Hourly 07:00-20:00"
+interval_hours = 24
+business_days_only = false
+
+[agents.REFRESH_PIPELINE]
+schedule = "Daily 06:30 + hourly exports 08:00-18:00"
+interval_hours = 24
+business_days_only = false
+
+[agents.DAILY_BI]
+schedule = "Weekdays 07:00"
+interval_hours = 24
+business_days_only = true
+
+[brief]
+# Daily BI Agent (`gcdc brief`). Deterministic by default; `--ai` lets Claude choose and
+# explain today's 1-3 focus items from the candidates the rules computed (needs
+# `pip install -e .[ai]` and an Anthropic API key). The numbers never come from the model.
+max_actions = 5
+# "Pipeline too thin" rule: suggest more outreach below these levels.
+first_touches_per_week_min = 25
+positive_conversations_30d_min = 3
+ai_model = "claude-opus-5"
+ai_effort = "high"
+
+[calendar]
+# Queensland public holidays (not business days for the Daily BI Agent).
+# Verify against the Queensland Government list each year and extend as needed.
+public_holidays = [
+  "2026-10-05", "2026-12-25", "2026-12-26", "2026-12-28",
+  "2027-01-01", "2027-01-26", "2027-03-26", "2027-03-27", "2027-03-29", "2027-04-26",
+  "2027-05-03", "2027-10-04", "2027-12-25", "2027-12-27", "2027-12-28",
+]
+
+[graph]
+# Deterministic Outlook sync (`gcdc sync outlook`). One-time Entra app setup is
+# described in docs/POWERBI_SETUP.md ("Mailbox sync"). Leave blank until done.
+mailbox = "info@goldcoastdevotedcare.com.au"
+tenant_id = ""
+client_id = ""
+token_cache = "data/.graph_token_cache.json"

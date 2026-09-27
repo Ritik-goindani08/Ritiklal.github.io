@@ -1,0 +1,251 @@
+table 'Fact Referral'
+	lineageTag: ce68e334-e28c-506c-a2fe-41d4bfd8dc41
+
+	column referral_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ce0d4002-cf64-56fd-8c35-89194ff4db15
+		summarizeBy: none
+		sourceColumn: referral_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c1bd994c-15fb-5cf6-a71b-f2ef1913441f
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7c2ddf03-4528-576b-8407-e620f447f010
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column participant_ref
+		dataType: string
+		lineageTag: b192bf11-c8a3-5604-96c0-b0c90b2fb644
+		summarizeBy: none
+		sourceColumn: participant_ref
+
+		annotation SummarizationSetBy = Automatic
+
+	column received_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 073c596d-c34d-5c88-958f-5aebe5cf6d08
+		summarizeBy: none
+		sourceColumn: received_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column funding_type
+		dataType: string
+		lineageTag: 831befa3-ce2e-5114-a111-f85277188faa
+		summarizeBy: none
+		sourceColumn: funding_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column service_type_code
+		dataType: string
+		lineageTag: 4b50a371-92ca-565d-9a60-185a99b685d2
+		summarizeBy: none
+		sourceColumn: service_type_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: a0ec990d-5078-5651-8a0c-4dbaeb7abb85
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column suburb
+		dataType: string
+		lineageTag: bc135715-4264-57de-85f3-b2aa14a865d6
+		summarizeBy: none
+		sourceColumn: suburb
+
+		annotation SummarizationSetBy = Automatic
+
+	column requested_weekly_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 5c40ff41-85dc-5a2b-9e12-41b7b48dd70f
+		summarizeBy: none
+		sourceColumn: requested_weekly_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_hourly_rate
+		dataType: double
+		formatString: $#,0
+		lineageTag: 4a1e4426-c32e-5e59-a99e-f2ff85b693ce
+		summarizeBy: none
+		sourceColumn: expected_hourly_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column est_weekly_value
+		dataType: double
+		formatString: $#,0
+		lineageTag: be276d78-a29d-5331-8e9a-0e68653247f8
+		summarizeBy: none
+		sourceColumn: est_weekly_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column est_monthly_value
+		dataType: double
+		formatString: $#,0
+		lineageTag: e3d4f6c9-d788-5a08-adc7-bf4e868ca8d9
+		summarizeBy: none
+		sourceColumn: est_monthly_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_status
+		dataType: string
+		lineageTag: 25f97867-5a33-5b10-b8c8-e256ed31956f
+		summarizeBy: none
+		sourceColumn: value_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column worker_gender_requirement
+		dataType: string
+		lineageTag: 6212df52-be58-59c0-a83d-b0b8616dae32
+		summarizeBy: none
+		sourceColumn: worker_gender_requirement
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 18a89082-90ff-544e-b6c2-645a072fb539
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_open
+		dataType: int64
+		formatString: #,0
+		lineageTag: b5bf61d5-14bf-5d94-85fb-91dc5ed62899
+		summarizeBy: none
+		sourceColumn: is_open
+
+		annotation SummarizationSetBy = Automatic
+
+	column needs_action
+		dataType: int64
+		formatString: #,0
+		lineageTag: 88fdbe00-364d-5404-983d-a00553d1fba4
+		summarizeBy: none
+		sourceColumn: needs_action
+
+		annotation SummarizationSetBy = Automatic
+
+	column response_due_local
+		dataType: dateTime
+		formatString: dd mmm yyyy hh:nn
+		lineageTag: dc45716f-70ee-57f8-8103-5e13a793113f
+		summarizeBy: none
+		sourceColumn: response_due_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_response_overdue
+		dataType: int64
+		formatString: #,0
+		lineageTag: d03cdcce-6efd-5167-a6a9-b0ccc81e67fd
+		summarizeBy: none
+		sourceColumn: is_response_overdue
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_billable_funding
+		dataType: int64
+		formatString: #,0
+		lineageTag: deec7d99-0a65-57ad-b5d5-2971c9e40f77
+		summarizeBy: none
+		sourceColumn: is_billable_funding
+
+		annotation SummarizationSetBy = Automatic
+
+	column next_action
+		dataType: string
+		lineageTag: 1449b0ab-7ede-5344-b8bd-daeb54e0fad1
+		summarizeBy: none
+		sourceColumn: next_action
+
+		annotation SummarizationSetBy = Automatic
+
+	column next_action_due
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 1bddbeb7-81d1-5d54-810e-46dc7a95cf99
+		summarizeBy: none
+		sourceColumn: next_action_due
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column decline_reason
+		dataType: string
+		lineageTag: f77e9038-37fb-53a3-a2d7-99725c7735bb
+		summarizeBy: none
+		sourceColumn: decline_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Referral' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_referral"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"referral_id", Int64.Type},
+				        {"opportunity_id", Int64.Type},
+				        {"organisation_id", Int64.Type},
+				        {"participant_ref", type text},
+				        {"received_date", type date},
+				        {"funding_type", type text},
+				        {"service_type_code", type text},
+				        {"region_code", type text},
+				        {"suburb", type text},
+				        {"requested_weekly_hours", type number},
+				        {"expected_hourly_rate", type number},
+				        {"est_weekly_value", type number},
+				        {"est_monthly_value", type number},
+				        {"value_status", type text},
+				        {"worker_gender_requirement", type text},
+				        {"status", type text},
+				        {"is_open", Int64.Type},
+				        {"needs_action", Int64.Type},
+				        {"response_due_local", type datetime},
+				        {"is_response_overdue", Int64.Type},
+				        {"is_billable_funding", Int64.Type},
+				        {"next_action", type text},
+				        {"next_action_due", type date},
+				        {"decline_reason", type text}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

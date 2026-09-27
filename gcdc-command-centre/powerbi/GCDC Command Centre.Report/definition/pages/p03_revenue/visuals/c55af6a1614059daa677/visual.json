@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c55af6a1614059daa677",
+  "position": {
+    "x": 553,
+    "y": 86,
+    "z": 6000,
+    "height": 84,
+    "width": 171,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Revenue Invoiced MTD"
+                }
+              },
+              "queryRef": "_Measures.Revenue Invoiced MTD",
+              "nativeQueryRef": "Revenue Invoiced MTD"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Revenue Invoiced MTD'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

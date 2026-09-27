@@ -1,0 +1,26 @@
+# Business data: never commit (this repository is public)
+data/
+exports/
+logs/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+.graph_token_cache.json
+*.xlsx
+source_data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+build/
+dist/
+
+# Power BI Desktop local state (the project definition itself is committed)
+powerbi/**/.pbi/localSettings.json
+powerbi/**/.pbi/cache.abf
+powerbi/**/.pbi/unappliedChanges.json

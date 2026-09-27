@@ -1,0 +1,286 @@
+table 'Dim Organisation'
+	lineageTag: c8ec4d1f-0aa5-5523-aab4-d6195cb81c61
+
+	column organisation_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 9cb3666a-6bbf-5b59-9563-b5766bac2e80
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_name
+		dataType: string
+		lineageTag: 6f113a4d-1ad6-51db-97fd-43a7409076ac
+		summarizeBy: none
+		sourceColumn: organisation_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column org_category
+		dataType: string
+		lineageTag: ed96e1dd-663c-5484-b1b2-f2309fb79d38
+		summarizeBy: none
+		sourceColumn: org_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column org_category_label
+		dataType: string
+		lineageTag: 10f88f30-be16-5855-8a75-7eccdf980b36
+		summarizeBy: none
+		sourceColumn: org_category_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column home_region_code
+		dataType: string
+		lineageTag: 165eebb6-7635-56e0-8afa-e7f8c7f5e5ee
+		summarizeBy: none
+		sourceColumn: home_region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column suburb
+		dataType: string
+		lineageTag: 8bd3b3e4-9d7f-5519-9c10-d1e9a96347ba
+		summarizeBy: none
+		sourceColumn: suburb
+
+		annotation SummarizationSetBy = Automatic
+
+	column postcode
+		dataType: string
+		lineageTag: 4e61bc46-e74d-50c0-a76d-0441579f45d8
+		summarizeBy: none
+		sourceColumn: postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column tier
+		dataType: int64
+		formatString: 0
+		lineageTag: 78d1170f-6a1e-5397-a450-e0618823428f
+		summarizeBy: none
+		sourceColumn: tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column relationship_status
+		dataType: string
+		lineageTag: 5d0f7391-a3a0-50b1-856c-b7423bd26cbd
+		summarizeBy: none
+		sourceColumn: relationship_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column evidence_level
+		dataType: string
+		lineageTag: 4bda51a9-6c82-5cdb-9f45-0d298edaf1d1
+		summarizeBy: none
+		sourceColumn: evidence_level
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivers_own_workers
+		dataType: string
+		lineageTag: 6e4b281e-ef7f-5c5a-87f3-62d6364fa6d0
+		summarizeBy: none
+		sourceColumn: delivers_own_workers
+
+		annotation SummarizationSetBy = Automatic
+
+	column website
+		dataType: string
+		lineageTag: c2971307-582b-5e6a-ad1d-25c1271ee203
+		summarizeBy: none
+		sourceColumn: website
+
+		annotation SummarizationSetBy = Automatic
+
+	column phone
+		dataType: string
+		lineageTag: 6795897f-05f8-5917-abe7-afde547f7402
+		summarizeBy: none
+		sourceColumn: phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column general_email
+		dataType: string
+		lineageTag: 32b28eb2-9d30-5db5-ba81-9171bad7539a
+		summarizeBy: none
+		sourceColumn: general_email
+
+		annotation SummarizationSetBy = Automatic
+
+	column abn
+		dataType: string
+		lineageTag: 6c541ef4-228e-5491-a0a7-035f3da75162
+		summarizeBy: none
+		sourceColumn: abn
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_seen_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: ae3d0684-1fcf-542c-a02c-58361ff0cc9f
+		summarizeBy: none
+		sourceColumn: first_seen_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column first_seen_source
+		dataType: string
+		lineageTag: 3e8b20df-c989-515c-b50c-4d35bdd906c6
+		summarizeBy: none
+		sourceColumn: first_seen_source
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_contacted
+		dataType: int64
+		formatString: #,0
+		lineageTag: 259342f0-49b8-5fbe-a281-a1c39476cc48
+		summarizeBy: none
+		sourceColumn: is_contacted
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_contacted_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 61143972-7312-5f76-8234-ce82caef895d
+		summarizeBy: none
+		sourceColumn: first_contacted_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column last_activity_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: c2f7ff6a-b076-5a5d-84db-767f589f06fa
+		summarizeBy: none
+		sourceColumn: last_activity_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column touches_sent
+		dataType: int64
+		formatString: #,0
+		lineageTag: 418b6fc3-d6d6-5a39-a49e-d3c032019297
+		summarizeBy: none
+		sourceColumn: touches_sent
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_replied
+		dataType: int64
+		formatString: #,0
+		lineageTag: 83f1974d-6ef9-5330-8e92-5473eef01b3f
+		summarizeBy: none
+		sourceColumn: has_replied
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_positive
+		dataType: int64
+		formatString: #,0
+		lineageTag: e26d6aed-12f7-5bde-81bb-52ab7a856d49
+		summarizeBy: none
+		sourceColumn: has_positive
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_meeting
+		dataType: int64
+		formatString: #,0
+		lineageTag: 53d4eb36-18c8-5d6e-8d8e-96f6438e0f6d
+		summarizeBy: none
+		sourceColumn: has_meeting
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_referral
+		dataType: int64
+		formatString: #,0
+		lineageTag: f9d75d11-b51d-52d0-b63f-93018e785bb1
+		summarizeBy: none
+		sourceColumn: has_referral
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_trial
+		dataType: int64
+		formatString: #,0
+		lineageTag: c0302e34-2390-5560-988d-24369e5e4f1b
+		summarizeBy: none
+		sourceColumn: has_trial
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_roster
+		dataType: int64
+		formatString: #,0
+		lineageTag: 491ce891-3163-5f21-b52f-36d5060a4165
+		summarizeBy: none
+		sourceColumn: has_roster
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_do_not_contact
+		dataType: int64
+		formatString: #,0
+		lineageTag: 507662fd-a282-5138-852d-911338e538c8
+		summarizeBy: none
+		sourceColumn: is_do_not_contact
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Organisation' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_dim_organisation"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"organisation_id", Int64.Type},
+				        {"organisation_name", type text},
+				        {"org_category", type text},
+				        {"org_category_label", type text},
+				        {"home_region_code", type text},
+				        {"suburb", type text},
+				        {"postcode", type text},
+				        {"tier", Int64.Type},
+				        {"relationship_status", type text},
+				        {"evidence_level", type text},
+				        {"delivers_own_workers", type text},
+				        {"website", type text},
+				        {"phone", type text},
+				        {"general_email", type text},
+				        {"abn", type text},
+				        {"first_seen_date", type date},
+				        {"first_seen_source", type text},
+				        {"is_contacted", Int64.Type},
+				        {"first_contacted_date", type date},
+				        {"last_activity_date", type date},
+				        {"touches_sent", Int64.Type},
+				        {"has_replied", Int64.Type},
+				        {"has_positive", Int64.Type},
+				        {"has_meeting", Int64.Type},
+				        {"has_referral", Int64.Type},
+				        {"has_trial", Int64.Type},
+				        {"has_roster", Int64.Type},
+				        {"is_do_not_contact", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,234 @@
+table 'Dim Worker'
+	lineageTag: df3fabd2-acaa-58b5-983f-c10893ee3097
+
+	column worker_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 33ee8feb-c3b6-5395-a3e3-67eb178f91f9
+		summarizeBy: none
+		sourceColumn: worker_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column worker_ref
+		dataType: string
+		lineageTag: a9f4cab7-cd19-5bd9-b271-94b32eb76f7d
+		summarizeBy: none
+		sourceColumn: worker_ref
+
+		annotation SummarizationSetBy = Automatic
+
+	column display_name
+		dataType: string
+		lineageTag: 4812ba63-9c41-5498-bffb-ed22833479f9
+		summarizeBy: none
+		sourceColumn: display_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 9c357315-0b17-5ca8-83c4-3a98831066d1
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column employment_type
+		dataType: string
+		lineageTag: 069962ca-e124-5a9e-8199-c7c4503c818f
+		summarizeBy: none
+		sourceColumn: employment_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender_for_matching
+		dataType: string
+		lineageTag: 2055b25e-857d-5380-86fa-df509f9a60c1
+		summarizeBy: none
+		sourceColumn: gender_for_matching
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: e6655394-fab9-5be1-bde4-cea050cc7675
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column home_suburb
+		dataType: string
+		lineageTag: b902488e-2423-528a-9db6-ce5f1dedfac3
+		summarizeBy: none
+		sourceColumn: home_suburb
+
+		annotation SummarizationSetBy = Automatic
+
+	column max_weekly_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 6da9ba8f-6ea0-50de-9d1a-1bb9f8c0a51c
+		summarizeBy: none
+		sourceColumn: max_weekly_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column cap_personal_care
+		dataType: int64
+		formatString: #,0
+		lineageTag: 7c5ba4e7-696e-5093-b61b-0a84114f14d2
+		summarizeBy: none
+		sourceColumn: cap_personal_care
+
+		annotation SummarizationSetBy = Automatic
+
+	column cap_domestic
+		dataType: int64
+		formatString: #,0
+		lineageTag: 7e0a46d4-0208-503e-bc6e-c736112a24d3
+		summarizeBy: none
+		sourceColumn: cap_domestic
+
+		annotation SummarizationSetBy = Automatic
+
+	column cap_community_access
+		dataType: int64
+		formatString: #,0
+		lineageTag: 921db5cd-fa0e-55e8-b9fb-77e498de98d9
+		summarizeBy: none
+		sourceColumn: cap_community_access
+
+		annotation SummarizationSetBy = Automatic
+
+	column cap_complex_support
+		dataType: int64
+		formatString: #,0
+		lineageTag: df197a1f-845d-5c39-84a8-983313efab59
+		summarizeBy: none
+		sourceColumn: cap_complex_support
+
+		annotation SummarizationSetBy = Automatic
+
+	column cap_manual_handling
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4284b5fe-7ee8-5829-8427-c5da1bfc0ad3
+		summarizeBy: none
+		sourceColumn: cap_manual_handling
+
+		annotation SummarizationSetBy = Automatic
+
+	column cap_medication
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1cd748ab-4877-5585-8693-9e8d0a296066
+		summarizeBy: none
+		sourceColumn: cap_medication
+
+		annotation SummarizationSetBy = Automatic
+
+	column cap_transport
+		dataType: int64
+		formatString: #,0
+		lineageTag: 73829eb8-bf24-5974-8fe2-a09bc81a2c98
+		summarizeBy: none
+		sourceColumn: cap_transport
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_verified_active
+		dataType: int64
+		formatString: #,0
+		lineageTag: e94443d4-f332-5173-8d56-8d530932e5e3
+		summarizeBy: none
+		sourceColumn: is_verified_active
+
+		annotation SummarizationSetBy = Automatic
+
+	column verification_gaps
+		dataType: string
+		lineageTag: 5c89dc48-71f1-54bc-907d-232c457dd0b8
+		summarizeBy: none
+		sourceColumn: verification_gaps
+
+		annotation SummarizationSetBy = Automatic
+
+	column ndis_screening_expiry
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 412e0bec-8ad9-5b08-be76-89899863014c
+		summarizeBy: none
+		sourceColumn: ndis_screening_expiry
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column first_aid_expiry
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 60c2ded9-947e-5573-9948-4bdfa57078e4
+		summarizeBy: none
+		sourceColumn: first_aid_expiry
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column cpr_expiry
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: fde2651d-2bc1-596d-ac52-5d8d73219d88
+		summarizeBy: none
+		sourceColumn: cpr_expiry
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column start_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 7a88b263-1212-5e9b-b1a9-f4a2f7965308
+		summarizeBy: none
+		sourceColumn: start_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Dim Worker' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_dim_worker"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"worker_id", Int64.Type},
+				        {"worker_ref", type text},
+				        {"display_name", type text},
+				        {"status", type text},
+				        {"employment_type", type text},
+				        {"gender_for_matching", type text},
+				        {"region_code", type text},
+				        {"home_suburb", type text},
+				        {"max_weekly_hours", type number},
+				        {"cap_personal_care", Int64.Type},
+				        {"cap_domestic", Int64.Type},
+				        {"cap_community_access", Int64.Type},
+				        {"cap_complex_support", Int64.Type},
+				        {"cap_manual_handling", Int64.Type},
+				        {"cap_medication", Int64.Type},
+				        {"cap_transport", Int64.Type},
+				        {"is_verified_active", Int64.Type},
+				        {"verification_gaps", type text},
+				        {"ndis_screening_expiry", type date},
+				        {"first_aid_expiry", type date},
+				        {"cpr_expiry", type date},
+				        {"start_date", type date}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

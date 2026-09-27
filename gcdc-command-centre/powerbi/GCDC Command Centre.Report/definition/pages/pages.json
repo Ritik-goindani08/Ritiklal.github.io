@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
+  "pageOrder": [
+    "p01_executive",
+    "p02_today",
+    "p03_revenue",
+    "p04_outreach",
+    "p05_discovery",
+    "p06_partnerships",
+    "p07_money",
+    "p08_workforce",
+    "p09_regional",
+    "p10_agents"
+  ],
+  "activePageName": "p01_executive"
+}

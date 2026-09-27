@@ -1,0 +1,18 @@
+# GCDC Command Centre schedule for Linux/macOS cron (Windows: scripts/windows/register_tasks.ps1).
+# Install:  sed "s#/opt/gcdc-command-centre#$PWD#g" scripts/unix/gcdc.crontab | crontab -
+# Times are Brisbane time (CRON_TZ is supported by cronie/Vixie cron; on macOS set the system timezone instead).
+CRON_TZ=Australia/Brisbane
+GCDC_HOME=/opt/gcdc-command-centre
+
+# Daily consistent backup of the central database.
+15 6 * * *     $GCDC_HOME/scripts/unix/run_gcdc.sh backup
+
+# Refresh: reconcile, data-quality, daily snapshot, Power BI export (deterministic, no AI).
+30 6 * * *     $GCDC_HOME/scripts/unix/run_gcdc.sh refresh
+0 8-18 * * *   $GCDC_HOME/scripts/unix/run_gcdc.sh refresh
+
+# Daily BI Agent (weekdays; skips QLD public holidays itself).
+0 7 * * 1-5    $GCDC_HOME/scripts/unix/run_gcdc.sh brief
+
+# Optional: Outlook sync via Microsoft Graph (after one-time sign-in, see docs/POWERBI_SETUP.md).
+# */30 6-19 * * *  $GCDC_HOME/scripts/unix/run_gcdc.sh sync outlook

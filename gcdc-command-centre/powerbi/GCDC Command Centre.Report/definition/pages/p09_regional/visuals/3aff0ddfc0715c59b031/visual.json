@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "3aff0ddfc0715c59b031",
+  "position": {
+    "x": 16,
+    "y": 368,
+    "z": 3000,
+    "height": 336,
+    "width": 304,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Weekly Billable Hours"
+                }
+              },
+              "queryRef": "_Measures.Weekly Billable Hours",
+              "nativeQueryRef": "Weekly Billable Hours"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Region"
+                    }
+                  },
+                  "Property": "region_name"
+                }
+              },
+              "queryRef": "Dim Region.region_name",
+              "nativeQueryRef": "Region",
+              "displayName": "Region"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Weekly hours'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

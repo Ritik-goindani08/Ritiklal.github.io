@@ -1,0 +1,752 @@
+table _Measures
+	lineageTag: b082fc1c-31ea-5364-a819-90971e741477
+
+	/// Date the export was taken (Brisbane).
+	measure 'As Of Date' = MAX('Meta'[as_of_date])
+		formatString: dd mmm yyyy
+		displayFolder: 0 Meta
+		lineageTag: 5ee61bfc-fe96-5a31-a263-b4dafc8230c8
+
+	measure 'Data As At' = "Data as at " & FORMAT(MAX('Meta'[as_of_local]), "d mmm yyyy h:nn AM/PM")
+		displayFolder: 0 Meta
+		lineageTag: 10b678ce-7935-5524-a2e4-85e580432384
+
+	/// Monthly recurring revenue: active rosters x approved rate x weeks per month.
+	measure MRR = SUM('Fact Roster'[mrr_contribution])
+		formatString: $#,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: a986950d-def5-509e-8486-dc0f8f7a3b89
+
+	/// Active plus confirmed scheduled rosters with approved rates.
+	measure 'Projected MRR' = SUM('Fact Roster'[projected_mrr_contribution])
+		formatString: $#,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: 2729439c-3d81-578e-80e3-c00a86df4553
+
+	measure 'Revenue Target' = MAX('KPI Current'[revenue_target])
+		formatString: $#,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: f4e14522-1833-5b68-a70e-b5e376427dfd
+
+	measure 'Revenue Gap' = MAX(0, [Revenue Target] - [MRR])
+		formatString: $#,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: b1d10d66-d292-5d3f-a6bc-5559e3edfbc0
+
+	measure 'MRR % of Target' = DIVIDE([MRR], [Revenue Target])
+		formatString: 0.0%
+		displayFolder: 1 Revenue (actual)
+		lineageTag: 224b7511-c98f-58c6-8dd7-7e10984788c7
+
+	measure 'Gauge Max (MRR)' = MAX([Revenue Target], [MRR]) * 1.2
+		formatString: $#,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: 661fe1c3-3027-5ebb-82e1-9e18232a1123
+
+	measure 'Weekly Billable Hours' = SUM('Fact Roster'[active_weekly_hours])
+		formatString: #,0.0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: d0f1d9cc-1ddc-5089-9fc0-3faf9fc885a8
+
+	measure 'Weekly Hours Target (Min)' = MAX('KPI Current'[weekly_hours_target_min])
+		formatString: #,0.0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: d3eaedbb-677e-533f-85b0-7048a55d12ea
+
+	measure 'Weekly Hours Target (Max)' = MAX('KPI Current'[weekly_hours_target_max])
+		formatString: #,0.0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: 9dc2f465-c3d7-5ffd-b8b4-e32dc58b4472
+
+	measure 'Weekly Hours Gap' = MAX(0, [Weekly Hours Target (Min)] - [Weekly Billable Hours])
+		formatString: #,0.0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: d74a3ae0-e117-5771-8d7f-afdc214463c7
+
+	measure 'Gauge Max (Hours)' = MAX([Weekly Hours Target (Max)], [Weekly Billable Hours]) * 1.2
+		formatString: #,0.0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: 50093d69-7274-55c4-931d-02f09ab3e9f3
+
+	measure 'Avg Billable Rate' = DIVIDE(SUM('Fact Roster'[active_weekly_value_with_rate]), SUM('Fact Roster'[active_hours_with_rate]))
+		formatString: $#,0.00
+		displayFolder: 1 Revenue (actual)
+		lineageTag: 103525fd-4081-5a99-afac-2fca884e5c34
+
+	measure 'Avg Billable Rate (display)' = IF(ISBLANK([Avg Billable Rate]), "UNKNOWN", FORMAT([Avg Billable Rate], "$#,0.00") & "/hr")
+		displayFolder: 1 Revenue (actual)
+		lineageTag: ccc4a2f7-592d-5721-9c78-58943a8c75af
+
+	measure 'Active Rosters' = CALCULATE(COUNTROWS('Fact Roster'), 'Fact Roster'[is_active] = 1)
+		formatString: #,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: 7e28e2b9-a005-5a0c-9d07-cae265d70dfe
+
+	measure 'Active Participants' = CALCULATE(DISTINCTCOUNT('Fact Roster'[participant_id]), 'Fact Roster'[is_active] = 1, NOT ISBLANK('Fact Roster'[participant_id]))
+		formatString: #,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: 2b5d0835-1623-5673-b49b-68d7796dc40b
+
+	measure 'Participants / Rosters' = FORMAT([Active Participants] + 0, "0") & " / " & FORMAT([Active Rosters] + 0, "0")
+		displayFolder: 1 Revenue (actual)
+		lineageTag: aa18edcb-9e9e-54cb-85f5-d55f54436b4b
+
+	/// Active rosters excluded from MRR because the rate is unknown or not approved.
+	measure 'Rosters Without Approved Rate' = CALCULATE(COUNTROWS('Fact Roster'), 'Fact Roster'[active_rate_not_approved] = 1)
+		formatString: #,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: a0b7dfc2-3b1f-55b8-8a33-f7c786421e8b
+
+	/// Invoiced revenue (ex GST, excluding void/written-off), by service date.
+	measure 'Actual Revenue' = SUM('Fact Revenue'[recognised_amount])
+		formatString: $#,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: e34a8a42-3e03-533c-9082-cfc85dcb8f60
+
+	measure 'Revenue Received' = CALCULATE(SUM('Fact Revenue'[amount_received]), USERELATIONSHIP('Fact Revenue'[paid_date], 'Dim Date'[date]))
+		formatString: $#,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: 0dc885cc-bfc2-5ad8-b878-bbdccbbf07f0
+
+	measure 'Revenue Received MTD' =
+			VAR d = [As Of Date]
+			VAR ms = DATE(YEAR(d), MONTH(d), 1)
+			RETURN
+			    CALCULATE(SUM('Fact Revenue'[amount_received]), REMOVEFILTERS('Dim Date'), 'Fact Revenue'[paid_date] >= ms, 'Fact Revenue'[paid_date] <= d)
+		formatString: $#,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: f7161673-48c0-5530-a83e-dcb7fbba2c39
+
+	measure 'Revenue Invoiced MTD' =
+			VAR d = [As Of Date]
+			VAR ms = DATE(YEAR(d), MONTH(d), 1)
+			RETURN
+			    CALCULATE(SUM('Fact Revenue'[recognised_amount]), REMOVEFILTERS('Dim Date'), 'Fact Revenue'[service_date] >= ms, 'Fact Revenue'[service_date] <= d)
+		formatString: $#,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: f7ef3c21-df80-5305-bf2d-52126d997de1
+
+	measure 'Snapshot MRR' = SUM('Fact Daily Snapshot'[mrr])
+		formatString: $#,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: d939754c-1802-5038-b02a-4aa919de6950
+
+	measure 'Snapshot Revenue Target' = SUM('Fact Daily Snapshot'[revenue_target])
+		formatString: $#,0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: 606a190c-e5c0-55e0-873c-0d649c042845
+
+	measure 'Snapshot Weekly Hours' = SUM('Fact Daily Snapshot'[weekly_billable_hours])
+		formatString: #,0.0
+		displayFolder: 1 Revenue (actual)
+		lineageTag: c3fcd232-c239-519d-bf53-a4076423f81c
+
+	measure 'Active Opportunities' = CALCULATE(COUNTROWS('Fact Opportunity'), 'Fact Opportunity'[is_active] = 1)
+		formatString: #,0
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: 46a5edf5-434f-58cc-950f-cbfa4bd7f540
+
+	measure 'P1 Opportunities' = CALCULATE([Active Opportunities], 'Fact Opportunity'[priority] = "P1")
+		formatString: #,0
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: ee33ae1f-23ae-5290-a761-74cd9fa75f85
+
+	measure 'P2 Opportunities' = CALCULATE([Active Opportunities], 'Fact Opportunity'[priority] = "P2")
+		formatString: #,0
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: 5f50429f-2de9-5c71-9f18-b801808e50f5
+
+	measure 'P3 Opportunities' = CALCULATE([Active Opportunities], 'Fact Opportunity'[priority] = "P3")
+		formatString: #,0
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: 45e0f9ff-857c-5ff7-804d-7663c15e7809
+
+	/// Estimated monthly value of open opportunities where hours AND rate are known.
+	measure 'Pipeline Value (known)' = CALCULATE(SUM('Fact Opportunity'[est_monthly_value]), 'Fact Opportunity'[is_active] = 1)
+		formatString: $#,0
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: 80e7b847-e2a9-5e3c-b4c6-521b85917bea
+
+	measure 'Pipeline Value Unknown Count' = CALCULATE(COUNTROWS('Fact Opportunity'), 'Fact Opportunity'[is_active] = 1, 'Fact Opportunity'[value_status] <> "KNOWN")
+		formatString: #,0
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: ea5a60c4-1e84-547f-8ec3-c03e5e6b6191
+
+	measure 'Near-Term Pipeline (known)' = CALCULATE(SUM('Fact Opportunity'[est_monthly_value]), 'Fact Opportunity'[pipeline_horizon] = "NEAR_TERM")
+		formatString: $#,0
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: 8c2d514e-2dcb-5e5e-971a-d0d6c9c4bb67
+
+	measure 'Near-Term Unknown Count' = CALCULATE(COUNTROWS('Fact Opportunity'), 'Fact Opportunity'[pipeline_horizon] = "NEAR_TERM", 'Fact Opportunity'[value_status] <> "KNOWN")
+		formatString: #,0
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: 7e1a4a3d-3e3c-5aad-9655-2114ede38073
+
+	measure 'Longer-Term Pipeline (known)' = CALCULATE(SUM('Fact Opportunity'[est_monthly_value]), 'Fact Opportunity'[pipeline_horizon] = "LONGER_TERM")
+		formatString: $#,0
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: 90b863f4-b97b-55d1-a4e4-c0703ddafa02
+
+	measure 'Longer-Term Unknown Count' = CALCULATE(COUNTROWS('Fact Opportunity'), 'Fact Opportunity'[pipeline_horizon] = "LONGER_TERM", 'Fact Opportunity'[value_status] <> "KNOWN")
+		formatString: #,0
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: 6c43a8f0-d2b4-5a55-8243-5d40d278e38e
+
+	measure 'Near-Term Pipeline (display)' = FORMAT([Near-Term Pipeline (known)] + 0, "$#,0") & "/mo known + " & FORMAT([Near-Term Unknown Count] + 0, "0") & " UNKNOWN"
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: 35be9710-1a4c-58f6-b4b4-62664c5c832d
+
+	measure 'Longer-Term Pipeline (display)' = FORMAT([Longer-Term Pipeline (known)] + 0, "$#,0") & "/mo known + " & FORMAT([Longer-Term Unknown Count] + 0, "0") & " UNKNOWN"
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: d80f93d5-05d8-5aeb-8a28-b22fd41e80fb
+
+	/// Known value x stage probability from config/gcdc.toml business rules.
+	measure 'Weighted Pipeline (stage rules)' = CALCULATE(SUM('Fact Opportunity'[weighted_monthly_value]), 'Fact Opportunity'[is_active] = 1)
+		formatString: $#,0
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: d57bd8ce-0411-5c2e-9bde-6d7ded79f92f
+
+	measure 'Potential Weekly Hours' = CALCULATE(SUM('Fact Opportunity'[expected_weekly_hours]), 'Fact Opportunity'[is_active] = 1)
+		formatString: #,0.0
+		displayFolder: 2 Pipeline (estimated)
+		lineageTag: 1a288f43-10fa-54d9-b96d-d79d3a74d7dd
+
+	measure 'Opportunities Found' = COUNTROWS('Fact Opportunity')
+		formatString: #,0
+		displayFolder: 3 Discovery
+		lineageTag: 0bf257db-7ed0-551a-829b-7bac6f56fbc0
+
+	measure 'Opportunities Found Today' =
+			VAR d = [As Of Date]
+			RETURN
+			    CALCULATE(COUNTROWS('Fact Opportunity'), REMOVEFILTERS('Dim Date'), 'Fact Opportunity'[discovered_date] = d)
+		formatString: #,0
+		displayFolder: 3 Discovery
+		lineageTag: 59f93759-7215-55e4-b6c7-ad297d79e583
+
+	measure 'Opportunities Found This Week' =
+			VAR d = [As Of Date]
+			VAR ws = d - WEEKDAY(d, 2) + 1
+			RETURN
+			    CALCULATE(COUNTROWS('Fact Opportunity'), REMOVEFILTERS('Dim Date'), 'Fact Opportunity'[discovered_date] >= ws, 'Fact Opportunity'[discovered_date] <= d)
+		formatString: #,0
+		displayFolder: 3 Discovery
+		lineageTag: 9f7ae090-48f8-537a-8738-377d9e7e6205
+
+	measure 'Opportunities Found This Month' =
+			VAR d = [As Of Date]
+			VAR ms = DATE(YEAR(d), MONTH(d), 1)
+			RETURN
+			    CALCULATE(COUNTROWS('Fact Opportunity'), REMOVEFILTERS('Dim Date'), 'Fact Opportunity'[discovered_date] >= ms, 'Fact Opportunity'[discovered_date] <= d)
+		formatString: #,0
+		displayFolder: 3 Discovery
+		lineageTag: 976bb4c6-d3c8-5ff4-beef-cea2b644e85b
+
+	measure 'New Organisations (month)' =
+			VAR d = [As Of Date]
+			VAR ms = DATE(YEAR(d), MONTH(d), 1)
+			RETURN
+			    CALCULATE(DISTINCTCOUNT('Fact Opportunity'[organisation_id]), REMOVEFILTERS('Dim Date'), 'Fact Opportunity'[discovered_date] >= ms, 'Fact Opportunity'[discovered_date] <= d, 'Fact Opportunity'[is_new_organisation] = 1)
+		formatString: #,0
+		displayFolder: 3 Discovery
+		lineageTag: 97c07144-6a1a-5cb9-995f-dd29d1b78d10
+
+	measure 'Existing Orgs With New Opportunities (month)' =
+			VAR d = [As Of Date]
+			VAR ms = DATE(YEAR(d), MONTH(d), 1)
+			RETURN
+			    CALCULATE(DISTINCTCOUNT('Fact Opportunity'[organisation_id]), REMOVEFILTERS('Dim Date'), 'Fact Opportunity'[discovered_date] >= ms, 'Fact Opportunity'[discovered_date] <= d, 'Fact Opportunity'[is_new_organisation] = 0)
+		formatString: #,0
+		displayFolder: 3 Discovery
+		lineageTag: 97ff0c81-3846-52a6-9245-562890bcfff0
+
+	measure 'Funnel Count' =
+			VAR s = SELECTEDVALUE('Dim Stage'[stage_order])
+			RETURN
+			    IF(ISBLANK(s), COUNTROWS('Fact Opportunity'), CALCULATE(COUNTROWS('Fact Opportunity'), 'Fact Opportunity'[stage_order_reached] >= s))
+		formatString: #,0
+		displayFolder: 4 Funnel
+		lineageTag: 650fbae1-dbb0-53a4-ac63-24e2baa2b75c
+
+	/// Share of opportunities at the previous stage that reached this stage.
+	measure 'Funnel Conversion %' =
+			VAR s = SELECTEDVALUE('Dim Stage'[stage_order])
+			VAR cur = CALCULATE(COUNTROWS('Fact Opportunity'), 'Fact Opportunity'[stage_order_reached] >= s)
+			VAR prev = CALCULATE(COUNTROWS('Fact Opportunity'), 'Fact Opportunity'[stage_order_reached] >= s - 1)
+			RETURN
+			    IF(ISBLANK(s) || s = 1, BLANK(), DIVIDE(cur, prev))
+		formatString: 0.0%
+		displayFolder: 4 Funnel
+		lineageTag: 5dfd684f-5777-5bb6-8f0a-7241010afeea
+
+	measure 'Funnel % of Found' = DIVIDE([Funnel Count], COUNTROWS('Fact Opportunity'))
+		formatString: 0.0%
+		displayFolder: 4 Funnel
+		lineageTag: a8c577be-ef49-55a8-b0f6-1bb6e6c8e05f
+
+	measure 'Partnership Funnel Count' =
+			VAR s = SELECTEDVALUE('Dim Partnership Stage'[stage_order])
+			RETURN
+			    IF(ISBLANK(s), COUNTROWS('Fact Partnership'), CALCULATE(COUNTROWS('Fact Partnership'), 'Fact Partnership'[partnership_stage_order] >= s, 'Fact Partnership'[status] = "ACTIVE"))
+		formatString: #,0
+		displayFolder: 4 Funnel
+		lineageTag: ed85439c-e001-5b97-b15d-86a5cafc39bc
+
+	measure 'Positive Conversations (30d)' = MAX('KPI Current'[positive_conversations_30d])
+		formatString: #,0
+		displayFolder: 4 Funnel
+		lineageTag: dec29a7e-816e-5a5b-a944-e8df539de898
+
+	measure 'Meetings Booked (30d)' = MAX('KPI Current'[meetings_booked_30d])
+		formatString: #,0
+		displayFolder: 4 Funnel
+		lineageTag: 655f1611-0024-5d3b-a605-61745c6b5fbf
+
+	measure 'Participant Referrals (30d)' = MAX('KPI Current'[referrals_30d])
+		formatString: #,0
+		displayFolder: 4 Funnel
+		lineageTag: 24b90ce9-1b6a-575b-95ef-c8bfba4e6750
+
+	measure 'Trial Shifts (30d)' = MAX('KPI Current'[trial_shifts_30d])
+		formatString: #,0
+		displayFolder: 4 Funnel
+		lineageTag: a6bb7a3f-aa3d-5d7f-971f-0daf711960e7
+
+	measure 'Emails Sent' = SUM('Fact Outreach'[is_sent])
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: abf59ac2-cad0-516d-b047-a1b132b0a0a6
+
+	measure 'Emails Attempted' = SUM('Fact Outreach'[is_attempted])
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: e516b87a-87d4-59bc-aa11-1f27670adab9
+
+	measure 'First-Touch Sent' = SUM('Fact Outreach'[is_first_touch_sent])
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: e06dd53e-ca2b-5e8e-9a7e-76b647133026
+
+	measure 'Follow-Ups Sent' = SUM('Fact Outreach'[is_follow_up_sent])
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: 8d0d1b61-cf08-5332-ba12-d3f5add19e5b
+
+	measure 'First-Touch Sent Today' =
+			VAR d = [As Of Date]
+			RETURN
+			    CALCULATE(SUM('Fact Outreach'[is_first_touch_sent]), REMOVEFILTERS('Dim Date'), 'Fact Outreach'[sent_date] = d)
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: 92a2b6d8-a71f-5134-afb3-ecb411a834df
+
+	measure 'First-Touch Sent This Week' =
+			VAR d = [As Of Date]
+			VAR ws = d - WEEKDAY(d, 2) + 1
+			RETURN
+			    CALCULATE(SUM('Fact Outreach'[is_first_touch_sent]), REMOVEFILTERS('Dim Date'), 'Fact Outreach'[sent_date] >= ws, 'Fact Outreach'[sent_date] <= d)
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: 0e2b2e6a-59bf-58bf-9f94-7b6b1886942c
+
+	measure 'First-Touch Sent This Month' =
+			VAR d = [As Of Date]
+			VAR ms = DATE(YEAR(d), MONTH(d), 1)
+			RETURN
+			    CALCULATE(SUM('Fact Outreach'[is_first_touch_sent]), REMOVEFILTERS('Dim Date'), 'Fact Outreach'[sent_date] >= ms, 'Fact Outreach'[sent_date] <= d)
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: 8f180570-c742-5f20-98f4-0aecab4de0ec
+
+	measure 'Follow-Ups Sent This Month' =
+			VAR d = [As Of Date]
+			VAR ms = DATE(YEAR(d), MONTH(d), 1)
+			RETURN
+			    CALCULATE(SUM('Fact Outreach'[is_follow_up_sent]), REMOVEFILTERS('Dim Date'), 'Fact Outreach'[sent_date] >= ms, 'Fact Outreach'[sent_date] <= d)
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: 9fb15e18-59aa-50a8-bf23-2b0cf89f1d5f
+
+	measure 'Emails Scheduled (pending)' = CALCULATE(SUM('Fact Outreach'[is_scheduled]), REMOVEFILTERS('Dim Date'))
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: 7f15c16e-edf8-56b2-bb1e-168dfe17ed69
+
+	measure 'Cancelled Emails' = SUM('Fact Outreach'[is_cancelled])
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: c6fcabfa-5159-53e5-8410-5e029c88d21a
+
+	measure 'Bounced Emails' = SUM('Fact Outreach'[is_bounced])
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: c3148eff-1aef-51ac-918e-9dfbd0814b79
+
+	measure 'Bounce Rate' = DIVIDE([Bounced Emails], [Emails Attempted])
+		formatString: 0.0%
+		displayFolder: 5 Outreach
+		lineageTag: 317cfd6c-eba5-5639-8813-f6171e5e9cdf
+
+	measure Contacts = COUNTROWS('Fact Contact')
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: 7f579b48-fe19-5177-a03f-d6b173ff847a
+
+	measure 'Verified Contacts' = SUM('Fact Contact'[is_verified_email])
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: c73dc4e5-2063-5efa-98ea-2d5623f24e73
+
+	measure 'Invalid Contacts' = SUM('Fact Contact'[is_invalid_email])
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: 0608175a-a89c-5ebc-a879-c72f18d69028
+
+	measure 'Orgs Contacted' = CALCULATE(DISTINCTCOUNT('Fact Outreach'[organisation_id]), 'Fact Outreach'[is_sent] = 1)
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: bf1266c4-37ea-5388-8eb6-c849d97c9b83
+
+	measure 'Orgs Contacted (all time)' = CALCULATE([Orgs Contacted], REMOVEFILTERS('Dim Date'))
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: bf45040b-5361-5c43-ac69-b54a3bfa0cde
+
+	measure 'Orgs Replied' = CALCULATE(DISTINCTCOUNT('Fact Reply'[organisation_id]), 'Fact Reply'[is_human_reply] = 1)
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: 57ae85b4-e134-5b0c-a689-3cbbcd219d00
+
+	measure 'Orgs Positive' = CALCULATE(DISTINCTCOUNT('Fact Reply'[organisation_id]), 'Fact Reply'[is_positive] = 1)
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: f65a5aee-d5db-51ce-8beb-ea6de723ee5f
+
+	measure 'Orgs With Meeting' = CALCULATE(DISTINCTCOUNT('Fact Meeting'[organisation_id]), 'Fact Meeting'[is_booked_or_held] = 1)
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: 25ab94a4-8b79-5a4b-bc7d-97415c86f0f7
+
+	measure 'Orgs With Referral' = DISTINCTCOUNT('Fact Referral'[organisation_id])
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: e893edf6-daa6-5e7a-9cac-c9fec014f45a
+
+	measure 'Orgs With Trial Shift' = CALCULATE(DISTINCTCOUNT('Fact Trial Shift'[organisation_id]), 'Fact Trial Shift'[is_scheduled_or_done] = 1)
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: c44ddae8-db7a-556a-9802-d45902105870
+
+	measure 'Orgs With Roster' = CALCULATE(DISTINCTCOUNT('Fact Roster'[organisation_id]), 'Fact Roster'[status] <> "")
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: 85bef291-880d-5877-893a-d04a136be611
+
+	measure Replies = SUM('Fact Reply'[is_human_reply])
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: 5dfa72c4-0d0d-5b71-b7d5-ce840c752475
+
+	measure 'Positive Replies' = SUM('Fact Reply'[is_positive])
+		formatString: #,0
+		displayFolder: 5 Outreach
+		lineageTag: 39c7f7b2-b67b-5d64-abf8-66f36aa0f87d
+
+	/// Organisations that replied / organisations contacted.
+	measure 'Reply Rate' = CALCULATE(DIVIDE([Orgs Replied], [Orgs Contacted]), REMOVEFILTERS('Dim Date'))
+		formatString: 0.0%
+		displayFolder: 5 Outreach
+		lineageTag: cd47f413-49ac-56da-9022-7865a6b8c6e3
+
+	measure 'Positive Reply Rate' = CALCULATE(DIVIDE([Orgs Positive], [Orgs Contacted]), REMOVEFILTERS('Dim Date'))
+		formatString: 0.0%
+		displayFolder: 5 Outreach
+		lineageTag: fcd6e7a4-e645-50d8-8e73-ba543d841220
+
+	measure 'Meeting Conversion' = CALCULATE(DIVIDE([Orgs With Meeting], [Orgs Contacted]), REMOVEFILTERS('Dim Date'))
+		formatString: 0.0%
+		displayFolder: 5 Outreach
+		lineageTag: ce7bd7a4-2916-50fe-86c2-c7310c0a84ac
+
+	measure 'Referral Conversion' = CALCULATE(DIVIDE([Orgs With Referral], [Orgs Contacted]), REMOVEFILTERS('Dim Date'))
+		formatString: 0.0%
+		displayFolder: 5 Outreach
+		lineageTag: 64af56ef-1bcd-58c3-bf1e-8fdc9cf06c15
+
+	measure 'Trial-Shift Conversion' = CALCULATE(DIVIDE([Orgs With Trial Shift], [Orgs Contacted]), REMOVEFILTERS('Dim Date'))
+		formatString: 0.0%
+		displayFolder: 5 Outreach
+		lineageTag: c56beec1-dbbf-513d-a24e-afce2ce240f8
+
+	measure 'Roster Conversion' = CALCULATE(DIVIDE([Orgs With Roster], [Orgs Contacted]), REMOVEFILTERS('Dim Date'))
+		formatString: 0.0%
+		displayFolder: 5 Outreach
+		lineageTag: 8b9ada4d-de0a-5796-9ef7-f1f7bd6fcc3c
+
+	/// Recurring weekly billable hours now active from contacted organisations, per 100 contacted.
+	measure 'Hours per 100 Orgs Contacted' = DIVIDE(SUM('Fact Roster'[active_hours_from_contacted_orgs]), [Orgs Contacted (all time)]) * 100
+		formatString: #,0.0
+		displayFolder: 5 Outreach
+		lineageTag: 39863ac0-ba2a-57c7-8dc2-7c50f659ba22
+
+	/// Actual revenue from contacted organisations, per 100 contacted.
+	measure 'Revenue per 100 Orgs Contacted' = DIVIDE(CALCULATE(SUM('Fact Revenue'[revenue_from_contacted_orgs]), REMOVEFILTERS('Dim Date')), [Orgs Contacted (all time)]) * 100
+		formatString: $#,0
+		displayFolder: 5 Outreach
+		lineageTag: ea8989c9-09db-5618-8afe-a0a0bdb4be31
+
+	measure 'Emails Scheduled Today' = MAX('KPI Current'[emails_scheduled_today])
+		formatString: #,0
+		displayFolder: 6 Today
+		lineageTag: a7ad6069-4d9f-51c5-96d7-b21f2cf917b7
+
+	measure 'Follow-Ups Due Today' = MAX('KPI Current'[followups_due_today])
+		formatString: #,0
+		displayFolder: 6 Today
+		lineageTag: 25231c87-c607-5b76-832a-323f266174fa
+
+	measure 'Overdue Follow-Ups' = MAX('KPI Current'[followups_overdue])
+		formatString: #,0
+		displayFolder: 6 Today
+		lineageTag: f6291ea5-e47e-510f-a932-b7e207af4188
+
+	measure 'Replies Awaiting Response' = MAX('KPI Current'[replies_awaiting_response])
+		formatString: #,0
+		displayFolder: 6 Today
+		lineageTag: 64587883-e3c5-568f-b0c7-f0056db9a169
+
+	measure 'Items Needing Approval' = MAX('KPI Current'[approvals_pending])
+		formatString: #,0
+		displayFolder: 6 Today
+		lineageTag: 31c9c63e-21ef-5e57-b962-1591b38ea88d
+
+	measure 'Meetings Today' = MAX('KPI Current'[meetings_today])
+		formatString: #,0
+		displayFolder: 6 Today
+		lineageTag: 312f45a5-1379-561c-aa57-4b15b0dab374
+
+	measure 'Meetings Upcoming (7d)' = MAX('KPI Current'[meetings_upcoming])
+		formatString: #,0
+		displayFolder: 6 Today
+		lineageTag: b76adb35-1254-51f8-a0d5-55d6e68d02df
+
+	measure 'Referrals Needing Action' = MAX('KPI Current'[referrals_needing_action])
+		formatString: #,0
+		displayFolder: 6 Today
+		lineageTag: 9a55715e-7a78-56ac-8c5e-71c8a676e149
+
+	measure 'Applications To Complete' = MAX('KPI Current'[applications_to_complete])
+		formatString: #,0
+		displayFolder: 6 Today
+		lineageTag: 9a557764-7aef-5a6a-9d6e-a97bea4867e8
+
+	measure 'Bounced Emails (recent)' = MAX('KPI Current'[bounces_recent])
+		formatString: #,0
+		displayFolder: 6 Today
+		lineageTag: 2899d874-6335-5980-9ca2-136ce342a568
+
+	measure 'Failed Agents' = MAX('KPI Current'[agents_red])
+		formatString: #,0
+		displayFolder: 6 Today
+		lineageTag: aef360de-2b92-57e3-98fe-c088aa4925a6
+
+	measure 'Action Items' = COUNTROWS('Action Centre')
+		formatString: #,0
+		displayFolder: 6 Today
+		lineageTag: e99cc9cf-1772-5556-beba-7a15b877a83e
+
+	measure 'Overdue Actions' = CALCULATE(COUNTROWS('Action Centre'), 'Action Centre'[due_status] = "OVERDUE")
+		formatString: #,0
+		displayFolder: 6 Today
+		lineageTag: 3ff67ce7-a708-5dd7-b511-2f2abb75a4cb
+
+	measure 'Active Partnerships' = CALCULATE(COUNTROWS('Fact Partnership'), 'Fact Partnership'[is_active] = 1)
+		formatString: #,0
+		displayFolder: 7 Partnerships
+		lineageTag: e32ebae5-848b-5739-8cf5-8112dd3e48b1
+
+	measure 'Approved Partners' = CALCULATE(COUNTROWS('Fact Partnership'), 'Fact Partnership'[partnership_stage_order] >= 6, 'Fact Partnership'[is_active] = 1)
+		formatString: #,0
+		displayFolder: 7 Partnerships
+		lineageTag: 0ad92500-a1cd-5826-8f15-90b061adf1d7
+
+	measure 'Documents Outstanding' = SUM('Fact Partnership'[documents_outstanding])
+		formatString: #,0
+		displayFolder: 7 Partnerships
+		lineageTag: 5dee4680-d330-5679-95cb-6553e715a472
+
+	measure 'Partner Hours Received' = SUM('Fact Partnership'[hours_received])
+		formatString: #,0.0
+		displayFolder: 7 Partnerships
+		lineageTag: 1245f57d-4c54-5ef6-8f8b-90ee95c15ce2
+
+	measure 'Partner Revenue' = SUM('Fact Partnership'[revenue_generated])
+		formatString: $#,0
+		displayFolder: 7 Partnerships
+		lineageTag: 761fca47-294c-5d71-ac70-672c1e24188c
+
+	measure 'Applications In Progress' = CALCULATE(COUNTROWS('Fact Application'), 'Fact Application'[needs_completion] = 1)
+		formatString: #,0
+		displayFolder: 7 Partnerships
+		lineageTag: f862ab56-1f1c-5533-996b-aa17ce5b1a38
+
+	measure 'Applications Submitted' = CALCULATE(COUNTROWS('Fact Application'), 'Fact Application'[status] IN {"SUBMITTED", "UNDER_REVIEW"})
+		formatString: #,0
+		displayFolder: 7 Partnerships
+		lineageTag: 0e9fa091-137c-59dc-9a96-2e7504e23fc7
+
+	measure 'Compliance Docs Current' = SUM('Fact Compliance Document'[is_current])
+		formatString: #,0
+		displayFolder: 7 Partnerships
+		lineageTag: 904cb8fd-65ae-5121-92f8-f16c2dc5869a
+
+	measure 'Compliance Pack' = FORMAT([Compliance Docs Current] + 0, "0") & " / " & FORMAT(COUNTROWS('Fact Compliance Document') + 0, "0")
+		displayFolder: 7 Partnerships
+		lineageTag: 1ee4048f-6d39-5291-bb5f-6154d92af072
+
+	measure 'Active Workers (verified)' = CALCULATE(COUNTROWS('Fact Worker Capacity'), 'Fact Worker Capacity'[is_verified_active] = 1)
+		formatString: #,0
+		displayFolder: 8 Workforce
+		lineageTag: f57e1d04-1b0a-5789-9d13-928d40292f65
+
+	measure 'Available Workers' = SUM('Fact Worker Capacity'[is_available])
+		formatString: #,0
+		displayFolder: 8 Workforce
+		lineageTag: e50c282a-1572-5f0c-a88e-85e74db60015
+
+	measure 'Capacity Hours' = SUM('Fact Worker Capacity'[capacity_weekly_hours])
+		formatString: #,0.0
+		displayFolder: 8 Workforce
+		lineageTag: 7aee4685-432a-5b4c-8312-d8f995e46014
+
+	measure 'Allocated Hours' = CALCULATE(SUM('Fact Worker Capacity'[allocated_weekly_hours]), 'Fact Worker Capacity'[is_verified_active] = 1)
+		formatString: #,0.0
+		displayFolder: 8 Workforce
+		lineageTag: 834e29a6-2dbc-55d4-930c-310c00e960b0
+
+	measure 'Available Hours' = SUM('Fact Worker Capacity'[available_weekly_hours])
+		formatString: #,0.0
+		displayFolder: 8 Workforce
+		lineageTag: d6052abd-f16e-5b8f-ab04-04502b9a022c
+
+	measure Utilisation = DIVIDE([Allocated Hours], [Capacity Hours])
+		formatString: 0.0%
+		displayFolder: 8 Workforce
+		lineageTag: a318c56c-6cf0-5a85-a5aa-c13eb443d41d
+
+	measure 'Open Worker Requirements' = CALCULATE(COUNTROWS('Fact Worker Requirement'), 'Fact Worker Requirement'[is_open] = 1)
+		formatString: #,0
+		displayFolder: 8 Workforce
+		lineageTag: 448d8e69-0382-57c4-87f7-a0748c2b3540
+
+	measure 'Unfilled Rosters' = CALCULATE(COUNTROWS('Fact Roster'), 'Fact Roster'[is_unfilled] = 1)
+		formatString: #,0
+		displayFolder: 8 Workforce
+		lineageTag: a7f1ed4c-c015-534c-96f3-49aac34010ae
+
+	measure 'Weekday Capacity Hours' = CALCULATE(SUM('Fact Worker Availability'[capacity_hours]), 'Fact Worker Availability'[is_weekday] = 1)
+		formatString: #,0.0
+		displayFolder: 8 Workforce
+		lineageTag: 966003f5-004e-55b9-8b54-2fdc51d56432
+
+	measure 'Weekend Capacity Hours' = CALCULATE(SUM('Fact Worker Availability'[capacity_hours]), 'Fact Worker Availability'[is_weekend] = 1)
+		formatString: #,0.0
+		displayFolder: 8 Workforce
+		lineageTag: 2120d00c-8d4b-507b-8540-cc87a73bd033
+
+	measure 'Evening Capacity Hours' = CALCULATE(SUM('Fact Worker Availability'[capacity_hours]), 'Fact Worker Availability'[is_evening] = 1)
+		formatString: #,0.0
+		displayFolder: 8 Workforce
+		lineageTag: ff57e9ab-396a-517b-86b0-cea94cf02f8b
+
+	measure 'Overnight Capacity Hours' = CALCULATE(SUM('Fact Worker Availability'[capacity_hours]), 'Fact Worker Availability'[is_overnight] = 1)
+		formatString: #,0.0
+		displayFolder: 8 Workforce
+		lineageTag: 768ab3c8-5281-55f2-a100-7297d1590801
+
+	measure 'Workers: Personal Care' = CALCULATE([Active Workers (verified)], 'Fact Worker Capacity'[cap_personal_care] = 1)
+		formatString: #,0
+		displayFolder: 8 Workforce
+		lineageTag: f715917a-27e0-5d2f-a37e-c0fa9242fffa
+
+	measure 'Workers: Community Access' = CALCULATE([Active Workers (verified)], 'Fact Worker Capacity'[cap_community_access] = 1)
+		formatString: #,0
+		displayFolder: 8 Workforce
+		lineageTag: 4641b428-f0e6-58a6-ab38-50866305ecc2
+
+	measure 'Workers: Complex Support' = CALCULATE([Active Workers (verified)], 'Fact Worker Capacity'[cap_complex_support] = 1)
+		formatString: #,0
+		displayFolder: 8 Workforce
+		lineageTag: d07d4464-7042-59f8-973a-5df5d2693b2a
+
+	measure 'Workers: Domestic' = CALCULATE([Active Workers (verified)], 'Fact Worker Capacity'[cap_domestic] = 1)
+		formatString: #,0
+		displayFolder: 8 Workforce
+		lineageTag: 3074f44d-3c13-5a68-81c2-334f8647b2ef
+
+	measure Referrals = COUNTROWS('Fact Referral')
+		formatString: #,0
+		displayFolder: 9 Regional
+		lineageTag: 56ad161d-b3c3-5500-a14b-94742e9b1482
+
+	measure 'Agents Green' = CALCULATE(COUNTROWS('Fact Agent Health'), 'Fact Agent Health'[rag_status] = "GREEN")
+		formatString: #,0
+		displayFolder: 10 Agent Health
+		lineageTag: a36b5138-0d34-51f0-ade5-10171e11cdec
+
+	measure 'Agents Amber' = CALCULATE(COUNTROWS('Fact Agent Health'), 'Fact Agent Health'[rag_status] = "AMBER")
+		formatString: #,0
+		displayFolder: 10 Agent Health
+		lineageTag: 2a59fec8-4a15-5ae9-b9cd-7c8d6dfb6cbb
+
+	measure 'Agents Red' = CALCULATE(COUNTROWS('Fact Agent Health'), 'Fact Agent Health'[rag_status] = "RED")
+		formatString: #,0
+		displayFolder: 10 Agent Health
+		lineageTag: 15e351ad-30d9-5068-bf7e-ba9c35d92001
+
+	measure 'Agent Runs' = COUNTROWS('Fact Agent Run')
+		formatString: #,0
+		displayFolder: 10 Agent Health
+		lineageTag: bbd8286a-b1e3-5d36-933a-b151cd23e267
+
+	measure 'Failed Runs (7d)' =
+			VAR d = [As Of Date]
+			RETURN
+			    CALCULATE(COUNTROWS('Fact Agent Run'), REMOVEFILTERS('Dim Date'), 'Fact Agent Run'[status] = "FAILED", 'Fact Agent Run'[run_date] >= d - 6)
+		formatString: #,0
+		displayFolder: 10 Agent Health
+		lineageTag: 1b287589-ac5d-5549-b1f5-948132d3c327
+
+	measure 'Open Alerts' = CALCULATE(COUNTROWS('Fact Alert'), 'Fact Alert'[status] <> "RESOLVED")
+		formatString: #,0
+		displayFolder: 10 Agent Health
+		lineageTag: 754351c3-cb19-5fec-9cee-770cdf64ef8b
+
+	measure 'DQ Errors' = CALCULATE(COUNTROWS('Fact Data Quality'), 'Fact Data Quality'[severity] = "ERROR")
+		formatString: #,0
+		displayFolder: 10 Agent Health
+		lineageTag: 4a3508fd-aaff-5944-8d12-f281558e44ba
+
+	measure 'DQ Warnings' = CALCULATE(COUNTROWS('Fact Data Quality'), 'Fact Data Quality'[severity] = "WARNING")
+		formatString: #,0
+		displayFolder: 10 Agent Health
+		lineageTag: 7e96288c-ad5a-5faf-8fe6-3128eafc5ca1
+
+	column 'Measure Table'
+		dataType: string
+		isHidden
+		lineageTag: c69b122b-7c2b-51ff-8fe9-707d7fa25467
+		summarizeBy: none
+		sourceColumn: Measure Table
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [#"Measure Table" = text], {})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

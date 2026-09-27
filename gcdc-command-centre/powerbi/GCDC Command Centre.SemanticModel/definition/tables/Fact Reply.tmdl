@@ -1,0 +1,236 @@
+table 'Fact Reply'
+	lineageTag: cd028b10-f66f-58ad-aa3b-b8873c8d1489
+
+	column reply_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 17e0cc1c-ee14-59dc-85c7-244ebffbc2b5
+		summarizeBy: none
+		sourceColumn: reply_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a1b241e5-06a1-5ff3-a345-13135d580f52
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7b70838f-d5bd-5a5b-824f-bfa23039252c
+		summarizeBy: none
+		sourceColumn: contact_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 640c536f-171a-51f1-a216-f0e6d9d46c93
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column outreach_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fd1e179d-f20a-5ba0-819f-ccf60f90ebed
+		summarizeBy: none
+		sourceColumn: outreach_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: e31b3d32-558e-5759-962c-7f945da466f0
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: d8bf187c-c6e9-542c-ab1c-b1462d777bca
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column received_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 005b1880-c090-5c1d-8ad4-c5aa81421968
+		summarizeBy: none
+		sourceColumn: received_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column received_at_local
+		dataType: dateTime
+		formatString: dd mmm yyyy hh:nn
+		lineageTag: e79c8b41-6d9b-5aee-859a-f60b6c5f5f11
+		summarizeBy: none
+		sourceColumn: received_at_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_estimated_date
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5d3f9dc1-fdde-5a18-8e64-48d8f04e542c
+		summarizeBy: none
+		sourceColumn: is_estimated_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column classification
+		dataType: string
+		lineageTag: 9070e972-3d6e-5c75-88af-21500ac3efbb
+		summarizeBy: none
+		sourceColumn: classification
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_human_reply
+		dataType: int64
+		formatString: #,0
+		lineageTag: e33ff39d-6396-54f0-b988-668a548d2391
+		summarizeBy: none
+		sourceColumn: is_human_reply
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_positive
+		dataType: int64
+		formatString: #,0
+		lineageTag: 42730e55-9885-54a2-a116-48e003af7981
+		summarizeBy: none
+		sourceColumn: is_positive
+
+		annotation SummarizationSetBy = Automatic
+
+	column requires_response
+		dataType: int64
+		formatString: #,0
+		lineageTag: 42a48db4-dd51-5d0f-8042-4489bdbc709b
+		summarizeBy: none
+		sourceColumn: requires_response
+
+		annotation SummarizationSetBy = Automatic
+
+	column response_status
+		dataType: string
+		lineageTag: f26eebbb-a63d-5ee5-94f2-919d8ccbab7f
+		summarizeBy: none
+		sourceColumn: response_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_awaiting_response
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1106add8-6167-5fb0-bacc-e653751564f9
+		summarizeBy: none
+		sourceColumn: is_awaiting_response
+
+		annotation SummarizationSetBy = Automatic
+
+	column hours_waiting
+		dataType: double
+		formatString: #,0.##
+		lineageTag: f04eca73-7841-54ee-b9cd-f4e517af6428
+		summarizeBy: none
+		sourceColumn: hours_waiting
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_response_overdue
+		dataType: int64
+		formatString: #,0
+		lineageTag: 49bb6b5f-2230-577d-87db-b2ab33f4a47e
+		summarizeBy: none
+		sourceColumn: is_response_overdue
+
+		annotation SummarizationSetBy = Automatic
+
+	column responded_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 75bec64a-7c3e-5577-b58e-e1ed52b8a29f
+		summarizeBy: none
+		sourceColumn: responded_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column from_email
+		dataType: string
+		lineageTag: 8d182fc8-125d-53ca-8e40-1a84d05ec24e
+		summarizeBy: none
+		sourceColumn: from_email
+
+		annotation SummarizationSetBy = Automatic
+
+	column subject
+		dataType: string
+		lineageTag: 26b93394-51d8-5a4b-b59e-99b189e66c65
+		summarizeBy: none
+		sourceColumn: subject
+
+		annotation SummarizationSetBy = Automatic
+
+	column summary
+		dataType: string
+		lineageTag: 97960843-94c7-53bd-a33f-8c8a7611f7ee
+		summarizeBy: none
+		sourceColumn: summary
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Reply' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_reply"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"reply_id", Int64.Type},
+				        {"organisation_id", Int64.Type},
+				        {"contact_id", Int64.Type},
+				        {"opportunity_id", Int64.Type},
+				        {"outreach_id", Int64.Type},
+				        {"region_code", type text},
+				        {"channel", type text},
+				        {"received_date", type date},
+				        {"received_at_local", type datetime},
+				        {"is_estimated_date", Int64.Type},
+				        {"classification", type text},
+				        {"is_human_reply", Int64.Type},
+				        {"is_positive", Int64.Type},
+				        {"requires_response", Int64.Type},
+				        {"response_status", type text},
+				        {"is_awaiting_response", Int64.Type},
+				        {"hours_waiting", type number},
+				        {"is_response_overdue", Int64.Type},
+				        {"responded_date", type date},
+				        {"from_email", type text},
+				        {"subject", type text},
+				        {"summary", type text}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

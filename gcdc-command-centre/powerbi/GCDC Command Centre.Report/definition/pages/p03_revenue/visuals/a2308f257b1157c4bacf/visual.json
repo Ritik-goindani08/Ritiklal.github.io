@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "a2308f257b1157c4bacf",
+  "position": {
+    "x": 940,
+    "y": 600,
+    "z": 16000,
+    "height": 104,
+    "width": 324,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "multiRowCard",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Near-Term Pipeline (display)"
+                }
+              },
+              "queryRef": "_Measures.Near-Term Pipeline (display)",
+              "nativeQueryRef": "Qualified near-term",
+              "displayName": "Qualified near-term"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Longer-Term Pipeline (display)"
+                }
+              },
+              "queryRef": "_Measures.Longer-Term Pipeline (display)",
+              "nativeQueryRef": "Longer-term",
+              "displayName": "Longer-term"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ESTIMATED PIPELINE VALUE — not revenue'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

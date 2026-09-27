@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "468babd0e25851b38d74",
+  "position": {
+    "x": 154,
+    "y": 144,
+    "z": 12000,
+    "height": 76,
+    "width": 130,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Positive Reply Rate"
+                }
+              },
+              "queryRef": "_Measures.Positive Reply Rate",
+              "nativeQueryRef": "Positive Reply Rate"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Positive Reply Rate'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

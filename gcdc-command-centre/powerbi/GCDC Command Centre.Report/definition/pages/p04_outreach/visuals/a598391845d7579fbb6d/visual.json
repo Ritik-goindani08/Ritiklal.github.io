@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "a598391845d7579fbb6d",
+  "position": {
+    "x": 850,
+    "y": 60,
+    "z": 8000,
+    "height": 76,
+    "width": 131,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Bounced Emails"
+                }
+              },
+              "queryRef": "_Measures.Bounced Emails",
+              "nativeQueryRef": "Bounced Emails"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Bounced Emails'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

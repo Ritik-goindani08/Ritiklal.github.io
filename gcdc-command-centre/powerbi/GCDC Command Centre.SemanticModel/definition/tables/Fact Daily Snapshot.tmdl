@@ -1,0 +1,445 @@
+table 'Fact Daily Snapshot'
+	lineageTag: 455d6450-4a5a-5a48-8578-246a4f4136f6
+
+	column snapshot_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 0cd4eceb-4f64-5497-8d17-ec9643af950b
+		summarizeBy: none
+		sourceColumn: snapshot_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column captured_at_utc
+		dataType: string
+		lineageTag: a60d84f9-1c91-5085-ac44-06d3dfcb12d8
+		summarizeBy: none
+		sourceColumn: captured_at_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_catch_up
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6c97cb14-5c3c-533c-af02-0dc8541c5c96
+		summarizeBy: none
+		sourceColumn: is_catch_up
+
+		annotation SummarizationSetBy = Automatic
+
+	column mrr
+		dataType: double
+		formatString: $#,0
+		lineageTag: bdda5ff0-bdb5-529c-9f0b-e2e9889319cb
+		summarizeBy: none
+		sourceColumn: mrr
+
+		annotation SummarizationSetBy = Automatic
+
+	column mrr_rosters_rate_unknown
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2628a1be-e754-5df5-9d8a-a0e127a9c31b
+		summarizeBy: none
+		sourceColumn: mrr_rosters_rate_unknown
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekly_billable_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 1c41fb8e-89e6-5eeb-a250-d628c55cae2f
+		summarizeBy: none
+		sourceColumn: weekly_billable_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_billable_rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: eebc483e-4cbf-5aab-bfad-f3aa87a6bd0e
+		summarizeBy: none
+		sourceColumn: avg_billable_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_received_day
+		dataType: double
+		formatString: $#,0
+		lineageTag: 48753743-cba1-50c4-960e-7fc5de559295
+		summarizeBy: none
+		sourceColumn: revenue_received_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_received_mtd
+		dataType: double
+		formatString: $#,0
+		lineageTag: 9bd7b65f-0c80-5e7c-bc01-917fcebddee9
+		summarizeBy: none
+		sourceColumn: revenue_received_mtd
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_invoiced_mtd
+		dataType: double
+		formatString: $#,0
+		lineageTag: 4edf485a-4c44-582b-b559-9836d491bfb4
+		summarizeBy: none
+		sourceColumn: revenue_invoiced_mtd
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_target
+		dataType: double
+		formatString: $#,0
+		lineageTag: d4273e2e-0c5b-5f96-9c64-6de109141419
+		summarizeBy: none
+		sourceColumn: revenue_target
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_gap
+		dataType: double
+		formatString: $#,0
+		lineageTag: 5440a9ad-0862-536d-b5c7-67bb4e589e16
+		summarizeBy: none
+		sourceColumn: revenue_gap
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekly_hours_target_min
+		dataType: double
+		formatString: $#,0
+		lineageTag: 89cba9eb-9012-5fd4-b902-4b089fd35925
+		summarizeBy: none
+		sourceColumn: weekly_hours_target_min
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_participants
+		dataType: int64
+		formatString: #,0
+		lineageTag: 867a2d3e-de08-5b55-b3a4-1e5c406fe2f9
+		summarizeBy: none
+		sourceColumn: active_participants
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_rosters
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2e57e9f4-e970-56c9-8e7a-bda09e579151
+		summarizeBy: none
+		sourceColumn: active_rosters
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_opportunities
+		dataType: int64
+		formatString: #,0
+		lineageTag: 8324ec1c-52e6-5db0-a01b-aa7b0d572b5f
+		summarizeBy: none
+		sourceColumn: active_opportunities
+
+		annotation SummarizationSetBy = Automatic
+
+	column p1_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2f6a0eff-6374-53ce-8dea-77cf684e6136
+		summarizeBy: none
+		sourceColumn: p1_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column p2_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: f66d19d8-9948-5680-86cc-ac998fc464cc
+		summarizeBy: none
+		sourceColumn: p2_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column p3_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: 67c9fbc0-f30d-5496-8426-933f10cfe6b1
+		summarizeBy: none
+		sourceColumn: p3_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column pipeline_monthly_value_known
+		dataType: double
+		formatString: $#,0
+		lineageTag: faed062d-cf99-57f6-908a-0ba08cbc5949
+		summarizeBy: none
+		sourceColumn: pipeline_monthly_value_known
+
+		annotation SummarizationSetBy = Automatic
+
+	column pipeline_value_unknown_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1e7afac5-8ea6-52c5-b427-d950f9cc59cd
+		summarizeBy: none
+		sourceColumn: pipeline_value_unknown_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column near_term_monthly_value_known
+		dataType: double
+		formatString: $#,0
+		lineageTag: 90a893f0-382a-52fe-924b-942d5e2e9be8
+		summarizeBy: none
+		sourceColumn: near_term_monthly_value_known
+
+		annotation SummarizationSetBy = Automatic
+
+	column weighted_pipeline_monthly
+		dataType: double
+		formatString: #,0.##
+		lineageTag: aaf10be8-32fa-56cd-8493-27ab36675434
+		summarizeBy: none
+		sourceColumn: weighted_pipeline_monthly
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunities_found
+		dataType: int64
+		formatString: #,0
+		lineageTag: 74159785-6ecc-5f46-b1fe-b59c863cd463
+		summarizeBy: none
+		sourceColumn: opportunities_found
+
+		annotation SummarizationSetBy = Automatic
+
+	column emails_sent
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4c80c180-0681-5809-898b-c694438a0726
+		summarizeBy: none
+		sourceColumn: emails_sent
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_touch_sent
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2588b757-e367-5d7f-8910-53ec55fb88be
+		summarizeBy: none
+		sourceColumn: first_touch_sent
+
+		annotation SummarizationSetBy = Automatic
+
+	column followups_sent
+		dataType: int64
+		formatString: #,0
+		lineageTag: 3651857e-ee29-5d3a-81ee-9f50391af7ac
+		summarizeBy: none
+		sourceColumn: followups_sent
+
+		annotation SummarizationSetBy = Automatic
+
+	column emails_bounced
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4d31b22e-952e-5454-a157-450de7b3a6d3
+		summarizeBy: none
+		sourceColumn: emails_bounced
+
+		annotation SummarizationSetBy = Automatic
+
+	column replies
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4512d41f-8974-516a-96c6-5bdd463dc8c2
+		summarizeBy: none
+		sourceColumn: replies
+
+		annotation SummarizationSetBy = Automatic
+
+	column positive_replies
+		dataType: int64
+		formatString: #,0
+		lineageTag: 494df04f-ee76-5a11-bf3c-4334e048b16a
+		summarizeBy: none
+		sourceColumn: positive_replies
+
+		annotation SummarizationSetBy = Automatic
+
+	column meetings_booked
+		dataType: int64
+		formatString: #,0
+		lineageTag: aa6c5c2c-ca57-5d3e-ba24-1c8a538c7fea
+		summarizeBy: none
+		sourceColumn: meetings_booked
+
+		annotation SummarizationSetBy = Automatic
+
+	column meetings_held
+		dataType: int64
+		formatString: #,0
+		lineageTag: 42efc5e1-8771-5a09-bade-40b4866c6c99
+		summarizeBy: none
+		sourceColumn: meetings_held
+
+		annotation SummarizationSetBy = Automatic
+
+	column referrals
+		dataType: int64
+		formatString: #,0
+		lineageTag: ca5c2ce3-fbed-51fb-a47c-8c1eef2816d9
+		summarizeBy: none
+		sourceColumn: referrals
+
+		annotation SummarizationSetBy = Automatic
+
+	column trial_shifts
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5e04876a-219c-5c5e-8bbf-cf9f358b7a3b
+		summarizeBy: none
+		sourceColumn: trial_shifts
+
+		annotation SummarizationSetBy = Automatic
+
+	column orgs_contacted_total
+		dataType: int64
+		formatString: #,0
+		lineageTag: 81ce89be-2871-5a17-bada-d956cad53083
+		summarizeBy: none
+		sourceColumn: orgs_contacted_total
+
+		annotation SummarizationSetBy = Automatic
+
+	column overdue_followups
+		dataType: int64
+		formatString: #,0
+		lineageTag: 9d9da365-bc51-5cd0-9370-b6ac2cfe2663
+		summarizeBy: none
+		sourceColumn: overdue_followups
+
+		annotation SummarizationSetBy = Automatic
+
+	column replies_awaiting_response
+		dataType: int64
+		formatString: #,0
+		lineageTag: ad11ff08-e483-51a0-ab59-ee0841f5e412
+		summarizeBy: none
+		sourceColumn: replies_awaiting_response
+
+		annotation SummarizationSetBy = Automatic
+
+	column workers_active
+		dataType: int64
+		formatString: #,0
+		lineageTag: cd251145-f9cb-575e-9b37-27cb5281272e
+		summarizeBy: none
+		sourceColumn: workers_active
+
+		annotation SummarizationSetBy = Automatic
+
+	column worker_available_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 1b1faec9-aa50-56be-a819-fa0db87f4065
+		summarizeBy: none
+		sourceColumn: worker_available_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column worker_allocated_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: b0e67697-5a18-57ee-be43-2844b132c288
+		summarizeBy: none
+		sourceColumn: worker_allocated_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column open_worker_requirements
+		dataType: int64
+		formatString: #,0
+		lineageTag: 55d7aa28-ca70-52e7-9a05-5d38fb8e69a3
+		summarizeBy: none
+		sourceColumn: open_worker_requirements
+
+		annotation SummarizationSetBy = Automatic
+
+	column dq_errors
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6dd7b08a-02d3-5226-bd72-f08155a8f113
+		summarizeBy: none
+		sourceColumn: dq_errors
+
+		annotation SummarizationSetBy = Automatic
+
+	column agents_red
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1a8bd28c-6e46-5e09-b40e-3b5b7869dcc6
+		summarizeBy: none
+		sourceColumn: agents_red
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Daily Snapshot' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_daily_snapshot"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"snapshot_date", type date},
+				        {"captured_at_utc", type text},
+				        {"is_catch_up", Int64.Type},
+				        {"mrr", type number},
+				        {"mrr_rosters_rate_unknown", Int64.Type},
+				        {"weekly_billable_hours", type number},
+				        {"avg_billable_rate", type number},
+				        {"revenue_received_day", type number},
+				        {"revenue_received_mtd", type number},
+				        {"revenue_invoiced_mtd", type number},
+				        {"revenue_target", type number},
+				        {"revenue_gap", type number},
+				        {"weekly_hours_target_min", type number},
+				        {"active_participants", Int64.Type},
+				        {"active_rosters", Int64.Type},
+				        {"active_opportunities", Int64.Type},
+				        {"p1_count", Int64.Type},
+				        {"p2_count", Int64.Type},
+				        {"p3_count", Int64.Type},
+				        {"pipeline_monthly_value_known", type number},
+				        {"pipeline_value_unknown_count", Int64.Type},
+				        {"near_term_monthly_value_known", type number},
+				        {"weighted_pipeline_monthly", type number},
+				        {"opportunities_found", Int64.Type},
+				        {"emails_sent", Int64.Type},
+				        {"first_touch_sent", Int64.Type},
+				        {"followups_sent", Int64.Type},
+				        {"emails_bounced", Int64.Type},
+				        {"replies", Int64.Type},
+				        {"positive_replies", Int64.Type},
+				        {"meetings_booked", Int64.Type},
+				        {"meetings_held", Int64.Type},
+				        {"referrals", Int64.Type},
+				        {"trial_shifts", Int64.Type},
+				        {"orgs_contacted_total", Int64.Type},
+				        {"overdue_followups", Int64.Type},
+				        {"replies_awaiting_response", Int64.Type},
+				        {"workers_active", Int64.Type},
+				        {"worker_available_hours", type number},
+				        {"worker_allocated_hours", type number},
+				        {"open_worker_requirements", Int64.Type},
+				        {"dq_errors", Int64.Type},
+				        {"agents_red", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

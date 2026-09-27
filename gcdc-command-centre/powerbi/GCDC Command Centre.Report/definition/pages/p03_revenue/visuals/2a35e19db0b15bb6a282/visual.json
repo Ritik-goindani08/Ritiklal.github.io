@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "2a35e19db0b15bb6a282",
+  "position": {
+    "x": 636,
+    "y": 178,
+    "z": 11000,
+    "height": 260,
+    "width": 628,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Snapshot MRR"
+                }
+              },
+              "queryRef": "_Measures.Snapshot MRR",
+              "nativeQueryRef": "MRR",
+              "displayName": "MRR"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Snapshot Revenue Target"
+                }
+              },
+              "queryRef": "_Measures.Snapshot Revenue Target",
+              "nativeQueryRef": "Target",
+              "displayName": "Target"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Date"
+                    }
+                  },
+                  "Property": "date"
+                }
+              },
+              "queryRef": "Dim Date.date",
+              "nativeQueryRef": "Date",
+              "displayName": "Date"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'MRR vs target (daily snapshots)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

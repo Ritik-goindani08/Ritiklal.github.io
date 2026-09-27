@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "0cb8a762ef355c97b2c6",
+  "position": {
+    "x": 1020,
+    "y": 60,
+    "z": 6000,
+    "height": 84,
+    "width": 243,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Weighted Pipeline (stage rules)"
+                }
+              },
+              "queryRef": "_Measures.Weighted Pipeline (stage rules)",
+              "nativeQueryRef": "Weighted (stage rules only)",
+              "displayName": "Weighted (stage rules only)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Weighted (stage rules only)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

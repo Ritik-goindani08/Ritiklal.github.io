@@ -1,0 +1,75 @@
+table 'Fact Stage History'
+	lineageTag: 42943ded-e40b-519d-bdf8-ff5817026995
+
+	column history_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e957a0c5-a595-52f4-9def-b55de627a3ba
+		summarizeBy: none
+		sourceColumn: history_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 55d2b7a3-1329-5795-bc74-dc854ca19784
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column from_stage
+		dataType: string
+		lineageTag: f43b520d-ebb3-5533-b7cc-176c08de738c
+		summarizeBy: none
+		sourceColumn: from_stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column to_stage
+		dataType: string
+		lineageTag: 26ca70d5-d972-52dd-81d1-1d39d3c4e425
+		summarizeBy: none
+		sourceColumn: to_stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column changed_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 3b7ace26-8ab7-51a7-ad7d-e14352cae3da
+		summarizeBy: none
+		sourceColumn: changed_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column changed_by
+		dataType: string
+		lineageTag: 8d5e9b5e-5d97-54b2-a47b-f4abd5b2e7d1
+		summarizeBy: none
+		sourceColumn: changed_by
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Stage History' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_stage_history"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"history_id", Int64.Type},
+				        {"opportunity_id", Int64.Type},
+				        {"from_stage", type text},
+				        {"to_stage", type text},
+				        {"changed_date", type date},
+				        {"changed_by", type text}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

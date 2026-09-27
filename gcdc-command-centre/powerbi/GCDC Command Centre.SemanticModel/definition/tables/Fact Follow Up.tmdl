@@ -1,0 +1,166 @@
+table 'Fact Follow Up'
+	lineageTag: 09d12506-1ccd-5244-a7fb-9fe58e94222f
+
+	column follow_up_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 377ba103-e5e1-546d-ba63-3ac0cd68344f
+		summarizeBy: none
+		sourceColumn: follow_up_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1485e678-c1ab-5d1e-bd7f-bc2a531e3034
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c25051f2-9909-50ec-8485-7a3e9e6c45b5
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5b49d45e-d04c-52be-bf04-cb6ad4e46ef3
+		summarizeBy: none
+		sourceColumn: contact_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: 5d005697-1520-53b7-9593-2e13e5a362a2
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column action_type
+		dataType: string
+		lineageTag: 91c0710a-67a0-57c0-a5f8-3dee4eebaad7
+		summarizeBy: none
+		sourceColumn: action_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: b8b20458-e54d-55b3-86c9-1cbe1eb8aee3
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column due_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: f5961479-4621-5f38-abb7-da62ef99f824
+		summarizeBy: none
+		sourceColumn: due_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column status
+		dataType: string
+		lineageTag: e606371d-e953-513d-9e61-f4d165029b91
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column due_status
+		dataType: string
+		lineageTag: 5a8517d1-8163-5b9a-adf1-48dc7afe79ed
+		summarizeBy: none
+		sourceColumn: due_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_overdue
+		dataType: int64
+		formatString: #,0
+		lineageTag: aef2bfcd-6210-59cd-8521-455d23684723
+		summarizeBy: none
+		sourceColumn: days_overdue
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_overdue
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2c063222-a20b-5b94-b734-50a362546715
+		summarizeBy: none
+		sourceColumn: is_overdue
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_due_today
+		dataType: int64
+		formatString: #,0
+		lineageTag: b55a8ecd-3dd6-5169-a4a3-a1b17c2a3c67
+		summarizeBy: none
+		sourceColumn: is_due_today
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner
+		dataType: string
+		lineageTag: c5f7703a-1589-5e03-94f6-226c3d69ec97
+		summarizeBy: none
+		sourceColumn: owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column completed_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 711c2cf1-5faf-504d-9fda-fad0668a3377
+		summarizeBy: none
+		sourceColumn: completed_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Fact Follow Up' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_follow_up"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"follow_up_id", Int64.Type},
+				        {"organisation_id", Int64.Type},
+				        {"opportunity_id", Int64.Type},
+				        {"contact_id", Int64.Type},
+				        {"region_code", type text},
+				        {"action_type", type text},
+				        {"description", type text},
+				        {"due_date", type date},
+				        {"status", type text},
+				        {"due_status", type text},
+				        {"days_overdue", Int64.Type},
+				        {"is_overdue", Int64.Type},
+				        {"is_due_today", Int64.Type},
+				        {"owner", type text},
+				        {"completed_date", type date}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

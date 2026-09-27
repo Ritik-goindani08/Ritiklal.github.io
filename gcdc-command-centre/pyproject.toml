@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gcdc-command-centre"
+version = "1.0.0"
+description = "Gold Coast Devoted Care central business-development database, Power BI feed and daily brief"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+# Reading the existing Google Sheets exports (.xlsx)
+import = ["openpyxl>=3.1"]
+# Deterministic Outlook sync via Microsoft Graph
+graph = ["msal>=1.28"]
+# Optional Claude reasoning step in the Daily BI brief
+ai = ["anthropic>=1.8"]
+dev = ["pytest>=8", "openpyxl>=3.1", "jsonschema>=4.21"]
+
+[project.scripts]
+gcdc = "gcdc.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"gcdc.sql.migrations" = ["*.sql"]
+"gcdc.sql.views" = ["*.sql"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

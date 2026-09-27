@@ -1,0 +1,47 @@
+# Mapping for `gcdc legacy import <outreach_agent.db> --mapping this_file.toml`
+#
+# Run `gcdc legacy audit <outreach_agent.db>` first: it lists every table and
+# column and prints a suggested mapping you can paste here and adjust.
+#
+# Each [[tables]] block maps one legacy table (or a SQL `query`) to one ingest
+# record type. Column values map to canonical field names; "organisation.x"
+# builds the nested organisation reference used for de-duplication.
+# source_key_column makes re-imports idempotent.
+
+[[tables]]
+source = "organisations"
+record_type = "organisation"
+source_key_column = "id"
+[tables.columns]
+name = "name"
+website = "website"
+abn = "abn"
+region = "region"
+phone = "phone"
+
+[[tables]]
+source = "emails"
+record_type = "outreach"
+source_key_column = "id"
+[tables.columns]
+company = "organisation.name"
+website = "organisation.website"
+recipient = "to_email"
+subject = "subject"
+status = "status"            # values must map to DRAFT/PENDING_APPROVAL/APPROVED/SCHEDULED/SENT/CANCELLED/BOUNCED/FAILED
+sent_at = "sent_at"
+scheduled_for = "scheduled_for"
+message_id = "external_message_id"
+[tables.constants]
+channel = "EMAIL"
+evidence = "AGENT_LOG"
+
+[[tables]]
+source = "suppression_list"
+record_type = "suppression"
+source_key_column = "id"
+[tables.columns]
+email = "email"
+reason = "reason"            # UNSUBSCRIBE / HARD_BOUNCE / COMPLAINT / DO_NOT_CONTACT / ...
+[tables.constants]
+scope = "EMAIL"

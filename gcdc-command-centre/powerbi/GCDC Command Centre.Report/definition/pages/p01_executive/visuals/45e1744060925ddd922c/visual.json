@@ -1,0 +1,124 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "45e1744060925ddd922c",
+  "position": {
+    "x": 912,
+    "y": 244,
+    "z": 16000,
+    "height": 460,
+    "width": 352,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Stage"
+                    }
+                  },
+                  "Property": "stage_name"
+                }
+              },
+              "queryRef": "Dim Stage.stage_name",
+              "nativeQueryRef": "Stage",
+              "displayName": "Stage"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Funnel Count"
+                }
+              },
+              "queryRef": "_Measures.Funnel Count",
+              "nativeQueryRef": "Reached",
+              "displayName": "Reached"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Funnel Conversion %"
+                }
+              },
+              "queryRef": "_Measures.Funnel Conversion %",
+              "nativeQueryRef": "Conversion from previous",
+              "displayName": "Conversion from previous"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Funnel % of Found"
+                }
+              },
+              "queryRef": "_Measures.Funnel % of Found",
+              "nativeQueryRef": "% of found",
+              "displayName": "% of found"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim Stage"
+                  }
+                },
+                "Property": "stage_name"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Stage-to-stage conversion'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

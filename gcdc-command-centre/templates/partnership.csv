@@ -1,0 +1,2 @@
+organisation.name,partnership_type,stage_code,status,onboarding_status,insurance_requirements,labour_hire_licence_required,ndis_registration_required,documents_required_note,last_communication_at,next_action,next_action_due,approval_date,first_work_received_date,agreed_hourly_rate,priority_tier,notes
+EXAMPLE Home Care,ASSOCIATE_PROVIDER,APPLICATION,ACTIVE,NOT_STARTED,$20m public liability,UNKNOWN,NO,"Insurance certificate, rate card",2026-09-18,Submit application form,2026-09-30,,,,1,

@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "127e75d2cc115b2ba0bc",
+  "position": {
+    "x": 952,
+    "y": 368,
+    "z": 6000,
+    "height": 336,
+    "width": 312,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Orgs Contacted (all time)"
+                }
+              },
+              "queryRef": "_Measures.Orgs Contacted (all time)",
+              "nativeQueryRef": "Orgs Contacted (all time)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Orgs Replied"
+                }
+              },
+              "queryRef": "_Measures.Orgs Replied",
+              "nativeQueryRef": "Orgs Replied"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Region"
+                    }
+                  },
+                  "Property": "region_name"
+                }
+              },
+              "queryRef": "Dim Region.region_name",
+              "nativeQueryRef": "Region",
+              "displayName": "Region"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Contacted vs replied'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

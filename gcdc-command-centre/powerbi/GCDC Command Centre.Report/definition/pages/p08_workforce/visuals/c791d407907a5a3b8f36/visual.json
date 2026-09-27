@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c791d407907a5a3b8f36",
+  "position": {
+    "x": 424,
+    "y": 152,
+    "z": 11000,
+    "height": 270,
+    "width": 400,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Weekday Capacity Hours"
+                }
+              },
+              "queryRef": "_Measures.Weekday Capacity Hours",
+              "nativeQueryRef": "Weekdays",
+              "displayName": "Weekdays"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Weekend Capacity Hours"
+                }
+              },
+              "queryRef": "_Measures.Weekend Capacity Hours",
+              "nativeQueryRef": "Weekends",
+              "displayName": "Weekends"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Evening Capacity Hours"
+                }
+              },
+              "queryRef": "_Measures.Evening Capacity Hours",
+              "nativeQueryRef": "Evenings",
+              "displayName": "Evenings"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Overnight Capacity Hours"
+                }
+              },
+              "queryRef": "_Measures.Overnight Capacity Hours",
+              "nativeQueryRef": "Overnight",
+              "displayName": "Overnight"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Capacity by time band (hours/week)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

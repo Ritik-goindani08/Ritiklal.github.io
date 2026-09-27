@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "88b2fae89fce5f0fa31e",
+  "position": {
+    "x": 1115,
+    "y": 60,
+    "z": 9000,
+    "height": 84,
+    "width": 149,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "P3 Opportunities"
+                }
+              },
+              "queryRef": "_Measures.P3 Opportunities",
+              "nativeQueryRef": "P3 (open)",
+              "displayName": "P3 (open)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'P3 (open)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

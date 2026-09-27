@@ -1,0 +1,2 @@
+source_key,organisation.name,application_method,application_url,status,requires_ritik,priority_tier,started_at,submitted_at,reference_number,next_action,next_action_due,notes
+EXAMPLE-APP-1,EXAMPLE Home Care,ONLINE_FORM,https://example.invalid/partners,IN_PROGRESS,1,1,2026-09-18,,,Upload insurance certificate,2026-09-30,

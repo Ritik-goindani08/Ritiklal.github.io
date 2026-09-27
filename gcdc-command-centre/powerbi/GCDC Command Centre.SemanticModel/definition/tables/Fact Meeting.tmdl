@@ -1,0 +1,194 @@
+table 'Fact Meeting'
+	lineageTag: 717db4f8-686e-571e-b3d8-eeae17e6cabf
+
+	column meeting_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 63d322d1-041b-5f54-bc5f-084faf2397c8
+		summarizeBy: none
+		sourceColumn: meeting_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5d3100f1-5f1b-5512-aefb-218e67ead219
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e89f27e0-14a8-5887-8566-a7d3fe44cf9e
+		summarizeBy: none
+		sourceColumn: contact_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9d156372-4aa1-5fc9-b0f7-298118fb2342
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: 186249e1-6dc2-587c-9338-2d69a4cbf956
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column meeting_type
+		dataType: string
+		lineageTag: 49026430-798b-5516-8a62-92dd721a19dd
+		summarizeBy: none
+		sourceColumn: meeting_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column meeting_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 8fbc25ac-b0d3-55c8-8140-2cf285c4cfae
+		summarizeBy: none
+		sourceColumn: meeting_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column meeting_time
+		dataType: string
+		lineageTag: c5337813-5544-56d0-bc91-91bc50b27f7f
+		summarizeBy: none
+		sourceColumn: meeting_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: a2fbfc08-4dba-5d9c-8018-161389c22667
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column mode
+		dataType: string
+		lineageTag: eae3dd5c-daf6-5f8b-b7ce-8eec1e38c3f8
+		summarizeBy: none
+		sourceColumn: mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column location
+		dataType: string
+		lineageTag: 0d104abe-e2fb-5ae3-80d4-02c076520306
+		summarizeBy: none
+		sourceColumn: location
+
+		annotation SummarizationSetBy = Automatic
+
+	column booked_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 3cbd1962-425a-5fc0-b657-4a8974ef7cb1
+		summarizeBy: none
+		sourceColumn: booked_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_booked_or_held
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4ec4b58b-0ba7-5187-b512-b344a3775fde
+		summarizeBy: none
+		sourceColumn: is_booked_or_held
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_held
+		dataType: int64
+		formatString: #,0
+		lineageTag: 020320be-85ad-55c8-932a-1edf64aac884
+		summarizeBy: none
+		sourceColumn: is_held
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_today
+		dataType: int64
+		formatString: #,0
+		lineageTag: 49cc2557-fe87-58ba-aa6f-ecd914a01cb0
+		summarizeBy: none
+		sourceColumn: is_today
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_upcoming
+		dataType: int64
+		formatString: #,0
+		lineageTag: 8e7e10bd-090b-5365-ba3b-789e6fe372a3
+		summarizeBy: none
+		sourceColumn: is_upcoming
+
+		annotation SummarizationSetBy = Automatic
+
+	column outcome
+		dataType: string
+		lineageTag: 1e37d40b-e18b-598d-a2f1-f576bafe8ff8
+		summarizeBy: none
+		sourceColumn: outcome
+
+		annotation SummarizationSetBy = Automatic
+
+	column next_step
+		dataType: string
+		lineageTag: b51f4bf3-3e8e-5df3-b596-b24fd7a0f500
+		summarizeBy: none
+		sourceColumn: next_step
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Meeting' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_meeting"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"meeting_id", Int64.Type},
+				        {"organisation_id", Int64.Type},
+				        {"contact_id", Int64.Type},
+				        {"opportunity_id", Int64.Type},
+				        {"region_code", type text},
+				        {"meeting_type", type text},
+				        {"meeting_date", type date},
+				        {"meeting_time", type text},
+				        {"status", type text},
+				        {"mode", type text},
+				        {"location", type text},
+				        {"booked_date", type date},
+				        {"is_booked_or_held", Int64.Type},
+				        {"is_held", Int64.Type},
+				        {"is_today", Int64.Type},
+				        {"is_upcoming", Int64.Type},
+				        {"outcome", type text},
+				        {"next_step", type text}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

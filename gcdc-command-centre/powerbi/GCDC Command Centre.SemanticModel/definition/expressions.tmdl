@@ -1,0 +1,37 @@
+/// OneDrive for Business (or SharePoint site) URL that holds the export folder.
+expression ExportSiteUrl = "https://YOUR-TENANT-my.sharepoint.com/personal/YOUR_ACCOUNT/" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: 13c59095-b262-58ec-bdd8-d98ea11294f0
+
+	annotation PBI_ResultType = Text
+
+/// Library/folder path of the gcdc export inside that site.
+expression ExportFolderPath = "Documents/GCDC Command Centre/powerbi" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: 74d21398-fd89-5643-b5fc-5ab6cfc60136
+
+	annotation PBI_ResultType = Text
+
+/// The export folder (navigation table of CSV files).
+expression GcdcFolder =
+		let
+		    Root = SharePoint.Contents(ExportSiteUrl, [ApiVersion = 15]),
+		    Parts = List.Select(Text.Split(ExportFolderPath, "/"), each _ <> ""),
+		    Folder = List.Accumulate(Parts, Root, (state, part) => state{[Name = part]}[Content])
+		in
+		    Folder
+	lineageTag: 648cc3ad-a2a0-5e0c-842f-cddbac6ae272
+
+	annotation PBI_ResultType = Table
+
+/// Loads one exported CSV by table name; blank cells become null.
+expression GcdcTable =
+		(tableName as text) as table =>
+		let
+		    Content = GcdcFolder{[Name = tableName & ".csv"]}[Content],
+		    Csv = Csv.Document(Content, [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+		    Promoted = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),
+		    Nulls = Table.TransformColumns(Promoted, {}, each if _ = "" then null else _)
+		in
+		    Nulls
+	lineageTag: eb22786e-1764-5325-b300-26e3d6b7f573
+
+	annotation PBI_ResultType = Function

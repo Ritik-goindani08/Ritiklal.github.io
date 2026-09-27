@@ -1,0 +1,139 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "f4c25fae242d59d7918b",
+  "position": {
+    "x": 16,
+    "y": 452,
+    "z": 10000,
+    "height": 252,
+    "width": 760,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim DQ Check"
+                    }
+                  },
+                  "Property": "check_name"
+                }
+              },
+              "queryRef": "Dim DQ Check.check_name",
+              "nativeQueryRef": "Check",
+              "displayName": "Check"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Data Quality"
+                    }
+                  },
+                  "Property": "severity"
+                }
+              },
+              "queryRef": "Fact Data Quality.severity",
+              "nativeQueryRef": "Severity",
+              "displayName": "Severity"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Data Quality"
+                    }
+                  },
+                  "Property": "entity_type"
+                }
+              },
+              "queryRef": "Fact Data Quality.entity_type",
+              "nativeQueryRef": "Record type",
+              "displayName": "Record type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Data Quality"
+                    }
+                  },
+                  "Property": "entity_id"
+                }
+              },
+              "queryRef": "Fact Data Quality.entity_id",
+              "nativeQueryRef": "Record id",
+              "displayName": "Record id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Data Quality"
+                    }
+                  },
+                  "Property": "detail"
+                }
+              },
+              "queryRef": "Fact Data Quality.detail",
+              "nativeQueryRef": "Detail",
+              "displayName": "Detail"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact Data Quality"
+                  }
+                },
+                "Property": "severity"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Data-quality issues (latest run)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

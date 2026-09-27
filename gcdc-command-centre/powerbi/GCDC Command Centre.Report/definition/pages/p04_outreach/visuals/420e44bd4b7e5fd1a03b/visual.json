@@ -1,0 +1,135 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "420e44bd4b7e5fd1a03b",
+  "position": {
+    "x": 764,
+    "y": 228,
+    "z": 20000,
+    "height": 476,
+    "width": 500,
+    "tabOrder": 20000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Outreach"
+                    }
+                  },
+                  "Property": "campaign_code"
+                }
+              },
+              "queryRef": "Fact Outreach.campaign_code",
+              "nativeQueryRef": "Campaign",
+              "displayName": "Campaign"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Emails Sent"
+                }
+              },
+              "queryRef": "_Measures.Emails Sent",
+              "nativeQueryRef": "Emails Sent"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Orgs Contacted"
+                }
+              },
+              "queryRef": "_Measures.Orgs Contacted",
+              "nativeQueryRef": "Orgs Contacted"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Bounced Emails"
+                }
+              },
+              "queryRef": "_Measures.Bounced Emails",
+              "nativeQueryRef": "Bounced Emails"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Bounce Rate"
+                }
+              },
+              "queryRef": "_Measures.Bounce Rate",
+              "nativeQueryRef": "Bounce Rate"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Emails Sent"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'By campaign'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

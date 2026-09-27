@@ -1,0 +1,43 @@
+table 'Dim Opportunity Type'
+	lineageTag: 7e354dda-20ab-52a3-bc0b-349242bc85d2
+
+	column opportunity_type_code
+		dataType: string
+		lineageTag: 3c48a735-6b45-58d9-a0e9-2f144e4d5aab
+		summarizeBy: none
+		sourceColumn: opportunity_type_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_type_name
+		dataType: string
+		lineageTag: f4e66280-00ed-5215-a83d-d456a8c55ab3
+		summarizeBy: none
+		sourceColumn: opportunity_type_name
+		sortByColumn: sort_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column sort_order
+		dataType: int64
+		formatString: 0
+		lineageTag: b048871e-556b-5f0a-8311-3b91bcec133d
+		summarizeBy: none
+		sourceColumn: sort_order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Opportunity Type' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_dim_opportunity_type"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"opportunity_type_code", type text},
+				        {"opportunity_type_name", type text},
+				        {"sort_order", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

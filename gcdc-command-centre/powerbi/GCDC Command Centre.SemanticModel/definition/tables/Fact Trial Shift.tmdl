@@ -1,0 +1,147 @@
+table 'Fact Trial Shift'
+	lineageTag: 5837153a-6a0d-5e51-ae48-31922e0da37c
+
+	column trial_shift_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: db415881-4746-50d9-ab0d-caf089861437
+		summarizeBy: none
+		sourceColumn: trial_shift_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column referral_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 30eda1f6-70c7-5946-a0a9-7d7c60a46681
+		summarizeBy: none
+		sourceColumn: referral_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4fe1a23f-0231-5090-a418-ba6eae5ccd51
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a317d723-3636-5b81-8fc7-4b687659bb20
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: 06726de1-0fe5-5449-9cab-a42cce74018b
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column participant_ref
+		dataType: string
+		lineageTag: a8d0b398-a6a3-5a4b-965f-e28cf5a07ad7
+		summarizeBy: none
+		sourceColumn: participant_ref
+
+		annotation SummarizationSetBy = Automatic
+
+	column worker_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ac1b1510-bcad-5f4f-916c-427fae56d573
+		summarizeBy: none
+		sourceColumn: worker_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column trial_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 3f07edbd-15ce-592c-9610-ec7f182be06d
+		summarizeBy: none
+		sourceColumn: trial_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 1e06c55a-0254-55e8-9e65-527f49f9573c
+		summarizeBy: none
+		sourceColumn: hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 8cfde0d3-06ad-55eb-af24-640df9b265cc
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column outcome
+		dataType: string
+		lineageTag: 208b518f-fe06-5fb0-80d4-5e6c00ca3e12
+		summarizeBy: none
+		sourceColumn: outcome
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_converted
+		dataType: int64
+		formatString: #,0
+		lineageTag: bf5facd2-b13c-5b5b-89b6-95140827f12c
+		summarizeBy: none
+		sourceColumn: is_converted
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_scheduled_or_done
+		dataType: int64
+		formatString: #,0
+		lineageTag: 69664cc9-7d44-52cf-b3c7-a0276463c3df
+		summarizeBy: none
+		sourceColumn: is_scheduled_or_done
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Trial Shift' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_trial_shift"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"trial_shift_id", Int64.Type},
+				        {"referral_id", Int64.Type},
+				        {"opportunity_id", Int64.Type},
+				        {"organisation_id", Int64.Type},
+				        {"region_code", type text},
+				        {"participant_ref", type text},
+				        {"worker_id", Int64.Type},
+				        {"trial_date", type date},
+				        {"hours", type number},
+				        {"status", type text},
+				        {"outcome", type text},
+				        {"is_converted", Int64.Type},
+				        {"is_scheduled_or_done", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

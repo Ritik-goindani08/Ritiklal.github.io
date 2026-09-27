@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "63d90ec04936571fbe66",
+  "position": {
+    "x": 989,
+    "y": 60,
+    "z": 9000,
+    "height": 76,
+    "width": 131,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Verified Contacts"
+                }
+              },
+              "queryRef": "_Measures.Verified Contacts",
+              "nativeQueryRef": "Verified Contacts"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Verified Contacts'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

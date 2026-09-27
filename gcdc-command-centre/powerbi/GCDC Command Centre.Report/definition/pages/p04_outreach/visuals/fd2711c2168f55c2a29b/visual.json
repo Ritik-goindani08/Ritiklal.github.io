@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "fd2711c2168f55c2a29b",
+  "position": {
+    "x": 572,
+    "y": 60,
+    "z": 6000,
+    "height": 76,
+    "width": 131,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Emails Scheduled (pending)"
+                }
+              },
+              "queryRef": "_Measures.Emails Scheduled (pending)",
+              "nativeQueryRef": "Scheduled emails",
+              "displayName": "Scheduled emails"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Scheduled emails'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

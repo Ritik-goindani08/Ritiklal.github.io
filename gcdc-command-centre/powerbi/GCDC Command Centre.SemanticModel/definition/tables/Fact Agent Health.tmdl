@@ -1,0 +1,208 @@
+table 'Fact Agent Health'
+	lineageTag: 71d493b3-146a-5820-92a1-673e7477398b
+
+	column agent_code
+		dataType: string
+		lineageTag: 578f060c-5d03-5ae6-a6f2-792f9c9b39f0
+		summarizeBy: none
+		sourceColumn: agent_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column agent_name
+		dataType: string
+		lineageTag: 601db4e0-39ae-5893-835f-8d5ad6345cef
+		summarizeBy: none
+		sourceColumn: agent_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column schedule_description
+		dataType: string
+		lineageTag: 322c7331-91ee-5539-b8da-d56318cde098
+		summarizeBy: none
+		sourceColumn: schedule_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_interval_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 8934611d-029b-50ff-993d-c612e824f70c
+		summarizeBy: none
+		sourceColumn: expected_interval_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_successful_run
+		dataType: dateTime
+		formatString: dd mmm yyyy hh:nn
+		lineageTag: 21a8c441-92fa-5a56-9708-cae3db516448
+		summarizeBy: none
+		sourceColumn: last_successful_run
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_attempted_run
+		dataType: dateTime
+		formatString: dd mmm yyyy hh:nn
+		lineageTag: a51cbcbf-a028-52d8-bae3-ffe4ff2522de
+		summarizeBy: none
+		sourceColumn: last_attempted_run
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_run_status
+		dataType: string
+		lineageTag: 5140a358-8837-59ed-bc16-77c98eeeadf8
+		summarizeBy: none
+		sourceColumn: last_run_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_runtime_seconds
+		dataType: int64
+		formatString: #,0
+		lineageTag: 29e44a81-4084-5a83-9152-1511d7f92091
+		summarizeBy: none
+		sourceColumn: last_runtime_seconds
+
+		annotation SummarizationSetBy = Automatic
+
+	column records_processed
+		dataType: int64
+		formatString: #,0
+		lineageTag: 566dd118-b551-5ce3-870b-edd4292808d6
+		summarizeBy: none
+		sourceColumn: records_processed
+
+		annotation SummarizationSetBy = Automatic
+
+	column records_created
+		dataType: int64
+		formatString: #,0
+		lineageTag: b26a738e-e576-5cef-bc6f-97d8ebae3e82
+		summarizeBy: none
+		sourceColumn: records_created
+
+		annotation SummarizationSetBy = Automatic
+
+	column errors_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: 97e8d3fc-4124-563f-a49d-471f697c158e
+		summarizeBy: none
+		sourceColumn: errors_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column warnings_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: 00e898d8-e951-5e99-a38a-34467da1bec4
+		summarizeBy: none
+		sourceColumn: warnings_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_error
+		dataType: string
+		lineageTag: bc4406d8-1b14-5943-ba73-2427bcba8f35
+		summarizeBy: none
+		sourceColumn: last_error
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_error_at
+		dataType: dateTime
+		formatString: dd mmm yyyy hh:nn
+		lineageTag: 97c398f7-429c-577f-9244-8df9df3f717a
+		summarizeBy: none
+		sourceColumn: last_error_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column next_scheduled_run
+		dataType: dateTime
+		formatString: dd mmm yyyy hh:nn
+		lineageTag: eae8c382-71a0-5f3c-974c-c0d1439de1fc
+		summarizeBy: none
+		sourceColumn: next_scheduled_run
+
+		annotation SummarizationSetBy = Automatic
+
+	column hours_since_success
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 3be86202-2c96-56a8-ad07-f64863bd0849
+		summarizeBy: none
+		sourceColumn: hours_since_success
+
+		annotation SummarizationSetBy = Automatic
+
+	column rag_status
+		dataType: string
+		lineageTag: 6c3e2992-7158-5a3b-9e61-6b05b67e8c23
+		summarizeBy: none
+		sourceColumn: rag_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column rag_label
+		dataType: string
+		lineageTag: affe20f6-9e48-5295-8a3f-d8ee4cc73fa9
+		summarizeBy: none
+		sourceColumn: rag_label
+		sortByColumn: rag_sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column rag_sort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e84d0924-e05f-5c52-91e7-1df3edbe9729
+		summarizeBy: none
+		sourceColumn: rag_sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column rag_reason
+		dataType: string
+		lineageTag: a5c0b760-d8fc-5975-b416-29b63a49f78d
+		summarizeBy: none
+		sourceColumn: rag_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Agent Health' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_agent_health"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"agent_code", type text},
+				        {"agent_name", type text},
+				        {"schedule_description", type text},
+				        {"expected_interval_hours", type number},
+				        {"last_successful_run", type datetime},
+				        {"last_attempted_run", type datetime},
+				        {"last_run_status", type text},
+				        {"last_runtime_seconds", Int64.Type},
+				        {"records_processed", Int64.Type},
+				        {"records_created", Int64.Type},
+				        {"errors_count", Int64.Type},
+				        {"warnings_count", Int64.Type},
+				        {"last_error", type text},
+				        {"last_error_at", type datetime},
+				        {"next_scheduled_run", type datetime},
+				        {"hours_since_success", type number},
+				        {"rag_status", type text},
+				        {"rag_label", type text},
+				        {"rag_sort", Int64.Type},
+				        {"rag_reason", type text}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

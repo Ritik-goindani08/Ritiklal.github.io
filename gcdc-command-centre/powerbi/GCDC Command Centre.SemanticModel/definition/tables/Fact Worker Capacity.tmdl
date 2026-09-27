@@ -1,0 +1,161 @@
+table 'Fact Worker Capacity'
+	lineageTag: de6e3ca9-a2be-5eba-9bd7-15dffbaa2e63
+
+	column worker_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e087066a-ac08-5dff-a105-49f0c94f2b9f
+		summarizeBy: none
+		sourceColumn: worker_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: 0a738087-2d07-5b19-81b6-0d7af6908e06
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender_for_matching
+		dataType: string
+		lineageTag: 6ea068aa-96de-5a0b-b347-37a5eaaaa6c7
+		summarizeBy: none
+		sourceColumn: gender_for_matching
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: e66fa89e-aaed-58ec-8146-c9e126e9d6bb
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_verified_active
+		dataType: int64
+		formatString: #,0
+		lineageTag: df47f197-bfa1-548c-b682-d37854a38342
+		summarizeBy: none
+		sourceColumn: is_verified_active
+
+		annotation SummarizationSetBy = Automatic
+
+	column verification_gaps
+		dataType: string
+		lineageTag: 38fd8e3c-8ef9-5833-b12a-54b143254f1c
+		summarizeBy: none
+		sourceColumn: verification_gaps
+
+		annotation SummarizationSetBy = Automatic
+
+	column capacity_weekly_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 741ed775-dcc0-5471-89a3-77b0b8fc021e
+		summarizeBy: none
+		sourceColumn: capacity_weekly_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column allocated_weekly_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: b1ff9eae-ceec-5823-9635-1c3b6f104f3c
+		summarizeBy: none
+		sourceColumn: allocated_weekly_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column available_weekly_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: f17198d6-0e26-5278-87bd-75dd9fc22142
+		summarizeBy: none
+		sourceColumn: available_weekly_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column utilisation
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 0822f499-c32e-51db-9f58-668a7c23ddd8
+		summarizeBy: none
+		sourceColumn: utilisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_available
+		dataType: int64
+		formatString: #,0
+		lineageTag: 9f145ce4-1e30-546d-904e-58421c6b8608
+		summarizeBy: none
+		sourceColumn: is_available
+
+		annotation SummarizationSetBy = Automatic
+
+	column cap_personal_care
+		dataType: int64
+		formatString: #,0
+		lineageTag: c0352d50-e4df-58b6-b1d0-5bf79595ccf4
+		summarizeBy: none
+		sourceColumn: cap_personal_care
+
+		annotation SummarizationSetBy = Automatic
+
+	column cap_domestic
+		dataType: int64
+		formatString: #,0
+		lineageTag: 19e0d331-d4fb-5486-a3ee-34758051751a
+		summarizeBy: none
+		sourceColumn: cap_domestic
+
+		annotation SummarizationSetBy = Automatic
+
+	column cap_community_access
+		dataType: int64
+		formatString: #,0
+		lineageTag: 407ed2e1-4912-5327-b264-da1de0441d0e
+		summarizeBy: none
+		sourceColumn: cap_community_access
+
+		annotation SummarizationSetBy = Automatic
+
+	column cap_complex_support
+		dataType: int64
+		formatString: #,0
+		lineageTag: 887ee579-7928-5af7-a01b-8834cd2ad78a
+		summarizeBy: none
+		sourceColumn: cap_complex_support
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Worker Capacity' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_worker_capacity"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"worker_id", Int64.Type},
+				        {"region_code", type text},
+				        {"gender_for_matching", type text},
+				        {"status", type text},
+				        {"is_verified_active", Int64.Type},
+				        {"verification_gaps", type text},
+				        {"capacity_weekly_hours", type number},
+				        {"allocated_weekly_hours", type number},
+				        {"available_weekly_hours", type number},
+				        {"utilisation", type number},
+				        {"is_available", Int64.Type},
+				        {"cap_personal_care", Int64.Type},
+				        {"cap_domestic", Int64.Type},
+				        {"cap_community_access", Int64.Type},
+				        {"cap_complex_support", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

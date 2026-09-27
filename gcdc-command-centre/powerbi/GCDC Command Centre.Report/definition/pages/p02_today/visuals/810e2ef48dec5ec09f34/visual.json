@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "810e2ef48dec5ec09f34",
+  "position": {
+    "x": 16,
+    "y": 148,
+    "z": 7000,
+    "height": 80,
+    "width": 243,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Referrals Needing Action"
+                }
+              },
+              "queryRef": "_Measures.Referrals Needing Action",
+              "nativeQueryRef": "Referrals Needing Action"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Referrals Needing Action'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

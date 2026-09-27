@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "0f76aecc0f1f5dd58cb7",
+  "position": {
+    "x": 155,
+    "y": 60,
+    "z": 3000,
+    "height": 76,
+    "width": 131,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "First-Touch Sent This Week"
+                }
+              },
+              "queryRef": "_Measures.First-Touch Sent This Week",
+              "nativeQueryRef": "First-Touch Sent This Week"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'First-Touch Sent This Week'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

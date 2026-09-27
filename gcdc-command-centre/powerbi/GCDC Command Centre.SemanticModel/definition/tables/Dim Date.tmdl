@@ -1,0 +1,161 @@
+table 'Dim Date'
+	lineageTag: 4e8d31ed-f32f-5d89-978f-287175c4e695
+	dataCategory: Time
+
+	column date
+		dataType: dateTime
+		isKey
+		formatString: dd mmm yyyy
+		lineageTag: 924d8586-3bd0-5f7e-ab32-0d78230b8dd9
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 0cabf678-fc3d-50d0-8eb0-a65bcad25f97
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_number
+		dataType: int64
+		isHidden
+		formatString: #,0
+		lineageTag: c48620d6-6170-5c7c-af18-ee9c0aa185e1
+		summarizeBy: none
+		sourceColumn: month_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: bfe61564-32a8-54ac-9125-2553ef5860d4
+		summarizeBy: none
+		sourceColumn: month_name
+		sortByColumn: month_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: string
+		lineageTag: 8267c32c-24a3-5feb-9e26-f33948e959c5
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_start
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 46a5882f-2e10-5ab9-9b08-0ab600dcb67d
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column week_start
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 363e089c-7e9f-5d3d-bc06-11c1e54b6bbd
+		summarizeBy: none
+		sourceColumn: week_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column iso_week
+		dataType: int64
+		formatString: 0
+		lineageTag: 53b2cf6d-dfec-5936-9ddf-1b2b31473100
+		summarizeBy: none
+		sourceColumn: iso_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_of_week
+		dataType: int64
+		formatString: #,0
+		lineageTag: 51e88173-bdcb-58ce-af64-a247ca177699
+		summarizeBy: none
+		sourceColumn: day_of_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_name
+		dataType: string
+		lineageTag: 275dfa93-8a1f-575b-af7e-1234e20931cb
+		summarizeBy: none
+		sourceColumn: day_name
+		sortByColumn: day_of_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: int64
+		formatString: #,0
+		lineageTag: e9802a21-2e2a-5981-a716-6cecda4032e4
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_business_day
+		dataType: int64
+		formatString: #,0
+		lineageTag: ff75c17a-91bf-5905-84f8-c44ab9266a79
+		summarizeBy: none
+		sourceColumn: is_business_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column financial_year
+		dataType: string
+		lineageTag: 1bad549b-f5cc-583e-a2de-40e5f66c22b7
+		summarizeBy: none
+		sourceColumn: financial_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column relative_day
+		dataType: int64
+		formatString: #,0
+		lineageTag: 629bf590-f9bd-505b-9109-11397f5eb93c
+		summarizeBy: none
+		sourceColumn: relative_day
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Date' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_dim_date"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"date", type date},
+				        {"year", Int64.Type},
+				        {"month_number", Int64.Type},
+				        {"month_name", type text},
+				        {"year_month", type text},
+				        {"month_start", type date},
+				        {"week_start", type date},
+				        {"iso_week", Int64.Type},
+				        {"day_of_week", Int64.Type},
+				        {"day_name", type text},
+				        {"is_weekend", Int64.Type},
+				        {"is_business_day", Int64.Type},
+				        {"financial_year", type text},
+				        {"relative_day", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

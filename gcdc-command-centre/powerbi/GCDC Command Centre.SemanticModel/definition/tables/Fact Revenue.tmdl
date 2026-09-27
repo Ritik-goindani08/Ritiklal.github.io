@@ -1,0 +1,259 @@
+table 'Fact Revenue'
+	lineageTag: a4cf1039-8d73-5f73-afb9-bd090f37e5a0
+
+	column revenue_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e19939a1-0266-5add-89c1-7ca15997af69
+		summarizeBy: none
+		sourceColumn: revenue_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_number
+		dataType: string
+		lineageTag: 2de9c432-13f6-5168-b627-883d48ebf5a9
+		summarizeBy: none
+		sourceColumn: invoice_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 08f591f4-db6f-5e97-9afe-3f6bb20d244f
+		summarizeBy: none
+		sourceColumn: invoice_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column service_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 4d32b388-8a29-5fae-b915-df7e39565496
+		summarizeBy: none
+		sourceColumn: service_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column service_month
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: d73e3aad-42df-5ce9-a497-134f8c01b8b9
+		summarizeBy: none
+		sourceColumn: service_month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column paid_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: c5847de4-4386-5f78-8182-93bedc3cfe84
+		summarizeBy: none
+		sourceColumn: paid_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2d43a6f1-5df6-560a-a5cc-0850b85b470b
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column participant_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 43a134f7-171b-54fc-8e11-04427b47c1b1
+		summarizeBy: none
+		sourceColumn: participant_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column roster_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0f232ccd-511a-5520-b724-72a34e404db2
+		summarizeBy: none
+		sourceColumn: roster_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 42295f53-bb5a-5f99-b27b-de4ab5007b60
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_code
+		dataType: string
+		lineageTag: e7dbee4c-232c-55a3-802a-2f2873d573c2
+		summarizeBy: none
+		sourceColumn: source_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_type_code
+		dataType: string
+		lineageTag: 98aa41cc-5729-58f6-b626-aa6a0fecf960
+		summarizeBy: none
+		sourceColumn: opportunity_type_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: c75f7caf-cd58-574e-a02d-78c2089e0714
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column service_type_code
+		dataType: string
+		lineageTag: d4faca5b-1147-5632-a5d1-45f55f2d2fb9
+		summarizeBy: none
+		sourceColumn: service_type_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: c9532ff0-2070-53bc-80af-f539ad2ca2de
+		summarizeBy: none
+		sourceColumn: hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column hourly_rate
+		dataType: double
+		formatString: $#,0
+		lineageTag: 0c07d086-a78c-592a-b0b1-cb8b4a885475
+		summarizeBy: none
+		sourceColumn: hourly_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount_ex_gst
+		dataType: double
+		formatString: $#,0
+		lineageTag: 8c32c02e-2e60-5e73-9d14-fb441806f3b1
+		summarizeBy: none
+		sourceColumn: amount_ex_gst
+
+		annotation SummarizationSetBy = Automatic
+
+	column recognised_amount
+		dataType: double
+		formatString: $#,0
+		lineageTag: a7551187-c76b-584a-9afc-314df53bf017
+		summarizeBy: none
+		sourceColumn: recognised_amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount_received
+		dataType: double
+		formatString: $#,0
+		lineageTag: 36a5ba4a-7307-5a55-abf9-4554af795f1a
+		summarizeBy: none
+		sourceColumn: amount_received
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: b549ea38-8cca-5353-86f9-36eac2e84c3c
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column payer_type
+		dataType: string
+		lineageTag: 1a042ca2-42c7-56cd-ab17-13f48041f3b7
+		summarizeBy: none
+		sourceColumn: payer_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_system
+		dataType: string
+		lineageTag: 02b51595-cb3d-5c2b-938d-be1ff34279ce
+		summarizeBy: none
+		sourceColumn: source_system
+
+		annotation SummarizationSetBy = Automatic
+
+	column attributed_org_contacted
+		dataType: int64
+		formatString: #,0
+		lineageTag: d29c96ba-62a5-5cea-b13f-012ea10c5ecc
+		summarizeBy: none
+		sourceColumn: attributed_org_contacted
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_from_contacted_orgs
+		dataType: double
+		formatString: $#,0
+		lineageTag: 126bacf8-f7c5-5789-8e32-36b92e0d5a46
+		summarizeBy: none
+		sourceColumn: revenue_from_contacted_orgs
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Revenue' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_revenue"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"revenue_id", Int64.Type},
+				        {"invoice_number", type text},
+				        {"invoice_date", type date},
+				        {"service_date", type date},
+				        {"service_month", type date},
+				        {"paid_date", type date},
+				        {"organisation_id", Int64.Type},
+				        {"participant_id", Int64.Type},
+				        {"roster_id", Int64.Type},
+				        {"opportunity_id", Int64.Type},
+				        {"source_code", type text},
+				        {"opportunity_type_code", type text},
+				        {"region_code", type text},
+				        {"service_type_code", type text},
+				        {"hours", type number},
+				        {"hourly_rate", type number},
+				        {"amount_ex_gst", type number},
+				        {"recognised_amount", type number},
+				        {"amount_received", type number},
+				        {"status", type text},
+				        {"payer_type", type text},
+				        {"source_system", type text},
+				        {"attributed_org_contacted", Int64.Type},
+				        {"revenue_from_contacted_orgs", type number}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

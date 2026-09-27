@@ -1,0 +1,244 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "bf79ee1a444e5b64ba72",
+  "position": {
+    "x": 16,
+    "y": 236,
+    "z": 12000,
+    "height": 468,
+    "width": 1248,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Action Centre"
+                    }
+                  },
+                  "Property": "priority"
+                }
+              },
+              "queryRef": "Action Centre.priority",
+              "nativeQueryRef": "Priority",
+              "displayName": "Priority"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Action Centre"
+                    }
+                  },
+                  "Property": "category"
+                }
+              },
+              "queryRef": "Action Centre.category",
+              "nativeQueryRef": "Type",
+              "displayName": "Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Action Centre"
+                    }
+                  },
+                  "Property": "organisation_name"
+                }
+              },
+              "queryRef": "Action Centre.organisation_name",
+              "nativeQueryRef": "Organisation",
+              "displayName": "Organisation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Action Centre"
+                    }
+                  },
+                  "Property": "opportunity_title"
+                }
+              },
+              "queryRef": "Action Centre.opportunity_title",
+              "nativeQueryRef": "Opportunity",
+              "displayName": "Opportunity"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Action Centre"
+                    }
+                  },
+                  "Property": "current_stage"
+                }
+              },
+              "queryRef": "Action Centre.current_stage",
+              "nativeQueryRef": "Current stage",
+              "displayName": "Current stage"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Action Centre"
+                    }
+                  },
+                  "Property": "next_action"
+                }
+              },
+              "queryRef": "Action Centre.next_action",
+              "nativeQueryRef": "Next action",
+              "displayName": "Next action"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Action Centre"
+                    }
+                  },
+                  "Property": "owner"
+                }
+              },
+              "queryRef": "Action Centre.owner",
+              "nativeQueryRef": "Owner",
+              "displayName": "Owner"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Action Centre"
+                    }
+                  },
+                  "Property": "due_date"
+                }
+              },
+              "queryRef": "Action Centre.due_date",
+              "nativeQueryRef": "Due",
+              "displayName": "Due"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Action Centre"
+                    }
+                  },
+                  "Property": "status_label"
+                }
+              },
+              "queryRef": "Action Centre.status_label",
+              "nativeQueryRef": "Status",
+              "displayName": "Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Action Centre"
+                    }
+                  },
+                  "Property": "potential_revenue_display"
+                }
+              },
+              "queryRef": "Action Centre.potential_revenue_display",
+              "nativeQueryRef": "Potential revenue",
+              "displayName": "Potential revenue"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Action Centre"
+                    }
+                  },
+                  "Property": "last_activity_date"
+                }
+              },
+              "queryRef": "Action Centre.last_activity_date",
+              "nativeQueryRef": "Last activity",
+              "displayName": "Last activity"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Action Centre"
+                    }
+                  },
+                  "Property": "action_score"
+                }
+              },
+              "queryRef": "Action Centre.action_score",
+              "nativeQueryRef": "Rank",
+              "displayName": "Rank"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Action Centre"
+                  }
+                },
+                "Property": "action_score"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Priority actions (highest rank first)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

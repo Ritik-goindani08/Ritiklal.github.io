@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "4a90f576010b5830b983",
+  "position": {
+    "x": 424,
+    "y": 244,
+    "z": 15000,
+    "height": 460,
+    "width": 480,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "funnel",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Funnel Count"
+                }
+              },
+              "queryRef": "_Measures.Funnel Count",
+              "nativeQueryRef": "Opportunities",
+              "displayName": "Opportunities"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Stage"
+                    }
+                  },
+                  "Property": "stage_name"
+                }
+              },
+              "queryRef": "Dim Stage.stage_name",
+              "nativeQueryRef": "Stage",
+              "displayName": "Stage"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sales funnel — opportunity to recurring roster'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

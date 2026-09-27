@@ -1,0 +1,176 @@
+table 'Fact Application'
+	lineageTag: 87a4a7b2-4fc5-50cc-bd0a-2e1a86d4c202
+
+	column application_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bc966f11-4372-5fdd-aed2-c68e7ef8ab8c
+		summarizeBy: none
+		sourceColumn: application_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column partnership_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1ff2c961-78f7-5008-a8d2-cb98f227cbe9
+		summarizeBy: none
+		sourceColumn: partnership_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 502e5ee6-1cb8-5e0c-ade6-d517709149e6
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: 4959ea31-ab72-5086-ab4a-42bfd263960f
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column partnership_type
+		dataType: string
+		lineageTag: ac5d3d34-1fc9-58fb-8869-b43bac623da7
+		summarizeBy: none
+		sourceColumn: partnership_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column application_method
+		dataType: string
+		lineageTag: 20eecc61-c068-5ed3-9c1f-b33b142f5afa
+		summarizeBy: none
+		sourceColumn: application_method
+
+		annotation SummarizationSetBy = Automatic
+
+	column application_url
+		dataType: string
+		lineageTag: 46cf4a47-fc3f-506b-894d-c3c696bf2392
+		summarizeBy: none
+		sourceColumn: application_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 38935214-5c85-575e-8da8-c17d7bb467c7
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column requires_ritik
+		dataType: int64
+		formatString: #,0
+		lineageTag: 742fc7f8-d869-539c-bf48-bae8d9a84545
+		summarizeBy: none
+		sourceColumn: requires_ritik
+
+		annotation SummarizationSetBy = Automatic
+
+	column needs_completion
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4b55b386-f050-517d-b3dd-b32f674a70ea
+		summarizeBy: none
+		sourceColumn: needs_completion
+
+		annotation SummarizationSetBy = Automatic
+
+	column priority_tier
+		dataType: int64
+		formatString: #,0
+		lineageTag: 87b03613-45d0-5ec8-bebe-2af4612ae700
+		summarizeBy: none
+		sourceColumn: priority_tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column submitted_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: ea4db444-6cf2-50b4-951d-a41e43d2ce3d
+		summarizeBy: none
+		sourceColumn: submitted_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column decision_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: d40d76a4-f3da-5730-b67b-6f1a913bf95d
+		summarizeBy: none
+		sourceColumn: decision_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column next_action
+		dataType: string
+		lineageTag: 2a745aec-38e3-5506-b722-8b0b650b8b17
+		summarizeBy: none
+		sourceColumn: next_action
+
+		annotation SummarizationSetBy = Automatic
+
+	column next_action_due
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 2f4e56ea-590e-5272-9f21-9bfe43faa037
+		summarizeBy: none
+		sourceColumn: next_action_due
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column notes
+		dataType: string
+		lineageTag: 6ea051b6-1678-5c5f-a379-ba83eb825919
+		summarizeBy: none
+		sourceColumn: notes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Application' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_application"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"application_id", Int64.Type},
+				        {"partnership_id", Int64.Type},
+				        {"organisation_id", Int64.Type},
+				        {"region_code", type text},
+				        {"partnership_type", type text},
+				        {"application_method", type text},
+				        {"application_url", type text},
+				        {"status", type text},
+				        {"requires_ritik", Int64.Type},
+				        {"needs_completion", Int64.Type},
+				        {"priority_tier", Int64.Type},
+				        {"submitted_date", type date},
+				        {"decision_date", type date},
+				        {"next_action", type text},
+				        {"next_action_due", type date},
+				        {"notes", type text}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,2 @@
+invoice_number,invoice_date,service_period_start,service_period_end,roster_ref,participant_ref,organisation.name,service_type_code,hours,hourly_rate,amount_ex_gst,gst_amount,status,paid_date,payer_type,notes
+EXAMPLE-INV-0001,2026-09-07,2026-09-01,2026-09-07,EXAMPLE-R-1,EXAMPLE-P-001,EXAMPLE Support Coordination,PERSONAL_CARE,8,70.23,561.84,0,PAID,2026-09-12,PLAN_MANAGER,

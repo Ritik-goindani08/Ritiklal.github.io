@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "9fa671b5c84c56e7b4f2",
+  "position": {
+    "x": 424,
+    "y": 152,
+    "z": 11000,
+    "height": 270,
+    "width": 400,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Opportunities Found"
+                }
+              },
+              "queryRef": "_Measures.Opportunities Found",
+              "nativeQueryRef": "Opportunities Found"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Opportunity Type"
+                    }
+                  },
+                  "Property": "opportunity_type_name"
+                }
+              },
+              "queryRef": "Dim Opportunity Type.opportunity_type_name",
+              "nativeQueryRef": "Type",
+              "displayName": "Type"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Opportunities by type'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

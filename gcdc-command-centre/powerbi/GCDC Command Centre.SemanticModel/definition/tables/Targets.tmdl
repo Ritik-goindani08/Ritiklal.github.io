@@ -1,0 +1,75 @@
+table Targets
+	lineageTag: 4dd8318d-2968-5b5a-b241-14aff0881b26
+
+	column target_code
+		dataType: string
+		lineageTag: 082dc5e5-19e4-5311-8304-8e6adc4f3a08
+		summarizeBy: none
+		sourceColumn: target_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_value
+		dataType: double
+		formatString: $#,0
+		lineageTag: b7609c89-eb7f-5fc1-ac8f-86479e69ccf1
+		summarizeBy: none
+		sourceColumn: target_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: a97f4900-7359-5d66-9037-e85cdeb6c229
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 6b6f7569-3099-5df3-bed5-65f566cd4951
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column effective_from
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 6c6568fe-ae51-5b2a-98b8-9374570bc1c9
+		summarizeBy: none
+		sourceColumn: effective_from
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column effective_to
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: f41930c5-902f-5d1d-9aeb-00ec5788756d
+		summarizeBy: none
+		sourceColumn: effective_to
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Targets = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_targets"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"target_code", type text},
+				        {"target_value", type number},
+				        {"unit", type text},
+				        {"description", type text},
+				        {"effective_from", type date},
+				        {"effective_to", type date}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

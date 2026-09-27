@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "f9363cd3cc9a5492b1b0",
+  "position": {
+    "x": 487,
+    "y": 60,
+    "z": 5000,
+    "height": 84,
+    "width": 149,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Applications Submitted"
+                }
+              },
+              "queryRef": "_Measures.Applications Submitted",
+              "nativeQueryRef": "Applications Submitted"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Applications Submitted'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

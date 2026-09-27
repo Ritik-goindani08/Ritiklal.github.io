@@ -1,0 +1,62 @@
+table 'Dim Stage'
+	lineageTag: 1dc21597-c675-52e8-96e6-cf5fa883d1aa
+
+	column stage_code
+		dataType: string
+		lineageTag: ec6aee51-beac-56b7-bd60-3e113fdb34d4
+		summarizeBy: none
+		sourceColumn: stage_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column stage_name
+		dataType: string
+		lineageTag: 642aa135-495d-5f24-9abc-00372ddc7dc0
+		summarizeBy: none
+		sourceColumn: stage_name
+		sortByColumn: stage_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column stage_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 7afd78a5-da16-50b5-bb71-cf2518cddffc
+		summarizeBy: none
+		sourceColumn: stage_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column stage_probability
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 069323ed-c37a-557e-98ad-8bce2582bbf6
+		summarizeBy: none
+		sourceColumn: stage_probability
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 3b1bfeaa-a6cc-5de6-bcaf-9c6a92808751
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Stage' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_dim_stage"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"stage_code", type text},
+				        {"stage_name", type text},
+				        {"stage_order", Int64.Type},
+				        {"stage_probability", type number},
+				        {"description", type text}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -7,9 +7,9 @@
 | 06:00–20:00 every 30 min (optional) | Outlook sync | `gcdc sync outlook` |
 | 06:15 | Backup | `gcdc backup` |
 | 06:30 | Refresh: config sync, reconcile, data-quality, yesterday's snapshot, export | `gcdc refresh` |
-| 07:00 weekdays | Daily BI Agent | `gcdc brief` |
+| 07:00 weekdays | Daily BI Agent (then re-exports so Power BI shows today's focus) | `gcdc brief` |
 | 08:00–18:00 hourly | Refresh | `gcdc refresh` |
-| Power BI Service | Scheduled refresh from OneDrive | (configured in the Service) |
+| Power BI Service, from 07:30 | Scheduled refresh from OneDrive | (configured in the Service) |
 
 Windows: `scripts\windows\register_tasks.ps1` (`-Unregister` removes the tasks). Linux/macOS: `scripts/unix/gcdc.crontab`.
 Output goes to `logs\gcdc-YYYY-MM.log`. Every run also appears on the **Agent Health** page.

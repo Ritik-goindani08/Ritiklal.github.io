@@ -29,6 +29,12 @@ def test_brief_on_demo_data(demo, cfg):
     assert tuple(run) == ("SUCCESS", 1)
 
 
+def test_focus_is_exported_for_power_bi(demo, cfg):
+    r = run_brief(demo, cfg, force=True)
+    rows = demo.execute("SELECT focus_rank, focus_title FROM pbi_daily_focus ORDER BY focus_rank").fetchall()
+    assert [(i + 1, f["title"]) for i, f in enumerate(r["focus"])] == [tuple(x) for x in rows]
+
+
 def test_focus_is_ranked_closest_to_revenue(demo, cfg):
     facts = gather_facts(demo, cfg, local_today(cfg.utc_offset_hours))
     ids = [c.id for c in focus_candidates(facts, cfg)]

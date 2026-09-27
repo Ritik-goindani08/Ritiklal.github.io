@@ -206,11 +206,16 @@ def cmd_status(args, cfg):
 def cmd_brief(args, cfg):
     from gcdc.brief import run_brief
 
-    result = run_brief(open_db(cfg), cfg, brief_date=date.fromisoformat(args.date) if args.date else None,
+    conn = open_db(cfg)
+    result = run_brief(conn, cfg, brief_date=date.fromisoformat(args.date) if args.date else None,
                        use_ai=args.ai, save=not args.no_save, force=args.force)
     print(result["markdown"])
     if result.get("path"):
         print(f"\n[saved to {result['path']}]", file=sys.stderr)
+        if not args.no_export:  # so the next Power BI refresh shows today's focus
+            from gcdc.export import export_all
+
+            export_all(conn, cfg)
 
 
 def cmd_legacy(args, cfg):
@@ -328,6 +333,7 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("--ai", action="store_true", help="add a Claude reasoning pass to choose today's focus")
     s.add_argument("--no-save", action="store_true")
     s.add_argument("--force", action="store_true", help="run even on weekends / public holidays")
+    s.add_argument("--no-export", action="store_true", help="do not refresh the Power BI export after saving")
     s.set_defaults(func=cmd_brief)
 
     s = sub.add_parser("legacy", help="audit or import an existing agent SQLite database")

@@ -5,7 +5,7 @@
     "x": 16,
     "y": 236,
     "z": 12000,
-    "height": 468,
+    "height": 118,
     "width": 1248,
     "tabOrder": 12000
   },
@@ -21,180 +21,60 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Action Centre"
+                      "Entity": "Daily Focus"
                     }
                   },
-                  "Property": "priority"
+                  "Property": "focus_rank"
                 }
               },
-              "queryRef": "Action Centre.priority",
-              "nativeQueryRef": "Priority",
-              "displayName": "Priority"
+              "queryRef": "Daily Focus.focus_rank",
+              "nativeQueryRef": "#",
+              "displayName": "#"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Action Centre"
+                      "Entity": "Daily Focus"
                     }
                   },
-                  "Property": "category"
+                  "Property": "focus_title"
                 }
               },
-              "queryRef": "Action Centre.category",
-              "nativeQueryRef": "Type",
-              "displayName": "Type"
+              "queryRef": "Daily Focus.focus_title",
+              "nativeQueryRef": "Focus",
+              "displayName": "Focus"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Action Centre"
+                      "Entity": "Daily Focus"
                     }
                   },
-                  "Property": "organisation_name"
+                  "Property": "focus_why"
                 }
               },
-              "queryRef": "Action Centre.organisation_name",
-              "nativeQueryRef": "Organisation",
-              "displayName": "Organisation"
+              "queryRef": "Daily Focus.focus_why",
+              "nativeQueryRef": "Why it moves recurring revenue",
+              "displayName": "Why it moves recurring revenue"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Action Centre"
+                      "Entity": "Daily Focus"
                     }
                   },
-                  "Property": "opportunity_title"
+                  "Property": "brief_date"
                 }
               },
-              "queryRef": "Action Centre.opportunity_title",
-              "nativeQueryRef": "Opportunity",
-              "displayName": "Opportunity"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Action Centre"
-                    }
-                  },
-                  "Property": "current_stage"
-                }
-              },
-              "queryRef": "Action Centre.current_stage",
-              "nativeQueryRef": "Current stage",
-              "displayName": "Current stage"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Action Centre"
-                    }
-                  },
-                  "Property": "next_action"
-                }
-              },
-              "queryRef": "Action Centre.next_action",
-              "nativeQueryRef": "Next action",
-              "displayName": "Next action"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Action Centre"
-                    }
-                  },
-                  "Property": "owner"
-                }
-              },
-              "queryRef": "Action Centre.owner",
-              "nativeQueryRef": "Owner",
-              "displayName": "Owner"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Action Centre"
-                    }
-                  },
-                  "Property": "due_date"
-                }
-              },
-              "queryRef": "Action Centre.due_date",
-              "nativeQueryRef": "Due",
-              "displayName": "Due"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Action Centre"
-                    }
-                  },
-                  "Property": "status_label"
-                }
-              },
-              "queryRef": "Action Centre.status_label",
-              "nativeQueryRef": "Status",
-              "displayName": "Status"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Action Centre"
-                    }
-                  },
-                  "Property": "potential_revenue_display"
-                }
-              },
-              "queryRef": "Action Centre.potential_revenue_display",
-              "nativeQueryRef": "Potential revenue",
-              "displayName": "Potential revenue"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Action Centre"
-                    }
-                  },
-                  "Property": "last_activity_date"
-                }
-              },
-              "queryRef": "Action Centre.last_activity_date",
-              "nativeQueryRef": "Last activity",
-              "displayName": "Last activity"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Action Centre"
-                    }
-                  },
-                  "Property": "action_score"
-                }
-              },
-              "queryRef": "Action Centre.action_score",
-              "nativeQueryRef": "Rank",
-              "displayName": "Rank"
+              "queryRef": "Daily Focus.brief_date",
+              "nativeQueryRef": "Brief",
+              "displayName": "Brief"
             }
           ]
         }
@@ -206,13 +86,13 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Action Centre"
+                    "Entity": "Daily Focus"
                   }
                 },
-                "Property": "action_score"
+                "Property": "focus_rank"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ],
         "isDefaultSort": false
@@ -232,7 +112,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Priority actions (highest rank first)'"
+                  "Value": "'Today''s focus — Daily BI Agent'"
                 }
               }
             }

@@ -62,7 +62,7 @@ _EXPLICIT_TYPES = {
     "conversion_from_previous": "double", "mrr_pct_of_target": "double", "reply_rate": "double",
     "positive_reply_rate": "double", "worker_utilisation": "double", "hours_per_100_contacted": "double",
     "revenue_per_100_contacted": "double", "action_score": "double", "hours": "double", "slot_hours": "double",
-    "priority_tier": "int64", "referrals": "int64", "attributed_org_contacted": "int64",
+    "priority_tier": "int64", "referrals": "int64", "attributed_org_contacted": "int64", "focus_rank": "int64",
 }
 _STRING_SUFFIX = re.compile(r"(_code|_ref|_name|_label|_status|_display|_list|_note|_basis|_model|_gaps|_text|"
                             r"_reason|_url|_detail|_email|_icon|_title|_type|_level|_method|_source|_by|_key)$")

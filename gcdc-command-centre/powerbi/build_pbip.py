@@ -62,7 +62,7 @@ TABLE_NAMES = {
     "pbi_dim_organisation": "Dim Organisation", "pbi_dim_worker": "Dim Worker", "pbi_dim_participant": "Dim Participant",
     "pbi_dim_agent": "Dim Agent", "pbi_dim_dq_check": "Dim DQ Check",
     "pbi_action_centre": "Action Centre", "pbi_kpi_current": "KPI Current", "pbi_funnel": "Funnel Summary",
-    "pbi_meta": "Meta", "pbi_targets": "Targets", "pbi_daily_brief": "Daily Brief",
+    "pbi_meta": "Meta", "pbi_targets": "Targets", "pbi_daily_brief": "Daily Brief", "pbi_daily_focus": "Daily Focus",
 }
 
 
@@ -696,6 +696,9 @@ def _pages() -> list[Page]:
          M("Items Needing Approval", "Needs Ritik's approval")], 60, 80) + cards(
         [M("Referrals Needing Action"), M("Meetings Today"), M("Applications To Complete", "Applications / forms to complete"),
          M("Bounced Emails (recent)", "Bounced emails (7 days)"), M("Failed Agents", "Failed / silent agents")], 148, 80) + [
+        table([C("Daily Focus", "focus_rank", "#"), C("Daily Focus", "focus_title", "Focus"),
+               C("Daily Focus", "focus_why", "Why it moves recurring revenue"), C("Daily Focus", "brief_date", "Brief")],
+              16, 236, 1248, 118, "Today's focus — Daily BI Agent", sort=(C("Daily Focus", "focus_rank"), "Ascending")),
         table([C("Action Centre", "priority", "Priority"), C("Action Centre", "category", "Type"),
                C("Action Centre", "organisation_name", "Organisation"),
                C("Action Centre", "opportunity_title", "Opportunity"), C("Action Centre", "current_stage", "Current stage"),
@@ -703,7 +706,7 @@ def _pages() -> list[Page]:
                C("Action Centre", "due_date", "Due"), C("Action Centre", "status_label", "Status"),
                C("Action Centre", "potential_revenue_display", "Potential revenue"),
                C("Action Centre", "last_activity_date", "Last activity"), C("Action Centre", "action_score", "Rank")],
-              16, 236, 1248, 468, "Priority actions (highest rank first)",
+              16, 362, 1248, 342, "Priority actions (highest rank first)",
               sort=(C("Action Centre", "action_score"), "Descending")),
     ]))
     # 3 -------------------------------------------------------------------------------------------------

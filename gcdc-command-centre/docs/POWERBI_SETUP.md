@@ -59,7 +59,9 @@ reading the local export folder. That version cannot refresh in the Service with
 3. **Data source credentials → Edit credentials**: Authentication method **OAuth2**, privacy level
    **Organizational** → **Sign in**.
 4. **Refresh → Configure a refresh schedule**: On; time zone **(UTC+10:00) Brisbane**; add times after the
-   PC's exports, e.g. 07:00, 08:30, 10:30, 12:30, 14:30, 16:30, 18:30. Tick **Send refresh failure notifications**.
+   PC's exports, e.g. 07:30, 08:30, 10:30, 12:30, 14:30, 16:30, 18:30. Tick **Send refresh failure notifications**.
+   The 07:30 refresh picks up the morning brief. The Daily BI Agent re-exports after it runs at 07:00, so its
+   focus items appear in the "Today's focus" table on the Today page.
 5. Optional: pin the Executive page to a dashboard, or install the Power BI mobile app.
 
 Sharing the report with anyone else requires Power BI Pro (or Premium Per User) licences for them and you.

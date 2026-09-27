@@ -107,4 +107,5 @@ Candidates are ranked closest-to-revenue first: referral to action → trial to 
 approve → worker to match → reply to answer → meeting today → P1 calls → partnership application →
 overdue follow-ups → approvals → broken critical automation → outreach volume (if the pipeline is thin).
 Overdue items get an urgency bonus. The top three become the brief's focus. With `--ai`, Claude picks and
-explains up to three from the same candidate list. It cannot add candidates or numbers.
+explains up to three from the same candidate list. It cannot add candidates or numbers. The chosen items
+are exported as `pbi_daily_focus` and shown at the top of the Today page.

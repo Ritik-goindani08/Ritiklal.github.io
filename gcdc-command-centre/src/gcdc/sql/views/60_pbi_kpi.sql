@@ -157,3 +157,14 @@ CREATE VIEW pbi_daily_brief AS
 SELECT brief_date, generated_at, generator, brief_markdown
 FROM daily_briefs
 WHERE brief_date = (SELECT MAX(brief_date) FROM daily_briefs);
+
+-- The latest brief's 1-3 recommended focus items, one row each (Today page).
+CREATE VIEW pbi_daily_focus AS
+SELECT
+    b.brief_date,
+    CAST(f.key AS INTEGER) + 1              AS focus_rank,
+    json_extract(f.value, '$.title')        AS focus_title,
+    json_extract(f.value, '$.why')          AS focus_why,
+    b.generator
+FROM daily_briefs b, json_each(b.brief_json, '$.focus') f
+WHERE b.brief_date = (SELECT MAX(brief_date) FROM daily_briefs);

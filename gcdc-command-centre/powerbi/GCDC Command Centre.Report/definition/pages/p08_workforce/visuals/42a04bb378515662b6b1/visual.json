@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "42a04bb378515662b6b1",
+  "position": {
+    "x": 832,
+    "y": 290,
+    "z": 13000,
+    "height": 132,
+    "width": 432,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Capacity Hours"
+                }
+              },
+              "queryRef": "_Measures.Capacity Hours",
+              "nativeQueryRef": "Capacity Hours"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Worker Capacity"
+                    }
+                  },
+                  "Property": "gender_for_matching"
+                }
+              },
+              "queryRef": "Fact Worker Capacity.gender_for_matching",
+              "nativeQueryRef": "Gender (matching only)",
+              "displayName": "Gender (matching only)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Capacity by gender (for participant matching)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

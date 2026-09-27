@@ -1,0 +1,163 @@
+table 'Fact Agent Run'
+	lineageTag: 0fa0385b-826d-577a-a757-cb05e8d81200
+
+	column run_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e257dd76-78ef-52bb-80c7-17499df8d700
+		summarizeBy: none
+		sourceColumn: run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column agent_code
+		dataType: string
+		lineageTag: a975c59d-def7-5fbe-82cb-129d6efba118
+		summarizeBy: none
+		sourceColumn: agent_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column run_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 93ec1d7d-bc12-5547-88c4-203534787c75
+		summarizeBy: none
+		sourceColumn: run_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column started_local
+		dataType: dateTime
+		formatString: dd mmm yyyy hh:nn
+		lineageTag: 12fd0b6f-a0b0-524e-8f02-884a6fdfd274
+		summarizeBy: none
+		sourceColumn: started_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column finished_local
+		dataType: dateTime
+		formatString: dd mmm yyyy hh:nn
+		lineageTag: 61b418c2-7a1d-5f33-8e5a-b66583f47f5d
+		summarizeBy: none
+		sourceColumn: finished_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: f9e42f23-f222-5d29-aa52-501122e62aca
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column trigger_type
+		dataType: string
+		lineageTag: 7f2670e7-ace3-5e80-a386-0986aef053fe
+		summarizeBy: none
+		sourceColumn: trigger_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column runtime_seconds
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4c598399-c766-5c7e-a647-94a947c02990
+		summarizeBy: none
+		sourceColumn: runtime_seconds
+
+		annotation SummarizationSetBy = Automatic
+
+	column records_processed
+		dataType: int64
+		formatString: #,0
+		lineageTag: c93f3f0f-ed85-542e-84ce-0f6a13595496
+		summarizeBy: none
+		sourceColumn: records_processed
+
+		annotation SummarizationSetBy = Automatic
+
+	column records_created
+		dataType: int64
+		formatString: #,0
+		lineageTag: 378292d4-bd96-5d1b-8873-944e7792c90f
+		summarizeBy: none
+		sourceColumn: records_created
+
+		annotation SummarizationSetBy = Automatic
+
+	column records_updated
+		dataType: int64
+		formatString: #,0
+		lineageTag: 66909942-ef38-59f4-ab8d-b9a34f624d06
+		summarizeBy: none
+		sourceColumn: records_updated
+
+		annotation SummarizationSetBy = Automatic
+
+	column records_skipped
+		dataType: int64
+		formatString: #,0
+		lineageTag: bfcc6c6f-37eb-5cd8-92d1-ad3ee3512879
+		summarizeBy: none
+		sourceColumn: records_skipped
+
+		annotation SummarizationSetBy = Automatic
+
+	column errors_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: e9bcdfd5-fd29-5da1-826d-ebb18de2af77
+		summarizeBy: none
+		sourceColumn: errors_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column warnings_count
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2c2cecb2-32b5-5c03-9cff-ee2d76e7333e
+		summarizeBy: none
+		sourceColumn: warnings_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_error
+		dataType: string
+		lineageTag: 5a9a82a3-556a-52b0-bc7e-cd4156368e63
+		summarizeBy: none
+		sourceColumn: last_error
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Agent Run' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_agent_run"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"run_id", Int64.Type},
+				        {"agent_code", type text},
+				        {"run_date", type date},
+				        {"started_local", type datetime},
+				        {"finished_local", type datetime},
+				        {"status", type text},
+				        {"trigger_type", type text},
+				        {"runtime_seconds", Int64.Type},
+				        {"records_processed", Int64.Type},
+				        {"records_created", Int64.Type},
+				        {"records_updated", Int64.Type},
+				        {"records_skipped", Int64.Type},
+				        {"errors_count", Int64.Type},
+				        {"warnings_count", Int64.Type},
+				        {"last_error", type text}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

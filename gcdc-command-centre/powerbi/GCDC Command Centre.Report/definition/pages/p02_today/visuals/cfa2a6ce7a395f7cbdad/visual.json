@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "cfa2a6ce7a395f7cbdad",
+  "position": {
+    "x": 267,
+    "y": 148,
+    "z": 8000,
+    "height": 80,
+    "width": 243,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Meetings Today"
+                }
+              },
+              "queryRef": "_Measures.Meetings Today",
+              "nativeQueryRef": "Meetings Today"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Meetings Today'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

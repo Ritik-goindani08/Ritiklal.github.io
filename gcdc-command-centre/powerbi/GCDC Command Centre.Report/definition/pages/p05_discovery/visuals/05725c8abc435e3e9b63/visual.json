@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "05725c8abc435e3e9b63",
+  "position": {
+    "x": 487,
+    "y": 60,
+    "z": 5000,
+    "height": 84,
+    "width": 149,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "New Organisations (month)"
+                }
+              },
+              "queryRef": "_Measures.New Organisations (month)",
+              "nativeQueryRef": "New organisations (month)",
+              "displayName": "New organisations (month)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'New organisations (month)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

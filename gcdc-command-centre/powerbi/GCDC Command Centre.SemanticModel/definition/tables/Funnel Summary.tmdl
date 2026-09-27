@@ -1,0 +1,63 @@
+table 'Funnel Summary'
+	lineageTag: 5de7e4c8-6860-5c84-8974-e7b2f6f287a4
+
+	column stage_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 02600783-3782-5cbe-8e9d-866a4e1e9cd8
+		summarizeBy: none
+		sourceColumn: stage_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column stage_code
+		dataType: string
+		lineageTag: 3269cda6-4d3f-58f4-a07a-9520dfea3e61
+		summarizeBy: none
+		sourceColumn: stage_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column stage_name
+		dataType: string
+		lineageTag: 3622bb1c-4b0d-5973-affc-c0938f340b8f
+		summarizeBy: none
+		sourceColumn: stage_name
+		sortByColumn: stage_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunities_reached
+		dataType: int64
+		formatString: #,0
+		lineageTag: 629d7503-14fe-504b-a02a-0d8771c179c9
+		summarizeBy: none
+		sourceColumn: opportunities_reached
+
+		annotation SummarizationSetBy = Automatic
+
+	column conversion_from_previous
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 8bee6f2c-6761-56c6-b26f-433fc242b774
+		summarizeBy: none
+		sourceColumn: conversion_from_previous
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Funnel Summary' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_funnel"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"stage_order", Int64.Type},
+				        {"stage_code", type text},
+				        {"stage_name", type text},
+				        {"opportunities_reached", Int64.Type},
+				        {"conversion_from_previous", type number}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

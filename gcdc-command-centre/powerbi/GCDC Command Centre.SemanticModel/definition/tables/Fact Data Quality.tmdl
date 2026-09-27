@@ -1,0 +1,105 @@
+table 'Fact Data Quality'
+	lineageTag: 5f1bc708-ea06-51e8-8383-7f09592560e1
+
+	column result_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 89a57cba-3a05-5a14-957b-c7d1d1d63f13
+		summarizeBy: none
+		sourceColumn: result_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column check_code
+		dataType: string
+		lineageTag: 93d07e16-15f0-52bd-9dd4-63d5c1532cb4
+		summarizeBy: none
+		sourceColumn: check_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity
+		dataType: string
+		lineageTag: 6cbc5a72-4eee-5437-9795-3a682086f879
+		summarizeBy: none
+		sourceColumn: severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity_sort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 75d56bf5-87c1-58a6-b5ef-67e4c4fa7375
+		summarizeBy: none
+		sourceColumn: severity_sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column entity_type
+		dataType: string
+		isHidden
+		lineageTag: 52a853cd-719d-59c6-917d-ca7635d00858
+		summarizeBy: none
+		sourceColumn: entity_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column entity_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e9eeeda3-342d-5dbe-98cf-01d06ca32d3e
+		summarizeBy: none
+		sourceColumn: entity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a9b90e6b-4bca-59a8-8c5f-51f4856705ce
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column detail
+		dataType: string
+		lineageTag: d329ed31-6de5-5747-a91a-b08010f8c1ea
+		summarizeBy: none
+		sourceColumn: detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column checked_at_local
+		dataType: dateTime
+		formatString: dd mmm yyyy hh:nn
+		lineageTag: ac81cb0b-ac5c-55d6-b1b2-00224ee6a20d
+		summarizeBy: none
+		sourceColumn: checked_at_local
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Data Quality' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_data_quality"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"result_id", Int64.Type},
+				        {"check_code", type text},
+				        {"severity", type text},
+				        {"severity_sort", Int64.Type},
+				        {"entity_type", type text},
+				        {"entity_id", Int64.Type},
+				        {"organisation_id", Int64.Type},
+				        {"detail", type text},
+				        {"checked_at_local", type datetime}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "44273aeb27a75989bc97",
+  "position": {
+    "x": 706,
+    "y": 144,
+    "z": 16000,
+    "height": 76,
+    "width": 130,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Roster Conversion"
+                }
+              },
+              "queryRef": "_Measures.Roster Conversion",
+              "nativeQueryRef": "Roster Conversion"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Roster Conversion'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

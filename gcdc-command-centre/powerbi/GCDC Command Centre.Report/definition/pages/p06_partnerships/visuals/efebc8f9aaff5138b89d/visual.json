@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "efebc8f9aaff5138b89d",
+  "position": {
+    "x": 1115,
+    "y": 60,
+    "z": 9000,
+    "height": 84,
+    "width": 149,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Partner Revenue"
+                }
+              },
+              "queryRef": "_Measures.Partner Revenue",
+              "nativeQueryRef": "Partner Revenue"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Partner Revenue'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "4b4570bb2d215b17b262",
+  "position": {
+    "x": 784,
+    "y": 452,
+    "z": 11000,
+    "height": 252,
+    "width": 480,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Agent Runs"
+                }
+              },
+              "queryRef": "_Measures.Agent Runs",
+              "nativeQueryRef": "Agent Runs"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Date"
+                    }
+                  },
+                  "Property": "date"
+                }
+              },
+              "queryRef": "Dim Date.date",
+              "nativeQueryRef": "Date",
+              "displayName": "Date"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Run"
+                    }
+                  },
+                  "Property": "status"
+                }
+              },
+              "queryRef": "Fact Agent Run.status",
+              "nativeQueryRef": "Result",
+              "displayName": "Result"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Agent runs by day'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

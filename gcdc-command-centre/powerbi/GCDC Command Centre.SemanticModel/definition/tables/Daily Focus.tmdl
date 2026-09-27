@@ -1,0 +1,60 @@
+table 'Daily Focus'
+	lineageTag: e1191801-ba56-5d91-aceb-49a285a0aec1
+
+	column brief_date
+		dataType: string
+		lineageTag: 59228a48-c73a-501b-bbe8-e5bc9b63bd8a
+		summarizeBy: none
+		sourceColumn: brief_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column focus_rank
+		dataType: int64
+		formatString: #,0
+		lineageTag: 567946af-9531-560e-968d-955fcd2e2ae5
+		summarizeBy: none
+		sourceColumn: focus_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column focus_title
+		dataType: string
+		lineageTag: ab7dbc83-62ee-5a86-a1f9-79be195fb12a
+		summarizeBy: none
+		sourceColumn: focus_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column focus_why
+		dataType: string
+		lineageTag: 012e3d9d-9105-5bb9-912e-1d46534faf82
+		summarizeBy: none
+		sourceColumn: focus_why
+
+		annotation SummarizationSetBy = Automatic
+
+	column generator
+		dataType: string
+		lineageTag: 1accae0b-51ee-567e-9ee2-96df9deeb0b0
+		summarizeBy: none
+		sourceColumn: generator
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Daily Focus' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_daily_focus"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"brief_date", type text},
+				        {"focus_rank", Int64.Type},
+				        {"focus_title", type text},
+				        {"focus_why", type text},
+				        {"generator", type text}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

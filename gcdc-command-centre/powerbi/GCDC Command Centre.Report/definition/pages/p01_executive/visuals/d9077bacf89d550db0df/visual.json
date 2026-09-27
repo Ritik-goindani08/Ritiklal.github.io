@@ -1,0 +1,96 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "d9077bacf89d550db0df",
+  "position": {
+    "x": 16,
+    "y": 478,
+    "z": 14000,
+    "height": 226,
+    "width": 400,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "gauge",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Weekly Billable Hours"
+                }
+              },
+              "queryRef": "_Measures.Weekly Billable Hours",
+              "nativeQueryRef": "Weekly Billable Hours"
+            }
+          ]
+        },
+        "MaxValue": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Gauge Max (Hours)"
+                }
+              },
+              "queryRef": "_Measures.Gauge Max (Hours)",
+              "nativeQueryRef": "Gauge Max (Hours)"
+            }
+          ]
+        },
+        "TargetValue": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Weekly Hours Target (Min)"
+                }
+              },
+              "queryRef": "_Measures.Weekly Hours Target (Min)",
+              "nativeQueryRef": "Weekly Hours Target (Min)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Recurring weekly hours vs target'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

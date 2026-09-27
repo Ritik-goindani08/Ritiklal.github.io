@@ -1,0 +1,50 @@
+table 'Daily Brief'
+	lineageTag: 14a53a27-9007-53dd-9e5e-d79aff9de712
+
+	column brief_date
+		dataType: string
+		lineageTag: f8526250-582b-59ae-98bc-332c053b3e98
+		summarizeBy: none
+		sourceColumn: brief_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column generated_at
+		dataType: string
+		lineageTag: 8a49f9ea-9f7a-5cfa-86cb-8327878d4465
+		summarizeBy: none
+		sourceColumn: generated_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column generator
+		dataType: string
+		lineageTag: 89aeb731-3b65-584b-825d-98a1c0bf27b0
+		summarizeBy: none
+		sourceColumn: generator
+
+		annotation SummarizationSetBy = Automatic
+
+	column brief_markdown
+		dataType: string
+		lineageTag: 03e5cc4c-2418-515b-b0b1-9bb411515a41
+		summarizeBy: none
+		sourceColumn: brief_markdown
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Daily Brief' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_daily_brief"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"brief_date", type text},
+				        {"generated_at", type text},
+				        {"generator", type text},
+				        {"brief_markdown", type text}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

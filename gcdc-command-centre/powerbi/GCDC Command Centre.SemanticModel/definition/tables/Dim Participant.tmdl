@@ -1,0 +1,103 @@
+table 'Dim Participant'
+	lineageTag: 9576f545-7ca5-55df-a0e3-cd76287d32ce
+
+	column participant_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 90b99dd5-391f-589c-9c9a-99d5f891de13
+		summarizeBy: none
+		sourceColumn: participant_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column participant_ref
+		dataType: string
+		lineageTag: ebf38ea1-64e9-5da7-a426-0f6651d45e5d
+		summarizeBy: none
+		sourceColumn: participant_ref
+
+		annotation SummarizationSetBy = Automatic
+
+	column funding_type
+		dataType: string
+		lineageTag: ce84492f-765f-50e8-8e53-b3ba04cc0bfc
+		summarizeBy: none
+		sourceColumn: funding_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: 424e0bfb-581a-50e7-bee0-088996d36e78
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column suburb
+		dataType: string
+		lineageTag: 62245e7b-6617-58e3-ab7a-c83d86dc35bc
+		summarizeBy: none
+		sourceColumn: suburb
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 17144fbc-ba61-5bfc-9d36-6d7b755d0aad
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: d2c0cb58-69a8-5c95-8fd3-96e6d79af904
+		summarizeBy: none
+		sourceColumn: start_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column end_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: e42b174c-d89d-52b8-9b07-a7be801ef59f
+		summarizeBy: none
+		sourceColumn: end_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column referring_organisation_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f236721-5ad9-5348-888d-a46031e083d4
+		summarizeBy: none
+		sourceColumn: referring_organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Participant' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_dim_participant"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"participant_id", Int64.Type},
+				        {"participant_ref", type text},
+				        {"funding_type", type text},
+				        {"region_code", type text},
+				        {"suburb", type text},
+				        {"status", type text},
+				        {"start_date", type date},
+				        {"end_date", type date},
+				        {"referring_organisation_id", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

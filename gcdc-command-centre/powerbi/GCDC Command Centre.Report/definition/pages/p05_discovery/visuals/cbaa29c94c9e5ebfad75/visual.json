@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "cbaa29c94c9e5ebfad75",
+  "position": {
+    "x": 173,
+    "y": 60,
+    "z": 3000,
+    "height": 84,
+    "width": 149,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Opportunities Found This Week"
+                }
+              },
+              "queryRef": "_Measures.Opportunities Found This Week",
+              "nativeQueryRef": "Found this week",
+              "displayName": "Found this week"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Found this week'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

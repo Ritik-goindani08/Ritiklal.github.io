@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "91cd8f81203a50fbbfe5",
+  "position": {
+    "x": 832,
+    "y": 152,
+    "z": 12000,
+    "height": 130,
+    "width": 432,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Workers: Personal Care"
+                }
+              },
+              "queryRef": "_Measures.Workers: Personal Care",
+              "nativeQueryRef": "Personal care",
+              "displayName": "Personal care"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Workers: Community Access"
+                }
+              },
+              "queryRef": "_Measures.Workers: Community Access",
+              "nativeQueryRef": "Community access",
+              "displayName": "Community access"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Workers: Complex Support"
+                }
+              },
+              "queryRef": "_Measures.Workers: Complex Support",
+              "nativeQueryRef": "Complex support",
+              "displayName": "Complex support"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Workers: Domestic"
+                }
+              },
+              "queryRef": "_Measures.Workers: Domestic",
+              "nativeQueryRef": "Domestic",
+              "displayName": "Domestic"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Verified workers by capability'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

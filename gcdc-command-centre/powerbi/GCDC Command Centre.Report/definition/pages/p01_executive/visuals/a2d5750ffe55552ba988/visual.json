@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "a2d5750ffe55552ba988",
+  "position": {
+    "x": 1020,
+    "y": 152,
+    "z": 12000,
+    "height": 84,
+    "width": 243,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Participants / Rosters"
+                }
+              },
+              "queryRef": "_Measures.Participants / Rosters",
+              "nativeQueryRef": "Active Participants / Rosters",
+              "displayName": "Active Participants / Rosters"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Active Participants / Rosters'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

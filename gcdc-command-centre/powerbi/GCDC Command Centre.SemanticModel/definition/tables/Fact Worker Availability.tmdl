@@ -1,0 +1,172 @@
+table 'Fact Worker Availability'
+	lineageTag: 6ad4a421-a762-5644-ab5e-368e7ab7b3f0
+
+	column availability_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ef4a7854-cc11-58f0-b133-6105d40d1e20
+		summarizeBy: none
+		sourceColumn: availability_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column worker_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 96775b55-bfa5-5a90-8b3e-9518a38204de
+		summarizeBy: none
+		sourceColumn: worker_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: d2d553a8-1a0a-5c58-bf47-d1c78736d31c
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_of_week
+		dataType: int64
+		formatString: #,0
+		lineageTag: e1002623-47b2-54c2-9ae2-c492de49f1d6
+		summarizeBy: none
+		sourceColumn: day_of_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_name
+		dataType: string
+		lineageTag: d34b7315-6dba-5867-adbe-0cc0a8c8b8d3
+		summarizeBy: none
+		sourceColumn: day_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_time
+		dataType: string
+		lineageTag: 9838154f-fa06-5f1e-97ca-a3bc7e6ac554
+		summarizeBy: none
+		sourceColumn: start_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_time
+		dataType: string
+		lineageTag: a198fa7e-b792-5d40-9afb-37eff4b67a10
+		summarizeBy: none
+		sourceColumn: end_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column slot_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: dbc39a0d-153f-5f4c-8ec2-2203161b4040
+		summarizeBy: none
+		sourceColumn: slot_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekday
+		dataType: int64
+		formatString: #,0
+		lineageTag: a5617f25-9647-5324-baf7-62e9aa1ebcb8
+		summarizeBy: none
+		sourceColumn: is_weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: int64
+		formatString: #,0
+		lineageTag: 836fa18b-1e46-5261-b2fa-f445addc3a7d
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_evening
+		dataType: int64
+		formatString: #,0
+		lineageTag: c3f0b693-b4f7-5e57-a573-6edb6dde6eb6
+		summarizeBy: none
+		sourceColumn: is_evening
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_overnight
+		dataType: int64
+		formatString: #,0
+		lineageTag: 0aead894-706b-5b7a-8c0e-f088d7712dbe
+		summarizeBy: none
+		sourceColumn: is_overnight
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_confirmed
+		dataType: int64
+		formatString: #,0
+		lineageTag: 743ad342-03b0-511e-b9ae-d2cb5c8c6b02
+		summarizeBy: none
+		sourceColumn: is_confirmed
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_current
+		dataType: int64
+		formatString: #,0
+		lineageTag: b51ee0e7-e1cb-5a3e-a2b1-4c6064cf8567
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	column counts_as_capacity
+		dataType: int64
+		formatString: #,0
+		lineageTag: 89d484ee-9621-5c9b-91f2-5802a13d0026
+		summarizeBy: none
+		sourceColumn: counts_as_capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column capacity_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: fc753ca6-7c43-5cbf-845f-26cc9f7f8363
+		summarizeBy: none
+		sourceColumn: capacity_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Worker Availability' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_worker_availability"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"availability_id", Int64.Type},
+				        {"worker_id", Int64.Type},
+				        {"region_code", type text},
+				        {"day_of_week", Int64.Type},
+				        {"day_name", type text},
+				        {"start_time", type text},
+				        {"end_time", type text},
+				        {"slot_hours", type number},
+				        {"is_weekday", Int64.Type},
+				        {"is_weekend", Int64.Type},
+				        {"is_evening", Int64.Type},
+				        {"is_overnight", Int64.Type},
+				        {"is_confirmed", Int64.Type},
+				        {"is_current", Int64.Type},
+				        {"counts_as_capacity", Int64.Type},
+				        {"capacity_hours", type number}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

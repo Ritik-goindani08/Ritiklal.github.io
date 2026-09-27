@@ -1,0 +1,24 @@
+{
+  "name": "GCDC Command Centre",
+  "dataColors": [
+    "#1B365D",
+    "#0F7B8A",
+    "#E6A117",
+    "#2E8540",
+    "#C0392B",
+    "#6C5B7B",
+    "#7F8C8D",
+    "#48A9A6",
+    "#F28F3B",
+    "#4B6584"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1B365D",
+  "tableAccent": "#0F7B8A",
+  "good": "#2E8540",
+  "neutral": "#E6A117",
+  "bad": "#C0392B",
+  "maximum": "#1B365D",
+  "center": "#E6A117",
+  "minimum": "#C0392B"
+}

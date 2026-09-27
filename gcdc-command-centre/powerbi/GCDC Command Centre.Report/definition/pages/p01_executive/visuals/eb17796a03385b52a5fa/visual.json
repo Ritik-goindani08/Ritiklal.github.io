@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "eb17796a03385b52a5fa",
+  "position": {
+    "x": 267,
+    "y": 152,
+    "z": 9000,
+    "height": 84,
+    "width": 243,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Meetings Booked (30d)"
+                }
+              },
+              "queryRef": "_Measures.Meetings Booked (30d)",
+              "nativeQueryRef": "Meetings Booked (30d)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Meetings Booked (30d)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

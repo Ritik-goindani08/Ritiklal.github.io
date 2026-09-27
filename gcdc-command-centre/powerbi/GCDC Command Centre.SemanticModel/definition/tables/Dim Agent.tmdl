@@ -1,0 +1,80 @@
+table 'Dim Agent'
+	lineageTag: 2f5ff362-a7be-54f2-9c2e-bd917b027315
+
+	column agent_code
+		dataType: string
+		lineageTag: 8a3cd481-2e64-5915-a4b7-8f9e63c21cc9
+		summarizeBy: none
+		sourceColumn: agent_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column agent_name
+		dataType: string
+		lineageTag: d6e4b451-65d9-5406-a223-9969567f99f9
+		summarizeBy: none
+		sourceColumn: agent_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 55c6bae6-351d-512c-a437-9f283e009114
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column schedule_description
+		dataType: string
+		lineageTag: 09d8605d-2eea-58c8-b57f-d763b5b93502
+		summarizeBy: none
+		sourceColumn: schedule_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_interval_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 1a5eb42a-3e13-50e9-ad42-8f5208726828
+		summarizeBy: none
+		sourceColumn: expected_interval_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_days_only
+		dataType: int64
+		formatString: #,0
+		lineageTag: 067ee6b9-e582-5267-ad23-ee4a359aa33a
+		summarizeBy: none
+		sourceColumn: business_days_only
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_active
+		dataType: int64
+		formatString: #,0
+		lineageTag: e45f5e64-4190-5b2d-88f1-ef5be476204e
+		summarizeBy: none
+		sourceColumn: is_active
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Agent' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_dim_agent"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"agent_code", type text},
+				        {"agent_name", type text},
+				        {"description", type text},
+				        {"schedule_description", type text},
+				        {"expected_interval_hours", type number},
+				        {"business_days_only", Int64.Type},
+				        {"is_active", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

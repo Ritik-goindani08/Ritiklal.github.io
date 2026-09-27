@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "4ba4156108435089aa83",
+  "position": {
+    "x": 16,
+    "y": 152,
+    "z": 10000,
+    "height": 552,
+    "width": 360,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "funnel",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Partnership Funnel Count"
+                }
+              },
+              "queryRef": "_Measures.Partnership Funnel Count",
+              "nativeQueryRef": "Partnerships",
+              "displayName": "Partnerships"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Partnership Stage"
+                    }
+                  },
+                  "Property": "partnership_stage_name"
+                }
+              },
+              "queryRef": "Dim Partnership Stage.partnership_stage_name",
+              "nativeQueryRef": "Stage",
+              "displayName": "Stage"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Lead → recurring revenue'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

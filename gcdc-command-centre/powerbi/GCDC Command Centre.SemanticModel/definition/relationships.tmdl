@@ -1,0 +1,236 @@
+relationship 3bc43b54-affc-5240-a70a-b7f4791980a4
+	fromColumn: 'Fact Opportunity'.organisation_id
+	toColumn: 'Dim Organisation'.organisation_id
+
+relationship cb42eda8-854b-5ca0-ae92-ad4d7b20c1e9
+	fromColumn: 'Fact Outreach'.organisation_id
+	toColumn: 'Dim Organisation'.organisation_id
+
+relationship 3927ae68-4644-53b9-9532-d63e5a37d24e
+	fromColumn: 'Fact Reply'.organisation_id
+	toColumn: 'Dim Organisation'.organisation_id
+
+relationship 052aab5d-ecfa-5fe4-8539-2af961d26a6a
+	fromColumn: 'Fact Meeting'.organisation_id
+	toColumn: 'Dim Organisation'.organisation_id
+
+relationship 26d0a667-a4d6-5360-9f34-c09d53f4b631
+	fromColumn: 'Fact Follow Up'.organisation_id
+	toColumn: 'Dim Organisation'.organisation_id
+
+relationship 4d4231c8-5dc3-5a28-a311-5e5176e65f5e
+	fromColumn: 'Fact Referral'.organisation_id
+	toColumn: 'Dim Organisation'.organisation_id
+
+relationship f445ddf6-c4f6-5fec-8779-a33c7834202e
+	fromColumn: 'Fact Trial Shift'.organisation_id
+	toColumn: 'Dim Organisation'.organisation_id
+
+relationship 6fac4633-45d9-564d-b055-d66baa4fe09c
+	fromColumn: 'Fact Roster'.organisation_id
+	toColumn: 'Dim Organisation'.organisation_id
+
+relationship 1efbb359-e98c-5c84-8b95-7abc607f88a5
+	fromColumn: 'Fact Revenue'.organisation_id
+	toColumn: 'Dim Organisation'.organisation_id
+
+relationship 4f08a9ab-02e9-5bd2-9cb5-0fd4320dc99d
+	fromColumn: 'Fact Partnership'.organisation_id
+	toColumn: 'Dim Organisation'.organisation_id
+
+relationship 813abbfc-f7b9-5c5c-9d50-88f8222b4c93
+	fromColumn: 'Fact Application'.organisation_id
+	toColumn: 'Dim Organisation'.organisation_id
+
+relationship c8ce369e-5d15-5203-a1a9-1116272d7f26
+	fromColumn: 'Fact Contact'.organisation_id
+	toColumn: 'Dim Organisation'.organisation_id
+
+relationship 4c27af9b-1e2a-56d4-9ea0-debd500bb638
+	fromColumn: 'Action Centre'.organisation_id
+	toColumn: 'Dim Organisation'.organisation_id
+
+relationship a40544b3-108c-55ca-a286-3878d923a7ff
+	fromColumn: 'Fact Opportunity'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship 192b0f71-26f1-5500-85e0-790cb0e56fbe
+	fromColumn: 'Fact Outreach'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship 9d299dca-dcbb-5de6-9afd-d9fa8ad1ac9b
+	fromColumn: 'Fact Reply'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship 7f580186-b6ef-5122-a820-7922c6ed56cf
+	fromColumn: 'Fact Meeting'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship b5c100ed-7d90-56c7-b325-5195cd3ff1e2
+	fromColumn: 'Fact Follow Up'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship 16a81a7a-5dff-54ab-af51-842a090ed7ec
+	fromColumn: 'Fact Referral'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship d02b51d3-b8dd-5a4b-bf73-2a5af9c20432
+	fromColumn: 'Fact Trial Shift'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship ec9aebd2-625b-50f8-98ca-cd8409438a1a
+	fromColumn: 'Fact Roster'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship 28b58a07-2270-544c-a07b-f1977cf2056f
+	fromColumn: 'Fact Revenue'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship 59e73eca-0462-5d16-be1b-94d6d13d3d20
+	fromColumn: 'Fact Partnership'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship 7fdc43f5-2bd9-5876-bcbf-a9bb46ec502d
+	fromColumn: 'Fact Application'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship 6ce9cec9-04d1-52a3-99e5-e196dd8fb06a
+	fromColumn: 'Fact Contact'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship b4fab5d9-d0b1-5858-bb07-93f6d36ec24b
+	fromColumn: 'Fact Worker Availability'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship c8d830ff-95b5-5680-b138-92a809a634d9
+	fromColumn: 'Fact Worker Capacity'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship 2fc92c22-b0a1-5ba4-9987-248820db68ff
+	fromColumn: 'Fact Worker Requirement'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship 07914412-9369-577c-ad5c-35bf5567ea28
+	fromColumn: 'Action Centre'.region_code
+	toColumn: 'Dim Region'.region_code
+
+relationship 66a03cf8-b712-560e-8c01-82b16d4ade3b
+	fromColumn: 'Fact Opportunity'.opportunity_type_code
+	toColumn: 'Dim Opportunity Type'.opportunity_type_code
+
+relationship 9bdca96c-cff0-59dc-bcab-709f63b264cc
+	fromColumn: 'Fact Opportunity'.source_code
+	toColumn: 'Dim Source'.source_code
+
+relationship 97043d56-d351-5c64-bc15-8317159eca3a
+	fromColumn: 'Fact Roster'.opportunity_type_code
+	toColumn: 'Dim Opportunity Type'.opportunity_type_code
+
+relationship 43319585-8afa-5ebc-9baa-ebe057de851f
+	fromColumn: 'Fact Roster'.source_code
+	toColumn: 'Dim Source'.source_code
+
+relationship bffefe3b-5eaf-5489-9f72-e3f52fb9940d
+	fromColumn: 'Fact Revenue'.opportunity_type_code
+	toColumn: 'Dim Opportunity Type'.opportunity_type_code
+
+relationship 3cd42813-6173-5fde-a99a-d0ef351238e5
+	fromColumn: 'Fact Revenue'.source_code
+	toColumn: 'Dim Source'.source_code
+
+relationship e405af19-3fe7-52eb-9fa5-5deb7ee24a49
+	fromColumn: 'Fact Roster'.service_type_code
+	toColumn: 'Dim Service Type'.service_type_code
+
+relationship ff7f9254-8ece-53a3-a810-d106c93cf2b3
+	fromColumn: 'Fact Revenue'.service_type_code
+	toColumn: 'Dim Service Type'.service_type_code
+
+relationship 83e28d42-3808-5458-a602-952f9890f3aa
+	fromColumn: 'Fact Referral'.service_type_code
+	toColumn: 'Dim Service Type'.service_type_code
+
+relationship 7fdb6c4f-e92b-5eb1-aa97-c9aa4b3db716
+	fromColumn: 'Fact Worker Requirement'.service_type_code
+	toColumn: 'Dim Service Type'.service_type_code
+
+relationship 58779d3e-7906-5209-958d-8e8244eec21e
+	fromColumn: 'Fact Worker Availability'.worker_id
+	toColumn: 'Dim Worker'.worker_id
+
+relationship 85d97ad5-9bc0-5b5b-84c3-6dd3ef599a74
+	fromColumn: 'Fact Worker Capacity'.worker_id
+	toColumn: 'Dim Worker'.worker_id
+
+relationship 11a10937-fbe4-5982-8bc7-9b1565102835
+	fromColumn: 'Fact Roster'.worker_id
+	toColumn: 'Dim Worker'.worker_id
+
+relationship 636a15cd-edc6-5b7f-ae2a-237df40056ed
+	fromColumn: 'Fact Trial Shift'.worker_id
+	toColumn: 'Dim Worker'.worker_id
+
+relationship 67b6c08a-ab02-5484-8772-7f1eb667e20e
+	fromColumn: 'Fact Roster'.participant_id
+	toColumn: 'Dim Participant'.participant_id
+
+relationship 3a4b0971-4790-53d3-9014-f141454acd05
+	fromColumn: 'Fact Revenue'.participant_id
+	toColumn: 'Dim Participant'.participant_id
+
+relationship f7ee42f7-c840-5ab3-9587-645b1be5caf0
+	fromColumn: 'Fact Agent Run'.agent_code
+	toColumn: 'Dim Agent'.agent_code
+
+relationship f4fb29aa-80fe-5474-b989-0254fa5cffd1
+	fromColumn: 'Fact Agent Health'.agent_code
+	toColumn: 'Dim Agent'.agent_code
+
+relationship 68f55f83-3b24-59e1-a22a-ed184c581092
+	fromColumn: 'Fact Data Quality'.check_code
+	toColumn: 'Dim DQ Check'.check_code
+
+relationship 3ea09d01-408e-5af7-aaa2-e72ea2e72bc2
+	fromColumn: 'Fact Opportunity'.discovered_date
+	toColumn: 'Dim Date'.date
+
+relationship 070766c5-6cf4-5ed0-9889-593c68213100
+	fromColumn: 'Fact Outreach'.activity_date
+	toColumn: 'Dim Date'.date
+
+relationship bc9cc8d8-0136-5f35-887e-d5dda3445bb1
+	fromColumn: 'Fact Reply'.received_date
+	toColumn: 'Dim Date'.date
+
+relationship fc96fe6c-368b-53ba-97a9-a7a20361c512
+	fromColumn: 'Fact Meeting'.meeting_date
+	toColumn: 'Dim Date'.date
+
+relationship dc6321aa-979e-53e2-8463-3b35de36d7bb
+	fromColumn: 'Fact Referral'.received_date
+	toColumn: 'Dim Date'.date
+
+relationship bdb9d774-77b7-5893-94d3-61e2df8c938d
+	fromColumn: 'Fact Revenue'.service_date
+	toColumn: 'Dim Date'.date
+
+relationship bfba308e-ae31-5220-a949-74c35f68cf66
+	fromColumn: 'Fact Daily Snapshot'.snapshot_date
+	toColumn: 'Dim Date'.date
+
+relationship 0c2cba97-c417-5eef-914b-cbaba6150221
+	fromColumn: 'Fact Trial Shift'.trial_date
+	toColumn: 'Dim Date'.date
+
+relationship 8d3be8cd-8c33-5596-b1e3-493644e97ec4
+	fromColumn: 'Fact Agent Run'.run_date
+	toColumn: 'Dim Date'.date
+
+relationship 565b2547-6fa5-5fe9-941c-87f3dc2e85c2
+	fromColumn: 'Fact Follow Up'.due_date
+	toColumn: 'Dim Date'.date
+
+relationship 002dbcaa-44a1-5203-b665-4669ae473f18
+	isActive: false
+	fromColumn: 'Fact Revenue'.paid_date
+	toColumn: 'Dim Date'.date

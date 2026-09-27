@@ -1,0 +1,177 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "eeded063f77750a49f53",
+  "position": {
+    "x": 16,
+    "y": 430,
+    "z": 14000,
+    "height": 274,
+    "width": 760,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Worker"
+                    }
+                  },
+                  "Property": "worker_ref"
+                }
+              },
+              "queryRef": "Dim Worker.worker_ref",
+              "nativeQueryRef": "Worker",
+              "displayName": "Worker"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Worker"
+                    }
+                  },
+                  "Property": "display_name"
+                }
+              },
+              "queryRef": "Dim Worker.display_name",
+              "nativeQueryRef": "Name",
+              "displayName": "Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Worker"
+                    }
+                  },
+                  "Property": "region_code"
+                }
+              },
+              "queryRef": "Dim Worker.region_code",
+              "nativeQueryRef": "Home region",
+              "displayName": "Home region"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Worker"
+                    }
+                  },
+                  "Property": "is_verified_active"
+                }
+              },
+              "queryRef": "Dim Worker.is_verified_active",
+              "nativeQueryRef": "Verified",
+              "displayName": "Verified"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Worker"
+                    }
+                  },
+                  "Property": "verification_gaps"
+                }
+              },
+              "queryRef": "Dim Worker.verification_gaps",
+              "nativeQueryRef": "Missing checks",
+              "displayName": "Missing checks"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Capacity Hours"
+                }
+              },
+              "queryRef": "_Measures.Capacity Hours",
+              "nativeQueryRef": "Capacity Hours"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Allocated Hours"
+                }
+              },
+              "queryRef": "_Measures.Allocated Hours",
+              "nativeQueryRef": "Allocated Hours"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Available Hours"
+                }
+              },
+              "queryRef": "_Measures.Available Hours",
+              "nativeQueryRef": "Available Hours"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Utilisation"
+                }
+              },
+              "queryRef": "_Measures.Utilisation",
+              "nativeQueryRef": "Utilisation"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Workers'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

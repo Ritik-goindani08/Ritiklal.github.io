@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "b801788b308c5389b3fb",
+  "position": {
+    "x": 518,
+    "y": 60,
+    "z": 4000,
+    "height": 80,
+    "width": 243,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Overdue Follow-Ups"
+                }
+              },
+              "queryRef": "_Measures.Overdue Follow-Ups",
+              "nativeQueryRef": "Overdue Follow-Ups"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Overdue Follow-Ups'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,347 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "07f2f761aaab5d04b968",
+  "position": {
+    "x": 16,
+    "y": 188,
+    "z": 8000,
+    "height": 516,
+    "width": 1248,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Organisation"
+                    }
+                  },
+                  "Property": "organisation_name"
+                }
+              },
+              "queryRef": "Dim Organisation.organisation_name",
+              "nativeQueryRef": "Organisation",
+              "displayName": "Organisation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "participant_ref"
+                }
+              },
+              "queryRef": "Fact Opportunity.participant_ref",
+              "nativeQueryRef": "Participant ref",
+              "displayName": "Participant ref"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Opportunity Type"
+                    }
+                  },
+                  "Property": "opportunity_type_name"
+                }
+              },
+              "queryRef": "Dim Opportunity Type.opportunity_type_name",
+              "nativeQueryRef": "Type",
+              "displayName": "Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "expected_weekly_hours"
+                }
+              },
+              "queryRef": "Fact Opportunity.expected_weekly_hours",
+              "nativeQueryRef": "Hours/wk",
+              "displayName": "Hours/wk"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "expected_hourly_rate"
+                }
+              },
+              "queryRef": "Fact Opportunity.expected_hourly_rate",
+              "nativeQueryRef": "Rate",
+              "displayName": "Rate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "rate_basis"
+                }
+              },
+              "queryRef": "Fact Opportunity.rate_basis",
+              "nativeQueryRef": "Rate basis",
+              "displayName": "Rate basis"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "est_weekly_value"
+                }
+              },
+              "queryRef": "Fact Opportunity.est_weekly_value",
+              "nativeQueryRef": "Est. $/wk",
+              "displayName": "Est. $/wk"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "est_monthly_value"
+                }
+              },
+              "queryRef": "Fact Opportunity.est_monthly_value",
+              "nativeQueryRef": "Est. $/mo",
+              "displayName": "Est. $/mo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "value_status"
+                }
+              },
+              "queryRef": "Fact Opportunity.value_status",
+              "nativeQueryRef": "Value status",
+              "displayName": "Value status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "stage_name"
+                }
+              },
+              "queryRef": "Fact Opportunity.stage_name",
+              "nativeQueryRef": "Stage",
+              "displayName": "Stage"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "stage_probability"
+                }
+              },
+              "queryRef": "Fact Opportunity.stage_probability",
+              "nativeQueryRef": "Stage probability (rule)",
+              "displayName": "Stage probability (rule)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "pipeline_horizon"
+                }
+              },
+              "queryRef": "Fact Opportunity.pipeline_horizon",
+              "nativeQueryRef": "Horizon",
+              "displayName": "Horizon"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "priority"
+                }
+              },
+              "queryRef": "Fact Opportunity.priority",
+              "nativeQueryRef": "Priority",
+              "displayName": "Priority"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "next_action"
+                }
+              },
+              "queryRef": "Fact Opportunity.next_action",
+              "nativeQueryRef": "Next action",
+              "displayName": "Next action"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "age_days"
+                }
+              },
+              "queryRef": "Fact Opportunity.age_days",
+              "nativeQueryRef": "Age (days)",
+              "displayName": "Age (days)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact Opportunity"
+                  }
+                },
+                "Property": "est_monthly_value"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Open opportunities'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "89f732c6ad8d5a4198a1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact Opportunity"
+              }
+            },
+            "Property": "is_active"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t",
+              "Entity": "Fact Opportunity",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "t"
+                          }
+                        },
+                        "Property": "is_active"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "1L"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
+  }
+}

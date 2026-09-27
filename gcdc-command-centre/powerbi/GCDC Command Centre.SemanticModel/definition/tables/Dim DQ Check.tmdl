@@ -1,0 +1,41 @@
+table 'Dim DQ Check'
+	lineageTag: a67be183-5b79-5fa8-8b45-021fae6be251
+
+	column check_code
+		dataType: string
+		lineageTag: 9b13340d-1af0-55ee-98da-75f7b169ea46
+		summarizeBy: none
+		sourceColumn: check_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column check_name
+		dataType: string
+		lineageTag: c4430e83-47d5-57de-a729-955b87a86f2a
+		summarizeBy: none
+		sourceColumn: check_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity
+		dataType: string
+		lineageTag: faaf7ff4-2ae6-5504-aa91-5542c03eba16
+		summarizeBy: none
+		sourceColumn: severity
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim DQ Check' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_dim_dq_check"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"check_code", type text},
+				        {"check_name", type text},
+				        {"severity", type text}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

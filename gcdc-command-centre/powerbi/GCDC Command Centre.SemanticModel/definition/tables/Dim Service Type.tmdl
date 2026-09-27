@@ -1,0 +1,43 @@
+table 'Dim Service Type'
+	lineageTag: 98c38aeb-6d82-5587-83ba-69f19db478fe
+
+	column service_type_code
+		dataType: string
+		lineageTag: 358e4c7e-262b-54e3-a79a-3a9c8a96d5f7
+		summarizeBy: none
+		sourceColumn: service_type_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column service_type_name
+		dataType: string
+		lineageTag: c7eeacfd-8baa-52bb-9084-ddee6c723585
+		summarizeBy: none
+		sourceColumn: service_type_name
+		sortByColumn: sort_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column sort_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 53c04a3a-f608-5d9a-b59a-93b879c97ce4
+		summarizeBy: none
+		sourceColumn: sort_order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Service Type' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_dim_service_type"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"service_type_code", type text},
+				        {"service_type_name", type text},
+				        {"sort_order", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,135 @@
+table Meta
+	lineageTag: 0482f51b-3aca-5774-b23d-8c6ccc09307d
+
+	column as_of_utc
+		dataType: string
+		lineageTag: 3a396680-a6d6-5722-b6f0-dee3741c906d
+		summarizeBy: none
+		sourceColumn: as_of_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column as_of_local
+		dataType: dateTime
+		formatString: dd mmm yyyy hh:nn
+		lineageTag: 722d2b22-3ed9-5f50-8cab-27e05711abb4
+		summarizeBy: none
+		sourceColumn: as_of_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column as_of_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 0e2b3b35-c2d9-5c0f-a312-cb695ffd3fd3
+		summarizeBy: none
+		sourceColumn: as_of_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column week_start
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 300eca3d-01b8-5e67-b04a-b7860a38b8b1
+		summarizeBy: none
+		sourceColumn: week_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column month_start
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 37670a96-f0a5-598a-854a-908bcc8a8922
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column schema_version
+		dataType: string
+		lineageTag: 7d705128-b7f7-5c89-a6bb-8ea0938a71dd
+		summarizeBy: none
+		sourceColumn: schema_version
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisations
+		dataType: int64
+		formatString: #,0
+		lineageTag: 509c6c31-b337-5b74-a8ef-5f6e4c112a49
+		summarizeBy: none
+		sourceColumn: organisations
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunities
+		dataType: int64
+		formatString: #,0
+		lineageTag: 56baf256-3030-562d-9fce-7ae6e6b7b66b
+		summarizeBy: none
+		sourceColumn: opportunities
+
+		annotation SummarizationSetBy = Automatic
+
+	column outreach_records
+		dataType: int64
+		formatString: #,0
+		lineageTag: 826565ca-f49a-5e60-9e9b-b17d901507f8
+		summarizeBy: none
+		sourceColumn: outreach_records
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_dq_run_utc
+		dataType: string
+		lineageTag: 6e9cc3ae-898c-5582-bed6-27aee56268bf
+		summarizeBy: none
+		sourceColumn: last_dq_run_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_snapshot_date
+		dataType: string
+		lineageTag: 9bbd3faf-bcde-5619-af8d-3beef571e4e1
+		summarizeBy: none
+		sourceColumn: last_snapshot_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_name
+		dataType: string
+		lineageTag: 7d503967-2cbf-58f9-bac6-23768b217bf6
+		summarizeBy: none
+		sourceColumn: business_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Meta = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_meta"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"as_of_utc", type text},
+				        {"as_of_local", type datetime},
+				        {"as_of_date", type date},
+				        {"week_start", type date},
+				        {"month_start", type date},
+				        {"schema_version", type text},
+				        {"organisations", Int64.Type},
+				        {"opportunities", Int64.Type},
+				        {"outreach_records", Int64.Type},
+				        {"last_dq_run_utc", type text},
+				        {"last_snapshot_date", type text},
+				        {"business_name", type text}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

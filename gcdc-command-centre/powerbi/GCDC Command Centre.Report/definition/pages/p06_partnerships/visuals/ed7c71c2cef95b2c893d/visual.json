@@ -1,0 +1,319 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "ed7c71c2cef95b2c893d",
+  "position": {
+    "x": 384,
+    "y": 152,
+    "z": 11000,
+    "height": 360,
+    "width": 880,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Organisation"
+                    }
+                  },
+                  "Property": "organisation_name"
+                }
+              },
+              "queryRef": "Dim Organisation.organisation_name",
+              "nativeQueryRef": "Company",
+              "displayName": "Company"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "partnership_type"
+                }
+              },
+              "queryRef": "Fact Partnership.partnership_type",
+              "nativeQueryRef": "Type",
+              "displayName": "Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "partnership_stage_name"
+                }
+              },
+              "queryRef": "Fact Partnership.partnership_stage_name",
+              "nativeQueryRef": "Stage",
+              "displayName": "Stage"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "application_status"
+                }
+              },
+              "queryRef": "Fact Partnership.application_status",
+              "nativeQueryRef": "Application",
+              "displayName": "Application"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "onboarding_status"
+                }
+              },
+              "queryRef": "Fact Partnership.onboarding_status",
+              "nativeQueryRef": "Onboarding",
+              "displayName": "Onboarding"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "documents_required"
+                }
+              },
+              "queryRef": "Fact Partnership.documents_required",
+              "nativeQueryRef": "Docs required",
+              "displayName": "Docs required"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "documents_outstanding"
+                }
+              },
+              "queryRef": "Fact Partnership.documents_outstanding",
+              "nativeQueryRef": "Docs outstanding",
+              "displayName": "Docs outstanding"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "documents_outstanding_list"
+                }
+              },
+              "queryRef": "Fact Partnership.documents_outstanding_list",
+              "nativeQueryRef": "Outstanding",
+              "displayName": "Outstanding"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "insurance_requirements"
+                }
+              },
+              "queryRef": "Fact Partnership.insurance_requirements",
+              "nativeQueryRef": "Insurance",
+              "displayName": "Insurance"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "labour_hire_licence_required"
+                }
+              },
+              "queryRef": "Fact Partnership.labour_hire_licence_required",
+              "nativeQueryRef": "Labour-hire licence",
+              "displayName": "Labour-hire licence"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "ndis_registration_required"
+                }
+              },
+              "queryRef": "Fact Partnership.ndis_registration_required",
+              "nativeQueryRef": "NDIS registration",
+              "displayName": "NDIS registration"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "last_communication_date"
+                }
+              },
+              "queryRef": "Fact Partnership.last_communication_date",
+              "nativeQueryRef": "Last communication",
+              "displayName": "Last communication"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "next_action"
+                }
+              },
+              "queryRef": "Fact Partnership.next_action",
+              "nativeQueryRef": "Next action",
+              "displayName": "Next action"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "approval_date"
+                }
+              },
+              "queryRef": "Fact Partnership.approval_date",
+              "nativeQueryRef": "Approved",
+              "displayName": "Approved"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "first_work_received_date"
+                }
+              },
+              "queryRef": "Fact Partnership.first_work_received_date",
+              "nativeQueryRef": "First work",
+              "displayName": "First work"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "hours_received"
+                }
+              },
+              "queryRef": "Fact Partnership.hours_received",
+              "nativeQueryRef": "Hours received",
+              "displayName": "Hours received"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Partnership"
+                    }
+                  },
+                  "Property": "revenue_generated"
+                }
+              },
+              "queryRef": "Fact Partnership.revenue_generated",
+              "nativeQueryRef": "Revenue",
+              "displayName": "Revenue"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact Partnership"
+                  }
+                },
+                "Property": "partnership_stage_name"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Partnerships'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

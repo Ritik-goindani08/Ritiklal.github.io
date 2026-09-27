@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "ba4cb20ef7505fe5bba3",
+  "position": {
+    "x": 433,
+    "y": 60,
+    "z": 5000,
+    "height": 76,
+    "width": 131,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Follow-Ups Sent This Month"
+                }
+              },
+              "queryRef": "_Measures.Follow-Ups Sent This Month",
+              "nativeQueryRef": "Follow-Ups Sent This Month"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Follow-Ups Sent This Month'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

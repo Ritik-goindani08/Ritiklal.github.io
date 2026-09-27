@@ -1,0 +1,198 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "b603ea782b335bf7b4f5",
+  "position": {
+    "x": 16,
+    "y": 60,
+    "z": 2000,
+    "height": 300,
+    "width": 1248,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Region"
+                    }
+                  },
+                  "Property": "region_name"
+                }
+              },
+              "queryRef": "Dim Region.region_name",
+              "nativeQueryRef": "Region",
+              "displayName": "Region"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Active Opportunities"
+                }
+              },
+              "queryRef": "_Measures.Active Opportunities",
+              "nativeQueryRef": "Opportunities",
+              "displayName": "Opportunities"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Orgs Contacted (all time)"
+                }
+              },
+              "queryRef": "_Measures.Orgs Contacted (all time)",
+              "nativeQueryRef": "Orgs contacted",
+              "displayName": "Orgs contacted"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Orgs Replied"
+                }
+              },
+              "queryRef": "_Measures.Orgs Replied",
+              "nativeQueryRef": "Replies (orgs)",
+              "displayName": "Replies (orgs)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Referrals"
+                }
+              },
+              "queryRef": "_Measures.Referrals",
+              "nativeQueryRef": "Referrals"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Active Participants"
+                }
+              },
+              "queryRef": "_Measures.Active Participants",
+              "nativeQueryRef": "Participants",
+              "displayName": "Participants"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Weekly Billable Hours"
+                }
+              },
+              "queryRef": "_Measures.Weekly Billable Hours",
+              "nativeQueryRef": "Weekly hours",
+              "displayName": "Weekly hours"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Actual Revenue"
+                }
+              },
+              "queryRef": "_Measures.Actual Revenue",
+              "nativeQueryRef": "Revenue",
+              "displayName": "Revenue"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Capacity Hours"
+                }
+              },
+              "queryRef": "_Measures.Capacity Hours",
+              "nativeQueryRef": "Worker capacity (h/wk)",
+              "displayName": "Worker capacity (h/wk)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim Region"
+                  }
+                },
+                "Property": "region_name"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Results by region'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

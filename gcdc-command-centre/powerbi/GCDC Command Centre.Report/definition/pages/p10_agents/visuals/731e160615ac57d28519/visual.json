@@ -1,0 +1,259 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "731e160615ac57d28519",
+  "position": {
+    "x": 16,
+    "y": 152,
+    "z": 9000,
+    "height": 292,
+    "width": 1248,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Health"
+                    }
+                  },
+                  "Property": "agent_name"
+                }
+              },
+              "queryRef": "Fact Agent Health.agent_name",
+              "nativeQueryRef": "Agent",
+              "displayName": "Agent"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Health"
+                    }
+                  },
+                  "Property": "rag_label"
+                }
+              },
+              "queryRef": "Fact Agent Health.rag_label",
+              "nativeQueryRef": "Status",
+              "displayName": "Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Health"
+                    }
+                  },
+                  "Property": "last_successful_run"
+                }
+              },
+              "queryRef": "Fact Agent Health.last_successful_run",
+              "nativeQueryRef": "Last success",
+              "displayName": "Last success"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Health"
+                    }
+                  },
+                  "Property": "last_attempted_run"
+                }
+              },
+              "queryRef": "Fact Agent Health.last_attempted_run",
+              "nativeQueryRef": "Last attempt",
+              "displayName": "Last attempt"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Health"
+                    }
+                  },
+                  "Property": "last_run_status"
+                }
+              },
+              "queryRef": "Fact Agent Health.last_run_status",
+              "nativeQueryRef": "Last result",
+              "displayName": "Last result"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Health"
+                    }
+                  },
+                  "Property": "last_runtime_seconds"
+                }
+              },
+              "queryRef": "Fact Agent Health.last_runtime_seconds",
+              "nativeQueryRef": "Runtime (s)",
+              "displayName": "Runtime (s)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Health"
+                    }
+                  },
+                  "Property": "records_processed"
+                }
+              },
+              "queryRef": "Fact Agent Health.records_processed",
+              "nativeQueryRef": "Processed",
+              "displayName": "Processed"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Health"
+                    }
+                  },
+                  "Property": "records_created"
+                }
+              },
+              "queryRef": "Fact Agent Health.records_created",
+              "nativeQueryRef": "Created",
+              "displayName": "Created"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Health"
+                    }
+                  },
+                  "Property": "errors_count"
+                }
+              },
+              "queryRef": "Fact Agent Health.errors_count",
+              "nativeQueryRef": "Errors",
+              "displayName": "Errors"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Health"
+                    }
+                  },
+                  "Property": "last_error"
+                }
+              },
+              "queryRef": "Fact Agent Health.last_error",
+              "nativeQueryRef": "Last error",
+              "displayName": "Last error"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Health"
+                    }
+                  },
+                  "Property": "next_scheduled_run"
+                }
+              },
+              "queryRef": "Fact Agent Health.next_scheduled_run",
+              "nativeQueryRef": "Next run",
+              "displayName": "Next run"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Health"
+                    }
+                  },
+                  "Property": "schedule_description"
+                }
+              },
+              "queryRef": "Fact Agent Health.schedule_description",
+              "nativeQueryRef": "Schedule",
+              "displayName": "Schedule"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Agent Health"
+                    }
+                  },
+                  "Property": "rag_reason"
+                }
+              },
+              "queryRef": "Fact Agent Health.rag_reason",
+              "nativeQueryRef": "Why",
+              "displayName": "Why"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact Agent Health"
+                  }
+                },
+                "Property": "rag_label"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Automations'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

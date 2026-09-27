@@ -1,0 +1,2 @@
+roster_ref,participant_ref,organisation.name,worker_ref,service_type_code,region_code,weekly_hours,hourly_rate,rate_basis,revenue_model,includes_weekday,includes_weekend,includes_evening,includes_overnight,schedule_text,start_date,end_date,status
+EXAMPLE-R-1,EXAMPLE-P-001,EXAMPLE Support Coordination,EXAMPLE-W-01,PERSONAL_CARE,Gold Coast,8,70.23,APPROVED,DIRECT,1,0,0,0,Mon & Wed 9-1,2026-09-01,,ACTIVE

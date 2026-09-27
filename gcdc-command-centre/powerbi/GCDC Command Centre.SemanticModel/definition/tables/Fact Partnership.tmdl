@@ -1,0 +1,292 @@
+table 'Fact Partnership'
+	lineageTag: 77490536-df5f-5577-99e2-0383cdedb956
+
+	column partnership_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c4793207-8221-5636-ace1-b1feab4f6a72
+		summarizeBy: none
+		sourceColumn: partnership_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 820ade23-7916-53a0-81f7-516632003f4a
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: 0f02712b-6751-5c5b-8709-3de2d6782fa2
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column partnership_type
+		dataType: string
+		lineageTag: c28793d3-8af7-5818-bdb9-88de790979b1
+		summarizeBy: none
+		sourceColumn: partnership_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column partnership_stage_code
+		dataType: string
+		lineageTag: 2b46a510-4688-502f-9680-1cb516d948a0
+		summarizeBy: none
+		sourceColumn: partnership_stage_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column partnership_stage_name
+		dataType: string
+		lineageTag: a1bf44c2-e617-506f-bfd7-5185db391558
+		summarizeBy: none
+		sourceColumn: partnership_stage_name
+		sortByColumn: partnership_stage_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column partnership_stage_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 8fdc013b-7350-57fd-acdb-493de143d6f9
+		summarizeBy: none
+		sourceColumn: partnership_stage_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 13f97f58-005d-5615-8593-12acceac30df
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column onboarding_status
+		dataType: string
+		lineageTag: 7fac9cf5-c356-52f6-9371-6ccbff1a628f
+		summarizeBy: none
+		sourceColumn: onboarding_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column application_status
+		dataType: string
+		lineageTag: fc806ec6-1b51-5ec5-bfc8-475702ca208c
+		summarizeBy: none
+		sourceColumn: application_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column insurance_requirements
+		dataType: string
+		lineageTag: d2235060-d58d-5283-878f-b9289995c356
+		summarizeBy: none
+		sourceColumn: insurance_requirements
+
+		annotation SummarizationSetBy = Automatic
+
+	column labour_hire_licence_required
+		dataType: string
+		lineageTag: da6c0fe3-c5e3-528a-b297-796cc3f7484f
+		summarizeBy: none
+		sourceColumn: labour_hire_licence_required
+
+		annotation SummarizationSetBy = Automatic
+
+	column ndis_registration_required
+		dataType: string
+		lineageTag: 3cdf3598-511a-5006-b2df-7481098b1cc3
+		summarizeBy: none
+		sourceColumn: ndis_registration_required
+
+		annotation SummarizationSetBy = Automatic
+
+	column documents_required
+		dataType: int64
+		formatString: #,0
+		lineageTag: 9a71a303-1236-5505-b00c-087ddd719cb3
+		summarizeBy: none
+		sourceColumn: documents_required
+
+		annotation SummarizationSetBy = Automatic
+
+	column documents_outstanding
+		dataType: int64
+		formatString: #,0
+		lineageTag: 74bc30df-649a-5333-8864-9440211b4e63
+		summarizeBy: none
+		sourceColumn: documents_outstanding
+
+		annotation SummarizationSetBy = Automatic
+
+	column documents_outstanding_list
+		dataType: string
+		lineageTag: 70806609-b3de-53fd-8beb-2b3d297d78a1
+		summarizeBy: none
+		sourceColumn: documents_outstanding_list
+
+		annotation SummarizationSetBy = Automatic
+
+	column documents_required_note
+		dataType: string
+		lineageTag: 4d055fb6-e27a-54a4-a9c1-e1d998c5e07b
+		summarizeBy: none
+		sourceColumn: documents_required_note
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_communication_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 521adf53-daa6-5771-9aa4-5dee6584d984
+		summarizeBy: none
+		sourceColumn: last_communication_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column next_action
+		dataType: string
+		lineageTag: 166860a2-5154-5519-9c58-c6bd4b3f632b
+		summarizeBy: none
+		sourceColumn: next_action
+
+		annotation SummarizationSetBy = Automatic
+
+	column next_action_due
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 35978ca5-71cd-5131-8223-ab60c5da1ae0
+		summarizeBy: none
+		sourceColumn: next_action_due
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column approval_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 510bb7c5-6974-57d4-9cd0-94d38499db87
+		summarizeBy: none
+		sourceColumn: approval_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column first_work_received_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 78a26748-f03d-54a7-8937-e944cc7f82d6
+		summarizeBy: none
+		sourceColumn: first_work_received_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column agreed_hourly_rate
+		dataType: double
+		formatString: $#,0
+		lineageTag: 2b65f0e9-3688-5a84-8332-935dcc8613b8
+		summarizeBy: none
+		sourceColumn: agreed_hourly_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column priority_tier
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6c1cba1a-7e15-54ba-82cc-b49e3ee77785
+		summarizeBy: none
+		sourceColumn: priority_tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column hours_received
+		dataType: double
+		formatString: $#,0
+		lineageTag: eebff5c9-8b76-52c4-89c4-b9f21d1e8cce
+		summarizeBy: none
+		sourceColumn: hours_received
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_weekly_hours
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 2c5f68e6-0d49-5208-8b63-9fec5aed2dae
+		summarizeBy: none
+		sourceColumn: active_weekly_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_generated
+		dataType: double
+		formatString: $#,0
+		lineageTag: 128c0cac-b000-5b87-ac57-ab9382686d16
+		summarizeBy: none
+		sourceColumn: revenue_generated
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_active
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2ffa4542-2635-5499-b62a-0791426ca10e
+		summarizeBy: none
+		sourceColumn: is_active
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Partnership' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_partnership"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"partnership_id", Int64.Type},
+				        {"organisation_id", Int64.Type},
+				        {"region_code", type text},
+				        {"partnership_type", type text},
+				        {"partnership_stage_code", type text},
+				        {"partnership_stage_name", type text},
+				        {"partnership_stage_order", Int64.Type},
+				        {"status", type text},
+				        {"onboarding_status", type text},
+				        {"application_status", type text},
+				        {"insurance_requirements", type text},
+				        {"labour_hire_licence_required", type text},
+				        {"ndis_registration_required", type text},
+				        {"documents_required", Int64.Type},
+				        {"documents_outstanding", Int64.Type},
+				        {"documents_outstanding_list", type text},
+				        {"documents_required_note", type text},
+				        {"last_communication_date", type date},
+				        {"next_action", type text},
+				        {"next_action_due", type date},
+				        {"approval_date", type date},
+				        {"first_work_received_date", type date},
+				        {"agreed_hourly_rate", type number},
+				        {"priority_tier", Int64.Type},
+				        {"hours_received", type number},
+				        {"active_weekly_hours", type number},
+				        {"revenue_generated", type number},
+				        {"is_active", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

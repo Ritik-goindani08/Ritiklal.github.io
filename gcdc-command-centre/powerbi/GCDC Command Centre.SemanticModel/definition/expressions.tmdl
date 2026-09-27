@@ -1,0 +1,29 @@
+/// Export folder written by `gcdc export` on the GCDC PC (refreshed via the personal gateway).
+expression ExportLocalFolder = "C:\GCDC\gcdc-command-centre\exports\powerbi" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: 8706f1c0-cb21-5920-87d9-58bdef9bd350
+
+	annotation PBI_ResultType = Text
+
+/// The export folder (navigation table of CSV files).
+expression GcdcFolder =
+		let
+		    Folder = Folder.Contents(ExportLocalFolder)
+		in
+		    Folder
+	lineageTag: 648cc3ad-a2a0-5e0c-842f-cddbac6ae272
+
+	annotation PBI_ResultType = Table
+
+/// Loads one exported CSV by table name; blank cells become null.
+expression GcdcTable =
+		(tableName as text) as table =>
+		let
+		    Content = GcdcFolder{[Name = tableName & ".csv"]}[Content],
+		    Csv = Csv.Document(Content, [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+		    Promoted = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),
+		    Nulls = Table.TransformColumns(Promoted, {}, each if _ = "" then null else _)
+		in
+		    Nulls
+	lineageTag: eb22786e-1764-5325-b300-26e3d6b7f573
+
+	annotation PBI_ResultType = Function

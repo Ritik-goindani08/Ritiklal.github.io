@@ -1,0 +1,96 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "aff3caabbd3b511c9ff5",
+  "position": {
+    "x": 16,
+    "y": 244,
+    "z": 13000,
+    "height": 226,
+    "width": 400,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "gauge",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "MRR"
+                }
+              },
+              "queryRef": "_Measures.MRR",
+              "nativeQueryRef": "MRR"
+            }
+          ]
+        },
+        "MaxValue": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Gauge Max (MRR)"
+                }
+              },
+              "queryRef": "_Measures.Gauge Max (MRR)",
+              "nativeQueryRef": "Gauge Max (MRR)"
+            }
+          ]
+        },
+        "TargetValue": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Revenue Target"
+                }
+              },
+              "queryRef": "_Measures.Revenue Target",
+              "nativeQueryRef": "Revenue Target"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Revenue progress to target (MRR)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

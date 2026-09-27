@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "fd5d65082ebb56a89246",
+  "position": {
+    "x": 16,
+    "y": 60,
+    "z": 2000,
+    "height": 80,
+    "width": 243,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Emails Scheduled Today"
+                }
+              },
+              "queryRef": "_Measures.Emails Scheduled Today",
+              "nativeQueryRef": "Emails Scheduled Today"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Emails Scheduled Today'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "5c35c4d8f2c05c63bc8b",
+  "position": {
+    "x": 16,
+    "y": 144,
+    "z": 11000,
+    "height": 76,
+    "width": 130,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Reply Rate"
+                }
+              },
+              "queryRef": "_Measures.Reply Rate",
+              "nativeQueryRef": "Reply Rate"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Reply Rate'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

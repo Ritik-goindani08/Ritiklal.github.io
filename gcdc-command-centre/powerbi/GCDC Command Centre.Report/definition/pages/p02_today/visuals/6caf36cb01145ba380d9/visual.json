@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "6caf36cb01145ba380d9",
+  "position": {
+    "x": 518,
+    "y": 148,
+    "z": 9000,
+    "height": 80,
+    "width": 243,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Applications To Complete"
+                }
+              },
+              "queryRef": "_Measures.Applications To Complete",
+              "nativeQueryRef": "Applications / forms to complete",
+              "displayName": "Applications / forms to complete"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Applications / forms to complete'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

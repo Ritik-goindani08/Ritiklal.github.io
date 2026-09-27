@@ -1,0 +1,63 @@
+table 'Dim Source'
+	lineageTag: 481c378f-7ebe-574c-8e15-5f3934bfc6f5
+
+	column source_code
+		dataType: string
+		lineageTag: 3ccb82b9-e84d-55f6-8f7a-a02ef76b0f12
+		summarizeBy: none
+		sourceColumn: source_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_name
+		dataType: string
+		lineageTag: b5d81dbc-a92c-5bff-b4b9-d7d677b7b7d3
+		summarizeBy: none
+		sourceColumn: source_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_group
+		dataType: string
+		lineageTag: b613f2cd-cc5d-59bb-ad29-b98698bd5632
+		summarizeBy: none
+		sourceColumn: source_group
+		sortByColumn: source_group_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_group_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ac1dc8cb-0c29-5b96-800d-d9b5256a92b3
+		summarizeBy: none
+		sourceColumn: source_group_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column sort_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 59b654cd-487e-5c5d-b33d-877c9b7170dc
+		summarizeBy: none
+		sourceColumn: sort_order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Source' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_dim_source"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"source_code", type text},
+				        {"source_name", type text},
+				        {"source_group", type text},
+				        {"source_group_order", Int64.Type},
+				        {"sort_order", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

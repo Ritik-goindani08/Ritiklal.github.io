@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "990ae7d052e95235a7c1",
+  "position": {
+    "x": 16,
+    "y": 60,
+    "z": 2000,
+    "height": 84,
+    "width": 243,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "MRR"
+                }
+              },
+              "queryRef": "_Measures.MRR",
+              "nativeQueryRef": "Current MRR (actual)",
+              "displayName": "Current MRR (actual)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Current MRR (actual)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "8ff084115410503ebf71",
+  "position": {
+    "x": 784,
+    "y": 430,
+    "z": 15000,
+    "height": 274,
+    "width": 480,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Worker Requirement"
+                    }
+                  },
+                  "Property": "region_code"
+                }
+              },
+              "queryRef": "Fact Worker Requirement.region_code",
+              "nativeQueryRef": "Region",
+              "displayName": "Region"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Worker Requirement"
+                    }
+                  },
+                  "Property": "required_capability"
+                }
+              },
+              "queryRef": "Fact Worker Requirement.required_capability",
+              "nativeQueryRef": "Capability",
+              "displayName": "Capability"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Worker Requirement"
+                    }
+                  },
+                  "Property": "gender_requirement"
+                }
+              },
+              "queryRef": "Fact Worker Requirement.gender_requirement",
+              "nativeQueryRef": "Gender req.",
+              "displayName": "Gender req."
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Worker Requirement"
+                    }
+                  },
+                  "Property": "weekly_hours"
+                }
+              },
+              "queryRef": "Fact Worker Requirement.weekly_hours",
+              "nativeQueryRef": "Hours/wk",
+              "displayName": "Hours/wk"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Worker Requirement"
+                    }
+                  },
+                  "Property": "needed_by"
+                }
+              },
+              "queryRef": "Fact Worker Requirement.needed_by",
+              "nativeQueryRef": "Needed by",
+              "displayName": "Needed by"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Worker Requirement"
+                    }
+                  },
+                  "Property": "status"
+                }
+              },
+              "queryRef": "Fact Worker Requirement.status",
+              "nativeQueryRef": "Status",
+              "displayName": "Status"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Open worker requirements'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e1b4a76dfbb75dd7a9b9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact Worker Requirement"
+              }
+            },
+            "Property": "is_open"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t",
+              "Entity": "Fact Worker Requirement",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "t"
+                          }
+                        },
+                        "Property": "is_open"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "1L"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+scope,email,domain,organisation.name,reason,notes,expires_at
+EMAIL,example.person@example.invalid,,,UNSUBSCRIBE,Asked not to be contacted,

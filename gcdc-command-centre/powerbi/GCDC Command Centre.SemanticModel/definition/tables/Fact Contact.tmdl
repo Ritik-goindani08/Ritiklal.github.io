@@ -1,0 +1,142 @@
+table 'Fact Contact'
+	lineageTag: 8a4e8607-a61a-5ed3-8d8d-14ee609ab1f0
+
+	column contact_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a321483b-c504-5a1a-91e0-33af4b3bc5bc
+		summarizeBy: none
+		sourceColumn: contact_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bf7cacff-48fc-5115-a6db-a41a886096af
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: 6ecea133-cf50-57e8-935b-b6a48da2087c
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact_name
+		dataType: string
+		lineageTag: 3a1448f9-6864-5718-b85a-3b6cafbf491a
+		summarizeBy: none
+		sourceColumn: contact_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column role_title
+		dataType: string
+		lineageTag: 6fd14552-a433-5729-b1cd-e5802839686f
+		summarizeBy: none
+		sourceColumn: role_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: 19eb9735-28c8-5150-b48a-1aae735a1c9b
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column email_status
+		dataType: string
+		lineageTag: ecb50d4b-73f1-51f5-a982-fc750c18a719
+		summarizeBy: none
+		sourceColumn: email_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column email_provenance
+		dataType: string
+		lineageTag: 3a0146f1-dd4f-56aa-9d23-f5bf69ab8590
+		summarizeBy: none
+		sourceColumn: email_provenance
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_decision_maker
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6ab4e398-99b2-5e14-9ba8-fd5854221221
+		summarizeBy: none
+		sourceColumn: is_decision_maker
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_role_address
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2f71d60a-0393-59ab-848d-4f8914609b97
+		summarizeBy: none
+		sourceColumn: is_role_address
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_verified_email
+		dataType: int64
+		formatString: #,0
+		lineageTag: a376de2d-10f6-587a-a98c-977c00ec1765
+		summarizeBy: none
+		sourceColumn: is_verified_email
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_invalid_email
+		dataType: int64
+		formatString: #,0
+		lineageTag: aef15c36-02d3-57f7-827d-cde6817dcc68
+		summarizeBy: none
+		sourceColumn: is_invalid_email
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: faf03c7c-8de6-539a-bd34-1bb8d2b924e5
+		summarizeBy: none
+		sourceColumn: created_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Fact Contact' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_contact"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"contact_id", Int64.Type},
+				        {"organisation_id", Int64.Type},
+				        {"region_code", type text},
+				        {"contact_name", type text},
+				        {"role_title", type text},
+				        {"email", type text},
+				        {"email_status", type text},
+				        {"email_provenance", type text},
+				        {"is_decision_maker", Int64.Type},
+				        {"is_role_address", Int64.Type},
+				        {"is_verified_email", Int64.Type},
+				        {"is_invalid_email", Int64.Type},
+				        {"created_date", type date}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,2 @@
+worker_ref,day_of_week,start_time,end_time,region_code,is_confirmed,effective_from
+EXAMPLE-W-01,1,07:00,15:00,Gold Coast,1,2026-09-01

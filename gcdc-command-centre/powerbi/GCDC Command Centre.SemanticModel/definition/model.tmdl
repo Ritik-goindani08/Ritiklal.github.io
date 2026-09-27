@@ -1,0 +1,55 @@
+model Model
+	culture: en-AU
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-AU
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["ExportLocalFolder", "GcdcFolder", "GcdcTable", "Action Centre", "Daily Brief", "Daily Focus", "Dim Agent", "Dim Opportunity Type", "Dim Organisation", "Dim Participant", "Dim Partnership Stage", "Dim Region", "Dim Service Type", "Dim Source", "Dim Stage", "Dim Worker", "Fact Agent Health", "Fact Agent Run", "Fact Alert", "Fact Application", "Fact Compliance Document", "Fact Contact", "Fact Daily Snapshot", "Fact Data Quality", "Fact Follow Up", "Fact Meeting", "Fact Opportunity", "Fact Outreach", "Fact Partnership", "Fact Referral", "Fact Reply", "Fact Revenue", "Fact Roster", "Fact Stage History", "Fact Trial Shift", "Fact Worker Availability", "Fact Worker Capacity", "Fact Worker Requirement", "Funnel Summary", "KPI Current", "Meta", "Targets", "Dim Date", "Dim DQ Check"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+ref table 'Action Centre'
+ref table 'Daily Brief'
+ref table 'Daily Focus'
+ref table 'Dim Agent'
+ref table 'Dim Opportunity Type'
+ref table 'Dim Organisation'
+ref table 'Dim Participant'
+ref table 'Dim Partnership Stage'
+ref table 'Dim Region'
+ref table 'Dim Service Type'
+ref table 'Dim Source'
+ref table 'Dim Stage'
+ref table 'Dim Worker'
+ref table 'Fact Agent Health'
+ref table 'Fact Agent Run'
+ref table 'Fact Alert'
+ref table 'Fact Application'
+ref table 'Fact Compliance Document'
+ref table 'Fact Contact'
+ref table 'Fact Daily Snapshot'
+ref table 'Fact Data Quality'
+ref table 'Fact Follow Up'
+ref table 'Fact Meeting'
+ref table 'Fact Opportunity'
+ref table 'Fact Outreach'
+ref table 'Fact Partnership'
+ref table 'Fact Referral'
+ref table 'Fact Reply'
+ref table 'Fact Revenue'
+ref table 'Fact Roster'
+ref table 'Fact Stage History'
+ref table 'Fact Trial Shift'
+ref table 'Fact Worker Availability'
+ref table 'Fact Worker Capacity'
+ref table 'Fact Worker Requirement'
+ref table 'Funnel Summary'
+ref table 'KPI Current'
+ref table Meta
+ref table Targets
+ref table 'Dim Date'
+ref table 'Dim DQ Check'
+ref table _Measures

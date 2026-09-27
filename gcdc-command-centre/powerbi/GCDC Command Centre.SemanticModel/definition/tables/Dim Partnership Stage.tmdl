@@ -1,0 +1,43 @@
+table 'Dim Partnership Stage'
+	lineageTag: 476c0be1-7ad7-5555-8c33-7cbbf882c5fa
+
+	column partnership_stage_code
+		dataType: string
+		lineageTag: a2bfc8c0-7137-5c7a-8476-98b7ecc88907
+		summarizeBy: none
+		sourceColumn: partnership_stage_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column partnership_stage_name
+		dataType: string
+		lineageTag: 9522bd0e-2fa4-550b-81fb-751d4edd6ff1
+		summarizeBy: none
+		sourceColumn: partnership_stage_name
+		sortByColumn: stage_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column stage_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 76ebb759-3fc0-57c5-a493-ab4f5b21a142
+		summarizeBy: none
+		sourceColumn: stage_order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Partnership Stage' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_dim_partnership_stage"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"partnership_stage_code", type text},
+				        {"partnership_stage_name", type text},
+				        {"stage_order", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

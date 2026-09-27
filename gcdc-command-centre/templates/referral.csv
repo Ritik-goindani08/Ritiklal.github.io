@@ -1,0 +1,2 @@
+source_key,organisation.name,participant_ref,received_at,funding_type,service_type_code,region_code,suburb,requested_weekly_hours,expected_hourly_rate,rate_basis,requested_schedule,worker_gender_requirement,status,next_action,next_action_due
+EXAMPLE-REF-1,EXAMPLE Support Coordination,EXAMPLE-P-002,2026-09-20T10:00:00+10:00,NDIS_SELF_MANAGED,COMMUNITY_ACCESS,Gold Coast,Robina,6,,,Tue/Thu mornings,FEMALE,NEW,Call coordinator to confirm start date,2026-09-22

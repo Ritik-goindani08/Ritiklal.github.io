@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "GCDC Command Centre"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "36a25164-e9ef-5e7b-950b-b05d7e31a319"
+  }
+}

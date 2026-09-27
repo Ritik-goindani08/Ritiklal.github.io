@@ -1,0 +1,240 @@
+table 'Action Centre'
+	lineageTag: e9e6b12a-1ec8-5c53-95b9-17608522e64e
+
+	column action_key
+		dataType: string
+		isHidden
+		lineageTag: 2a94c130-f2c1-5f85-9782-ed13d33e92ea
+		summarizeBy: none
+		sourceColumn: action_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 0a692e8b-1186-53a9-87d5-eda858b66a7e
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column priority
+		dataType: string
+		lineageTag: a01aadc7-cc39-542c-86db-55f825fc9a70
+		summarizeBy: none
+		sourceColumn: priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column priority_rank
+		dataType: int64
+		isHidden
+		formatString: #,0
+		lineageTag: 3a2f78a8-1f8d-5996-9b5a-385adbcabafa
+		summarizeBy: none
+		sourceColumn: priority_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3532cee4-12d9-5806-965e-4558149c85c5
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_name
+		dataType: string
+		lineageTag: 7257f234-3e35-5658-81b6-dd7c851ec0b6
+		summarizeBy: none
+		sourceColumn: organisation_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4dad4f9f-d812-5b9f-98dc-45a0f2ac51fc
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_title
+		dataType: string
+		lineageTag: e2c8af2f-8e2b-5e36-bbeb-a905d58c2652
+		summarizeBy: none
+		sourceColumn: opportunity_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_stage
+		dataType: string
+		lineageTag: 0e571184-f452-579f-b5c7-409c37eb3c1f
+		summarizeBy: none
+		sourceColumn: current_stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column next_action
+		dataType: string
+		lineageTag: c6fbdb9f-de68-5e01-8914-5eedc4b74d62
+		summarizeBy: none
+		sourceColumn: next_action
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner
+		dataType: string
+		lineageTag: fe55a843-dff3-50ba-9506-8346a683424c
+		summarizeBy: none
+		sourceColumn: owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column due_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 414474d2-77b5-53f0-be62-6a550d2625d5
+		summarizeBy: none
+		sourceColumn: due_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column due_status
+		dataType: string
+		lineageTag: 4314c900-bcd0-5545-bd81-e29de0d3a045
+		summarizeBy: none
+		sourceColumn: due_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_overdue
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6c58232d-6ecb-5ee6-9af8-9556d191de89
+		summarizeBy: none
+		sourceColumn: days_overdue
+
+		annotation SummarizationSetBy = Automatic
+
+	column potential_monthly_value
+		dataType: double
+		formatString: $#,0
+		lineageTag: 558f120d-6d9e-5e6d-aeab-76561ffb4446
+		summarizeBy: none
+		sourceColumn: potential_monthly_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column potential_revenue_display
+		dataType: string
+		lineageTag: e5c14487-8928-5f3b-9888-85c7242dd302
+		summarizeBy: none
+		sourceColumn: potential_revenue_display
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_activity_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 2ab5e2cc-eb12-595a-a0ec-8415b953fb2c
+		summarizeBy: none
+		sourceColumn: last_activity_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column status_label
+		dataType: string
+		lineageTag: 50d09051-59ec-5f4e-98d4-fa6c3b66137c
+		summarizeBy: none
+		sourceColumn: status_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column reference
+		dataType: string
+		lineageTag: 4e388e9a-03db-50e5-a4af-4f0fbe0ad777
+		summarizeBy: none
+		sourceColumn: reference
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: ad47c3f2-9e40-52a5-b74d-41f9c4e27574
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column entity_type
+		dataType: string
+		isHidden
+		lineageTag: 637a06b9-741e-5f1b-b4cd-41037eb976a9
+		summarizeBy: none
+		sourceColumn: entity_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column entity_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 225c1036-2b0f-5cd2-b595-7972fd290a4b
+		summarizeBy: none
+		sourceColumn: entity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column action_score
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 46225747-0475-5587-9322-e593966a25ff
+		summarizeBy: none
+		sourceColumn: action_score
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Action Centre' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_action_centre"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"action_key", type text},
+				        {"category", type text},
+				        {"priority", type text},
+				        {"priority_rank", Int64.Type},
+				        {"organisation_id", Int64.Type},
+				        {"organisation_name", type text},
+				        {"opportunity_id", Int64.Type},
+				        {"opportunity_title", type text},
+				        {"current_stage", type text},
+				        {"next_action", type text},
+				        {"owner", type text},
+				        {"due_date", type date},
+				        {"due_status", type text},
+				        {"days_overdue", Int64.Type},
+				        {"potential_monthly_value", type number},
+				        {"potential_revenue_display", type text},
+				        {"last_activity_date", type date},
+				        {"status_label", type text},
+				        {"reference", type text},
+				        {"region_code", type text},
+				        {"entity_type", type text},
+				        {"entity_id", Int64.Type},
+				        {"action_score", type number}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

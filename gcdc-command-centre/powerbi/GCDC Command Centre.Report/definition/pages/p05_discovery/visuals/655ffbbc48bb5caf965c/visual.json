@@ -1,0 +1,184 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "655ffbbc48bb5caf965c",
+  "position": {
+    "x": 16,
+    "y": 430,
+    "z": 13000,
+    "height": 274,
+    "width": 1248,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "discovered_date"
+                }
+              },
+              "queryRef": "Fact Opportunity.discovered_date",
+              "nativeQueryRef": "Found",
+              "displayName": "Found"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Organisation"
+                    }
+                  },
+                  "Property": "organisation_name"
+                }
+              },
+              "queryRef": "Dim Organisation.organisation_name",
+              "nativeQueryRef": "Organisation",
+              "displayName": "Organisation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "title"
+                }
+              },
+              "queryRef": "Fact Opportunity.title",
+              "nativeQueryRef": "Opportunity",
+              "displayName": "Opportunity"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Opportunity Type"
+                    }
+                  },
+                  "Property": "opportunity_type_name"
+                }
+              },
+              "queryRef": "Dim Opportunity Type.opportunity_type_name",
+              "nativeQueryRef": "Type",
+              "displayName": "Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Source"
+                    }
+                  },
+                  "Property": "source_group"
+                }
+              },
+              "queryRef": "Dim Source.source_group",
+              "nativeQueryRef": "Source",
+              "displayName": "Source"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "priority"
+                }
+              },
+              "queryRef": "Fact Opportunity.priority",
+              "nativeQueryRef": "Priority",
+              "displayName": "Priority"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "stage_name"
+                }
+              },
+              "queryRef": "Fact Opportunity.stage_name",
+              "nativeQueryRef": "Stage",
+              "displayName": "Stage"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Opportunity"
+                    }
+                  },
+                  "Property": "est_monthly_value_display"
+                }
+              },
+              "queryRef": "Fact Opportunity.est_monthly_value_display",
+              "nativeQueryRef": "Est. $/mo",
+              "displayName": "Est. $/mo"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact Opportunity"
+                  }
+                },
+                "Property": "discovered_date"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Latest opportunities'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

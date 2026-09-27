@@ -1,0 +1,2 @@
+source_key,organisation.name,meeting_type,scheduled_start,duration_minutes,mode,location,status,outcome,next_step
+EXAMPLE-MEET-1,EXAMPLE Support Coordination,DISCOVERY,2026-09-25T14:00:00+10:00,30,VIDEO,,BOOKED,,Send capability statement

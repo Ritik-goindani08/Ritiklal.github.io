@@ -1,0 +1,93 @@
+table 'Fact Compliance Document'
+	lineageTag: bd4c1de7-d487-5730-b28c-78121f653f12
+
+	column doc_code
+		dataType: string
+		lineageTag: b6d07f71-6c32-5685-97cb-01e22e1debe9
+		summarizeBy: none
+		sourceColumn: doc_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column doc_name
+		dataType: string
+		lineageTag: d5debb30-1257-5798-8831-8b538e048755
+		summarizeBy: none
+		sourceColumn: doc_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_held
+		dataType: int64
+		formatString: #,0
+		lineageTag: ef875a9c-44e8-59db-8252-5035fd2a92ee
+		summarizeBy: none
+		sourceColumn: is_held
+
+		annotation SummarizationSetBy = Automatic
+
+	column expiry_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 74b959c9-7dc6-57c4-8845-d41ff44947c8
+		summarizeBy: none
+		sourceColumn: expiry_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_current
+		dataType: int64
+		formatString: #,0
+		lineageTag: 89d9c869-139f-5cd1-9465-b0dbd8729a27
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	column status_label
+		dataType: string
+		lineageTag: 4328c358-413d-5d44-93dc-c96d9dc3f93a
+		summarizeBy: none
+		sourceColumn: status_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column sort_order
+		dataType: int64
+		formatString: 0
+		lineageTag: c7344b87-e5b1-553e-8946-19ca5eb6895f
+		summarizeBy: none
+		sourceColumn: sort_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column partnerships_waiting
+		dataType: int64
+		formatString: #,0
+		lineageTag: 0305f89e-d577-5db8-a212-46f0b077094d
+		summarizeBy: none
+		sourceColumn: partnerships_waiting
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Compliance Document' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_compliance_document"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"doc_code", type text},
+				        {"doc_name", type text},
+				        {"is_held", Int64.Type},
+				        {"expiry_date", type date},
+				        {"is_current", Int64.Type},
+				        {"status_label", type text},
+				        {"sort_order", Int64.Type},
+				        {"partnerships_waiting", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

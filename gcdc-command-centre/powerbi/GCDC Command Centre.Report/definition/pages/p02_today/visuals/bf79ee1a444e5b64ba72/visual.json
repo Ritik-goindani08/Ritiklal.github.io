@@ -1,0 +1,124 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "bf79ee1a444e5b64ba72",
+  "position": {
+    "x": 16,
+    "y": 236,
+    "z": 12000,
+    "height": 118,
+    "width": 1248,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Daily Focus"
+                    }
+                  },
+                  "Property": "focus_rank"
+                }
+              },
+              "queryRef": "Daily Focus.focus_rank",
+              "nativeQueryRef": "#",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Daily Focus"
+                    }
+                  },
+                  "Property": "focus_title"
+                }
+              },
+              "queryRef": "Daily Focus.focus_title",
+              "nativeQueryRef": "Focus",
+              "displayName": "Focus"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Daily Focus"
+                    }
+                  },
+                  "Property": "focus_why"
+                }
+              },
+              "queryRef": "Daily Focus.focus_why",
+              "nativeQueryRef": "Why it moves recurring revenue",
+              "displayName": "Why it moves recurring revenue"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Daily Focus"
+                    }
+                  },
+                  "Property": "brief_date"
+                }
+              },
+              "queryRef": "Daily Focus.brief_date",
+              "nativeQueryRef": "Brief",
+              "displayName": "Brief"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Daily Focus"
+                  }
+                },
+                "Property": "focus_rank"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Today''s focus — Daily BI Agent'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "6991f0cdb7c3579bb3e7",
+  "position": {
+    "x": 267,
+    "y": 60,
+    "z": 3000,
+    "height": 80,
+    "width": 243,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Follow-Ups Due Today"
+                }
+              },
+              "queryRef": "_Measures.Follow-Ups Due Today",
+              "nativeQueryRef": "Follow-Ups Due Today"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Follow-Ups Due Today'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,2 @@
+source_key,region_code,service_type_code,required_capability,gender_requirement,weekly_hours,needs_weekday,needs_weekend,needs_evening,needs_overnight,needed_by,status,notes
+EXAMPLE-REQ-1,Tweed,PERSONAL_CARE,"Personal care, manual handling",FEMALE,10,1,1,0,0,2026-10-15,OPEN,

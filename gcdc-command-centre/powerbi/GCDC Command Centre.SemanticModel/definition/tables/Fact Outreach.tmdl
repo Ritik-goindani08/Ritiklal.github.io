@@ -1,0 +1,315 @@
+table 'Fact Outreach'
+	lineageTag: e0e29d26-6495-58c4-a1d9-d2e6eaf01269
+
+	column outreach_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ab78ecdc-a942-543e-8218-015de842b485
+		summarizeBy: none
+		sourceColumn: outreach_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column organisation_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c8362ed4-b97d-599e-8afe-e1d8ed60b887
+		summarizeBy: none
+		sourceColumn: organisation_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2f892956-c918-59cc-8657-36c02cf102b2
+		summarizeBy: none
+		sourceColumn: contact_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column opportunity_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 66357c96-dd6d-579d-accf-3b219d60b68a
+		summarizeBy: none
+		sourceColumn: opportunity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_code
+		dataType: string
+		lineageTag: c55f8a6b-1e41-5a4f-8bd9-b6117c081d6c
+		summarizeBy: none
+		sourceColumn: region_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: caaa0887-23ef-5805-ad25-fac2abe9e081
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column touch_type
+		dataType: string
+		lineageTag: 1adba68d-1c9b-5b72-b593-5af67e79e41e
+		summarizeBy: none
+		sourceColumn: touch_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column sequence_step
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6c4bee40-ab4c-5657-a218-0160b28f20dc
+		summarizeBy: none
+		sourceColumn: sequence_step
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_code
+		dataType: string
+		lineageTag: f6ae0cb5-b713-56fc-97ca-539fd36d448d
+		summarizeBy: none
+		sourceColumn: campaign_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 06fb2493-81ef-5bcc-9ee7-1f38a9ab58bc
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column evidence
+		dataType: string
+		lineageTag: 973dc365-fdb8-53ac-a409-8a03d005a71a
+		summarizeBy: none
+		sourceColumn: evidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column to_email
+		dataType: string
+		lineageTag: 775539c9-4856-5c72-b36a-86564fb51803
+		summarizeBy: none
+		sourceColumn: to_email
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact_name
+		dataType: string
+		lineageTag: 13966e9b-75d9-5557-a163-a9d5e4e0c411
+		summarizeBy: none
+		sourceColumn: contact_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact_email_status
+		dataType: string
+		lineageTag: 7d0c3f5f-47bc-5f80-b153-478410039885
+		summarizeBy: none
+		sourceColumn: contact_email_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column subject
+		dataType: string
+		lineageTag: 26e9290c-36c3-5046-bcb8-72e107ba3bf2
+		summarizeBy: none
+		sourceColumn: subject
+
+		annotation SummarizationSetBy = Automatic
+
+	column scheduled_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 3e5cd164-586f-5cc6-b583-919f7d750c8c
+		summarizeBy: none
+		sourceColumn: scheduled_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column scheduled_time
+		dataType: string
+		lineageTag: 3f72a205-acce-5563-bcda-3fcfb8a7962f
+		summarizeBy: none
+		sourceColumn: scheduled_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column sent_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: f1390d4e-65ea-5657-af78-7deb0dbd7511
+		summarizeBy: none
+		sourceColumn: sent_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column bounced_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: b1d3cb0d-121f-5525-b2aa-e1670f88ca4e
+		summarizeBy: none
+		sourceColumn: bounced_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column activity_date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 5f552bf3-1925-58b6-a75a-aaaa8642672d
+		summarizeBy: none
+		sourceColumn: activity_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_attempted
+		dataType: int64
+		formatString: #,0
+		lineageTag: 27d27451-feaf-560d-bff5-d17085ce99bd
+		summarizeBy: none
+		sourceColumn: is_attempted
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_sent
+		dataType: int64
+		formatString: #,0
+		lineageTag: f13666c5-269e-5cae-bfcd-7681b272fa19
+		summarizeBy: none
+		sourceColumn: is_sent
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_first_touch_sent
+		dataType: int64
+		formatString: #,0
+		lineageTag: 891c42d4-10a5-509c-a041-a5521a11a10b
+		summarizeBy: none
+		sourceColumn: is_first_touch_sent
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_follow_up_sent
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1a405a9e-5d7a-5a98-b326-bf4f9090449c
+		summarizeBy: none
+		sourceColumn: is_follow_up_sent
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_bounced
+		dataType: int64
+		formatString: #,0
+		lineageTag: a13634e4-e971-5bd1-9eb4-976923755108
+		summarizeBy: none
+		sourceColumn: is_bounced
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_scheduled
+		dataType: int64
+		formatString: #,0
+		lineageTag: 60f388d0-8823-58ac-ab17-686d20622851
+		summarizeBy: none
+		sourceColumn: is_scheduled
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_scheduled_today
+		dataType: int64
+		formatString: #,0
+		lineageTag: 2c2d629a-ea57-5f97-b72b-e73d54754f18
+		summarizeBy: none
+		sourceColumn: is_scheduled_today
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_follow_up_scheduled_today
+		dataType: int64
+		formatString: #,0
+		lineageTag: 7f679d20-aa90-5e62-a150-2842d3fd7608
+		summarizeBy: none
+		sourceColumn: is_follow_up_scheduled_today
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_cancelled
+		dataType: int64
+		formatString: #,0
+		lineageTag: f53318dc-cc29-5900-a4f0-ab06cd343124
+		summarizeBy: none
+		sourceColumn: is_cancelled
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_pending_approval
+		dataType: int64
+		formatString: #,0
+		lineageTag: 9006f9ad-ab52-569e-a178-5036cca16e45
+		summarizeBy: none
+		sourceColumn: is_pending_approval
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Outreach' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_outreach"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"outreach_id", Int64.Type},
+				        {"organisation_id", Int64.Type},
+				        {"contact_id", Int64.Type},
+				        {"opportunity_id", Int64.Type},
+				        {"region_code", type text},
+				        {"channel", type text},
+				        {"touch_type", type text},
+				        {"sequence_step", Int64.Type},
+				        {"campaign_code", type text},
+				        {"status", type text},
+				        {"evidence", type text},
+				        {"to_email", type text},
+				        {"contact_name", type text},
+				        {"contact_email_status", type text},
+				        {"subject", type text},
+				        {"scheduled_date", type date},
+				        {"scheduled_time", type text},
+				        {"sent_date", type date},
+				        {"bounced_date", type date},
+				        {"activity_date", type date},
+				        {"is_attempted", Int64.Type},
+				        {"is_sent", Int64.Type},
+				        {"is_first_touch_sent", Int64.Type},
+				        {"is_follow_up_sent", Int64.Type},
+				        {"is_bounced", Int64.Type},
+				        {"is_scheduled", Int64.Type},
+				        {"is_scheduled_today", Int64.Type},
+				        {"is_follow_up_scheduled_today", Int64.Type},
+				        {"is_cancelled", Int64.Type},
+				        {"is_pending_approval", Int64.Type}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

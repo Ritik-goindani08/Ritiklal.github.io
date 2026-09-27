@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "bd458e57dce650389c1d",
+  "position": {
+    "x": 711,
+    "y": 60,
+    "z": 7000,
+    "height": 76,
+    "width": 131,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Cancelled Emails"
+                }
+              },
+              "queryRef": "_Measures.Cancelled Emails",
+              "nativeQueryRef": "Cancelled Emails"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cancelled Emails'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

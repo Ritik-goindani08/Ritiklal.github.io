@@ -1,0 +1,141 @@
+table 'Fact Alert'
+	lineageTag: 221ad5a8-3acc-588c-b071-e20ff8d7aaed
+
+	column alert_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2db9b06b-183f-599a-a644-f7a7cfeae787
+		summarizeBy: none
+		sourceColumn: alert_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_type
+		dataType: string
+		lineageTag: ff349071-218f-56db-b37b-be1575057a34
+		summarizeBy: none
+		sourceColumn: source_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column agent_code
+		dataType: string
+		lineageTag: f0df8017-3be5-5767-acde-d3ce1c526724
+		summarizeBy: none
+		sourceColumn: agent_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity
+		dataType: string
+		lineageTag: 5ac1edcc-3ac5-5e52-8e5a-39ce0a078069
+		summarizeBy: none
+		sourceColumn: severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity_sort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 384dabd2-4bb6-5f1e-8aad-193ba8870df0
+		summarizeBy: none
+		sourceColumn: severity_sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 83f64895-9a3a-5472-835b-834721e67cb5
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column entity_type
+		dataType: string
+		isHidden
+		lineageTag: 727ddc27-394a-5662-83c9-d240e1454e20
+		summarizeBy: none
+		sourceColumn: entity_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column entity_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a7448b04-7419-5fd9-8887-0cf909f4f654
+		summarizeBy: none
+		sourceColumn: entity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column message
+		dataType: string
+		lineageTag: 5f39bcc4-e4b7-51f9-b0a9-59994c0c616b
+		summarizeBy: none
+		sourceColumn: message
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_seen_local
+		dataType: dateTime
+		formatString: dd mmm yyyy hh:nn
+		lineageTag: c251be8e-4494-5d91-980f-ed5fbac3909e
+		summarizeBy: none
+		sourceColumn: first_seen_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_seen_local
+		dataType: dateTime
+		formatString: dd mmm yyyy hh:nn
+		lineageTag: 8bfc74ba-1899-5027-9120-532c175e0bc6
+		summarizeBy: none
+		sourceColumn: last_seen_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column occurrences
+		dataType: int64
+		formatString: #,0
+		lineageTag: a2b21410-deec-54f4-b836-45fb5cb40d50
+		summarizeBy: none
+		sourceColumn: occurrences
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 0b5cb4c0-5f71-59f1-93be-3a620fb49659
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Alert' = m
+		mode: import
+		source =
+				let
+				    Source = GcdcTable("pbi_fact_alert"),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"alert_id", Int64.Type},
+				        {"source_type", type text},
+				        {"agent_code", type text},
+				        {"severity", type text},
+				        {"severity_sort", Int64.Type},
+				        {"category", type text},
+				        {"entity_type", type text},
+				        {"entity_id", Int64.Type},
+				        {"message", type text},
+				        {"first_seen_local", type datetime},
+				        {"last_seen_local", type datetime},
+				        {"occurrences", Int64.Type},
+				        {"status", type text}
+				    }, "en-AU")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
